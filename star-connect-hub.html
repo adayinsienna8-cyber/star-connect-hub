@@ -1,0 +1,1638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="description" content="Star Connect Hub — Book personalised moments from verified creators. Messages, video calls, and exclusive experiences, with every creator identity-checked and every payment held in escrow."/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Star Connect Hub — Verified creators, real connection"/>
+<meta property="og:description" content="Book personalised moments from verified creators. Messages, video calls, and exclusive experiences — escrow-protected."/>
+<meta property="og:url" content="https://starconnecthub.com"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Star Connect Hub — Verified creators, real connection"/>
+<title>Star Connect Hub — Verified creators, real connection</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23f5d300'/><text x='16' y='23' font-size='20' text-anchor='middle' fill='%23000'>&#9733;</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FAF8F4;--surface:#FFFFFF;--card:#FFFFFF;--card2:#F4F0EB;
+  --border:rgba(0,0,0,.08);--border2:rgba(0,0,0,.13);
+  --text:#1A1512;--t2:#6B5E52;--t3:#C2B5A8;
+  --yellow:#C9A227;--yellowd:#A8841A;
+  --green:#22c55e;--pink:#C4507A;--red:#ef4444;
+  --nav-h:64px;--max:1300px;
+  --r:12px;--rp:999px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);overflow-x:clip;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none}
+h1,h2,h3,.hero-h1,.sec-h2{font-family:'Cormorant Garamond',Georgia,serif}
+img{max-width:100%}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:var(--rp);font-size:.9rem;font-weight:700;cursor:pointer;transition:all .15s}
+.btn-primary{background:var(--yellow);color:#000;border:none}
+.btn-primary:hover{background:var(--yellowd)}
+.btn-ghost{background:rgba(0,0,0,.04);color:var(--text);border:1px solid var(--border2)}
+.btn-ghost:hover{background:rgba(0,0,0,.08)}
+.btn-sm{padding:8px 16px;font-size:.82rem}
+
+/* ── NAV ── */
+.nav{position:sticky;top:0;z-index:500;background:#fff;border-bottom:1px solid var(--border);height:var(--nav-h);box-shadow:0 1px 16px rgba(0,0,0,.05)}
+.nav-wrap{height:100%;display:flex;align-items:center;gap:0}
+.nav-logo{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.25rem;font-weight:700;color:var(--yellow);white-space:nowrap;margin-right:28px;flex:none;letter-spacing:.01em}
+.nav-logo em{color:var(--text);font-style:normal}
+.nav-cats{display:flex;align-items:center;overflow-x:auto;scrollbar-width:none;flex:1}
+.nav-cats::-webkit-scrollbar{display:none}
+.nav-cat{height:var(--nav-h);padding:0 15px;background:none;color:var(--t2);font-size:.84rem;font-weight:500;white-space:nowrap;border-bottom:2px solid transparent;transition:color .15s,border-color .15s}
+.nav-cat:hover,.nav-cat.active{color:var(--text);border-bottom-color:var(--yellow)}
+.nav-sep{width:1px;height:24px;background:var(--border);margin:0 12px;flex:none}
+.nav-link{background:none;color:var(--t2);font-size:.83rem;font-weight:500;padding:0 12px;white-space:nowrap;transition:color .15s;height:var(--nav-h);display:flex;align-items:center}
+.nav-link:hover{color:var(--text)}
+.nav-right{display:flex;align-items:center;gap:8px;flex:none;margin-left:8px}
+.btn-nav-in{background:none;border:1px solid var(--border2);color:var(--text);padding:8px 18px;border-radius:var(--rp);font-size:.83rem;font-weight:600;transition:all .15s}
+.btn-nav-in:hover{border-color:var(--yellow);color:var(--yellow)}
+.btn-nav-join{background:var(--yellow);border:none;color:#fff;padding:8px 18px;border-radius:var(--rp);font-size:.83rem;font-weight:700;transition:background .15s}
+.btn-nav-join:hover{background:var(--yellowd)}
+.mob-menu{display:none;background:none;border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:8px;font-size:1rem;margin-left:10px}
+
+/* mobile nav drawer */
+.mob-nav{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:#fff;border-bottom:1px solid var(--border);z-index:499;padding:12px 24px 20px;flex-direction:column;gap:4px}
+.mob-nav.show{display:flex}
+.mob-nav-btn{background:none;color:var(--text);font-size:.9rem;font-weight:500;padding:11px 0;text-align:left;border-bottom:1px solid var(--border);transition:color .15s}
+.mob-nav-btn:hover{color:var(--yellow)}
+.mob-nav-btns{display:flex;gap:10px;padding-top:16px}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(155deg,#FDF9F0 0%,#FAF4E2 55%,#FAF8F4 100%);padding:80px 0 72px;overflow:hidden;border-bottom:1px solid var(--border)}
+.hero-wrap{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(201,162,39,.1);border:1px solid rgba(201,162,39,.3);color:var(--yellow);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border-radius:var(--rp);margin-bottom:22px}
+.hero-h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2.6rem,5.5vw,4.6rem);font-weight:700;line-height:1.06;letter-spacing:-.01em;margin-bottom:18px}
+.hero-h1 .acc{color:var(--yellow)}
+.hero-sub{color:var(--t2);font-size:1rem;line-height:1.7;margin-bottom:32px;max-width:46ch}
+.hero-search{display:flex;background:#fff;border:1px solid var(--border2);border-radius:var(--rp);overflow:hidden;max-width:500px;margin-bottom:22px;transition:border-color .2s;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.hero-search:focus-within{border-color:var(--yellow)}
+.hero-search input{flex:1;background:none;border:none;outline:none;padding:14px 20px;color:var(--text);font-family:inherit;font-size:.95rem}
+.hero-search input::placeholder{color:var(--t3)}
+.hero-search button{background:var(--yellow);border:none;padding:10px 22px;color:#fff;font-weight:700;font-family:inherit;font-size:.88rem;margin:5px;border-radius:var(--rp);transition:background .15s}
+.hero-search button:hover{background:var(--yellowd)}
+.hero-qcats{display:flex;flex-wrap:wrap;gap:8px}
+.hero-qcat{background:rgba(0,0,0,.04);border:1px solid var(--border);color:var(--t2);padding:7px 16px;border-radius:var(--rp);font-size:.8rem;font-weight:500;transition:all .15s}
+.hero-qcat:hover{background:var(--yellow);color:#fff;border-color:var(--yellow)}
+
+/* hero mosaic */
+.hero-mosaic{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.h-card{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:18px 12px;text-align:center;cursor:pointer;transition:all .2s;box-shadow:0 2px 12px rgba(0,0,0,.05)}
+.h-card:hover{border-color:rgba(201,162,39,.5);transform:translateY(-4px);box-shadow:0 8px 28px rgba(201,162,39,.15)}
+.h-card:nth-child(even){margin-top:24px}
+.h-av{width:76px;height:76px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:800;color:#fff;margin:0 auto 10px;position:relative;overflow:hidden}
+.h-name{font-size:.82rem;font-weight:700;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.h-price{font-size:.75rem;color:var(--yellow);font-weight:600}
+
+/* ── TOP 10 ── */
+.top10{background:var(--surface);padding:72px 0}
+.sec-hdr{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:32px}
+.sec-eye{font-size:.69rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--yellow);margin-bottom:10px;font-family:'DM Sans',sans-serif}
+.sec-h2{font-size:clamp(1.8rem,3vw,2.6rem);font-weight:600;letter-spacing:-.01em;font-family:'Cormorant Garamond',Georgia,serif}
+.see-all{background:none;color:var(--yellow);font-size:.85rem;font-weight:600;border:1px solid rgba(201,162,39,.35);padding:8px 18px;border-radius:var(--rp);transition:all .15s}
+.see-all:hover{background:rgba(201,162,39,.08)}
+.t10-scroll{display:flex;gap:14px;overflow-x:auto;padding-bottom:6px;scrollbar-width:none}
+.t10-scroll::-webkit-scrollbar{display:none}
+.t10-card{flex:none;width:190px;background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:20px 14px;text-align:center;position:relative;cursor:pointer;transition:all .2s;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+.t10-card:hover{border-color:rgba(201,162,39,.5);transform:translateY(-4px);box-shadow:0 8px 28px rgba(201,162,39,.15)}
+.rank{position:absolute;top:10px;left:10px;width:28px;height:28px;border-radius:50%;background:var(--card2);color:var(--t2);font-size:.7rem;font-weight:800;display:flex;align-items:center;justify-content:center;border:1px solid var(--border)}
+.rank.gold{background:var(--yellow);color:#fff;border-color:transparent}
+.t10-av{width:100px;height:100px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:800;color:#fff;margin:0 auto 14px;border:2px solid var(--border);position:relative;overflow:hidden}
+.t10-name{font-size:.88rem;font-weight:700;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.t10-role{font-size:.72rem;color:var(--t2);margin-bottom:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.t10-stars{color:var(--yellow);font-size:.75rem;margin-bottom:6px}
+.t10-price{color:var(--yellow);font-size:.8rem;font-weight:700;margin-bottom:12px}
+.t10-book{background:var(--yellow);color:#000;border:none;border-radius:var(--rp);padding:7px 0;width:100%;font-size:.78rem;font-weight:700;transition:background .15s}
+.t10-book:hover{background:var(--yellowd)}
+
+/* ── BROWSE ── */
+.browse{background:var(--bg);padding:72px 0}
+.browse-hdr{margin-bottom:24px}
+.no-results{color:var(--t2);grid-column:1/-1;text-align:center;padding:48px 0;font-size:.95rem}
+
+/* filter chips */
+.filter-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.chip{background:#fff;border:1px solid var(--border);color:var(--t2);padding:8px 18px;border-radius:var(--rp);font-size:.82rem;font-weight:500;cursor:pointer;transition:all .15s;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.chip.active,.chip:hover{background:var(--yellow);color:#fff;border-color:var(--yellow);box-shadow:0 2px 10px rgba(201,162,39,.25)}
+
+/* creator grid cards */
+.creator-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(172px,1fr));gap:16px}
+.c-card{background:#fff;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;cursor:pointer;transition:all .2s;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+.c-card:hover{border-color:rgba(201,162,39,.5);transform:translateY(-3px);box-shadow:0 8px 28px rgba(201,162,39,.15)}
+.c-top{padding:24px 14px 16px;text-align:center;position:relative}
+.c-av{width:112px;height:112px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;font-weight:800;color:#fff;margin:0 auto 14px;position:relative;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.12)}
+.c-vbadge{position:absolute;bottom:6px;right:6px;width:22px;height:22px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:900;border:2px solid #fff;z-index:2}
+.vtick{display:inline-block;vertical-align:middle;margin-left:4px;flex:none;width:15px;height:15px}
+.c-name{font-size:.92rem;font-weight:700;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.c-role{font-size:.74rem;color:var(--t2);margin-bottom:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.c-rating{display:flex;align-items:center;justify-content:center;gap:4px;font-size:.74rem;color:var(--yellow)}
+.c-rating span{color:var(--t2)}
+.c-bot{padding:10px 14px 14px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.c-price{font-size:.8rem;color:var(--yellow);font-weight:700;font-family:'Space Mono',monospace}
+.c-book{background:var(--yellow);color:#000;border:none;border-radius:var(--rp);padding:6px 14px;font-size:.75rem;font-weight:700;transition:background .15s}
+.c-book:hover{background:var(--yellowd)}
+.c-socials{display:flex;justify-content:center;gap:5px;flex-wrap:wrap;margin:5px 0 9px}
+.c-soc-pill{display:inline-flex;align-items:center;gap:3px;border-radius:20px;border:1px solid transparent;padding:3px 8px;font-size:.67rem;font-weight:700;line-height:1}
+
+/* ── HOW IT WORKS ── */
+.how{background:#F4EFE8;padding:80px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:52px}
+.how-step{text-align:center}
+.how-num{width:58px;height:58px;border-radius:50%;background:#fff;border:2px solid rgba(201,162,39,.4);color:var(--yellow);font-size:1.3rem;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;box-shadow:0 4px 16px rgba(201,162,39,.15)}
+.how-icon{font-size:2rem;margin-bottom:14px}
+.how-title{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.3rem;font-weight:600;margin-bottom:10px;letter-spacing:.01em}
+.how-txt{color:var(--t2);font-size:.88rem;line-height:1.7}
+
+/* ── COLLECTIONS ── */
+.collections{background:linear-gradient(180deg,#F7F3EC 0%,#FDFAF5 100%);padding:80px 0}
+.coll-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:38px}
+.coll-card{border-radius:18px;overflow:hidden;height:252px;cursor:pointer;position:relative;transition:transform .28s cubic-bezier(.22,.68,0,1.2),box-shadow .28s;box-shadow:0 4px 20px rgba(0,0,0,.13)}
+.coll-card:hover{transform:translateY(-7px) scale(1.01);box-shadow:0 22px 52px rgba(0,0,0,.28)}
+.coll-card::after{content:'';position:absolute;inset:0;border-radius:18px;border:1px solid rgba(255,255,255,.12);pointer-events:none;transition:border-color .28s}
+.coll-card:hover::after{border-color:rgba(201,162,39,.45)}
+.coll-inner{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:22px}
+.coll-inner::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.92) 0%,rgba(0,0,0,.45) 45%,rgba(0,0,0,.04) 100%)}
+.coll-info{position:relative;z-index:1}
+.coll-accent{width:28px;height:2px;background:linear-gradient(90deg,var(--yellow),rgba(201,162,39,.3));border-radius:2px;margin-bottom:10px;position:relative;z-index:1}
+.coll-sub{font-size:.65rem;font-weight:700;color:var(--yellow);text-transform:uppercase;letter-spacing:.2em;margin-bottom:6px;font-family:'DM Sans',sans-serif}
+.coll-name{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.42rem;font-weight:700;line-height:1.15;letter-spacing:.01em;color:#fff;text-shadow:0 2px 16px rgba(0,0,0,.7)}
+.coll-count{font-size:.72rem;color:rgba(255,255,255,.72);margin-top:6px;letter-spacing:.03em}
+/* avatar stack in collection cards */
+.coll-avatars{display:flex;margin-bottom:14px;position:relative;z-index:1}
+.coll-mini-av{width:34px;height:34px;border-radius:7px;border:2px solid rgba(255,255,255,.22);margin-right:-9px;display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;color:#fff;flex:none;position:relative;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.4)}
+
+/* ── REVIEWS ── */
+.reviews{background:var(--surface);padding:72px 0}
+.review-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:36px}
+.rv-card{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:22px;box-shadow:0 2px 10px rgba(0,0,0,.05);transition:box-shadow .2s}
+.rv-card:hover{box-shadow:0 6px 24px rgba(201,162,39,.12)}
+.rv-stars{color:var(--yellow);font-size:.85rem;margin-bottom:12px;letter-spacing:2px}
+.rv-text{color:var(--t2);font-size:.86rem;line-height:1.7;margin-bottom:18px;font-style:italic}
+.rv-meta{display:flex;align-items:center;gap:10px}
+.rv-av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;color:#fff;flex:none}
+.rv-name{font-size:.82rem;font-weight:600}
+.rv-occ{font-size:.72rem;color:var(--t2)}
+
+/* ── TALENT CTA ── */
+.talent{background:linear-gradient(135deg,#1A1512 0%,#2A1F16 70%);border-top:1px solid rgba(201,162,39,.25);padding:80px 0;color:rgba(255,255,255,.92)}
+.talent .sec-h2{color:#fff;font-size:clamp(2rem,3.5vw,3rem);text-shadow:0 2px 20px rgba(201,162,39,.18)}
+.talent .sec-eye{color:var(--yellow)}
+.talent-inner{display:grid;grid-template-columns:1fr auto;gap:60px;align-items:center}
+.talent-steps{display:flex;gap:32px;margin-top:28px;flex-wrap:wrap}
+.talent-step{display:flex;align-items:center;gap:10px;font-size:.9rem;color:rgba(255,255,255,.82)}
+.talent-step-num{width:28px;height:28px;border-radius:50%;background:rgba(201,162,39,.25);color:var(--yellow);font-size:.75rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none;border:1px solid rgba(201,162,39,.35)}
+.btn-talent{background:linear-gradient(135deg,var(--yellow),var(--yellowd));color:#fff;border:none;padding:18px 46px;border-radius:var(--rp);font-size:1.05rem;font-weight:700;white-space:nowrap;transition:all .2s;align-self:center;box-shadow:0 8px 32px rgba(201,162,39,.4);letter-spacing:.02em}
+.btn-talent:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 14px 40px rgba(201,162,39,.55)}
+
+/* ── FOOTER ── */
+footer{background:#1A1512;border-top:1px solid rgba(201,162,39,.25);padding:64px 0 28px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:52px}
+.footer-logo{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.35rem;font-weight:700;color:var(--yellow);margin-bottom:14px;letter-spacing:.03em}
+.footer-logo em{color:rgba(255,255,255,.95);font-style:normal}
+.footer-about{color:rgba(255,255,255,.78);font-size:.88rem;line-height:1.8;max-width:28ch;margin-bottom:22px}
+.footer-social{display:flex;gap:8px}
+.soc{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;font-size:.82rem;color:rgba(255,255,255,.78);transition:all .18s}
+.soc:hover{background:rgba(201,162,39,.2);border-color:var(--yellow);color:var(--yellow)}
+.footer-col-h{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:var(--yellow);margin-bottom:18px}
+.footer-links{display:flex;flex-direction:column;gap:12px}
+.footer-links a{color:rgba(255,255,255,.75);font-size:.88rem;transition:color .15s}
+.footer-links a:hover{color:var(--yellow)}
+.footer-bot{border-top:1px solid rgba(255,255,255,.12);padding-top:24px;display:flex;justify-content:space-between;align-items:center;color:rgba(255,255,255,.52);font-size:.78rem;flex-wrap:wrap;gap:12px}
+.footer-bot a{color:rgba(255,255,255,.52);transition:color .15s}
+.footer-bot a:hover{color:rgba(255,255,255,.85)}
+
+/* ── MODAL ── */
+.overlay{position:fixed;inset:0;z-index:800;background:rgba(0,0,0,.85);backdrop-filter:blur(5px);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .25s}
+.overlay.open{opacity:1;pointer-events:all}
+.modal{background:#fff;border:1px solid var(--border);border-radius:16px;max-width:480px;width:100%;position:relative;max-height:90vh;overflow-y:auto;box-shadow:0 24px 80px rgba(0,0,0,.18)}
+.modal.wide{max-width:720px}
+.modal .close{position:absolute;top:14px;right:14px;background:rgba(0,0,0,.05);border:1px solid var(--border);color:var(--text);width:32px;height:32px;border-radius:50%;font-size:1.1rem;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.modal-pad{padding:32px}
+.eyebrow{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--yellow)}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:.78rem;color:var(--t2);margin-bottom:6px;font-weight:500}
+.field input,.field select,.field textarea{width:100%;background:#FAF8F4;border:1px solid var(--border2);border-radius:10px;padding:12px 14px;color:var(--text);font-family:inherit;font-size:.9rem;box-sizing:border-box;transition:border-color .2s}
+.field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--yellow)}
+.switch-line{text-align:center;color:var(--t2);font-size:.86rem;margin-top:18px}
+.switch-line button{background:none;border:none;color:var(--yellow);font-weight:600;font-family:inherit;font-size:.86rem;cursor:pointer}
+.tos-notice{font-size:.72rem;color:var(--t3);text-align:center;margin-top:14px;line-height:1.5}
+.tos-notice a{color:var(--t2)}
+.err-msg{color:var(--red);font-size:.76rem;margin-top:4px}
+
+/* ── TOAST ── */
+#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(12px);background:#fff;color:#000;padding:12px 26px;border-radius:var(--rp);font-size:.88rem;font-weight:600;opacity:0;pointer-events:none;z-index:2000;transition:all .3s;white-space:nowrap}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ── ASSISTANT ── */
+.assist-btn{position:fixed;bottom:24px;right:24px;z-index:600;background:var(--yellow);color:#000;border:none;padding:12px 20px;border-radius:var(--rp);font-size:.85rem;font-weight:700;display:flex;align-items:center;gap:8px;box-shadow:0 4px 20px rgba(245,211,0,.25);transition:transform .15s}
+.assist-btn:hover{transform:scale(1.04)}
+.assist-panel{position:fixed;bottom:80px;right:24px;z-index:600;width:340px;background:#fff;border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 12px 48px rgba(0,0,0,.15);display:flex;flex-direction:column;max-height:480px;opacity:0;pointer-events:none;transform:translateY(10px);transition:opacity .25s,transform .25s}
+.assist-panel.open{opacity:1;pointer-events:all;transform:translateY(0)}
+.assist-head{padding:14px 18px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--border);background:#FAF6EE}
+.ava{width:34px;height:34px;border-radius:50%;background:var(--yellow);color:#000;display:flex;align-items:center;justify-content:center;font-size:.9rem;font-weight:800;flex:none}
+.assist-head h4{font-size:.88rem;font-weight:700}
+.assist-head small{font-size:.72rem;color:var(--green)}
+.assist-head .x{background:none;border:none;color:var(--t2);font-size:1.2rem;margin-left:auto;cursor:pointer}
+.assist-body{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px}
+.bot-msg,.user-msg{max-width:88%;padding:9px 13px;border-radius:14px;font-size:.85rem;line-height:1.5}
+.bot-msg{background:#F4F0EB;color:var(--text);border-bottom-left-radius:4px;align-self:flex-start}
+.user-msg{background:var(--yellow);color:#fff;border-bottom-right-radius:4px;align-self:flex-end}
+.quick{padding:8px 14px;display:flex;flex-wrap:wrap;gap:6px}
+.quick-btn{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.25);color:var(--yellow);padding:5px 12px;border-radius:var(--rp);font-size:.75rem;font-weight:500;cursor:pointer;transition:background .15s}
+.quick-btn:hover{background:rgba(201,162,39,.18)}
+.assist-input{display:flex;padding:12px 14px;border-top:1px solid var(--border);gap:8px}
+.assist-input input{flex:1;background:#FAF8F4;border:1px solid var(--border2);border-radius:var(--rp);padding:9px 15px;color:var(--text);font-family:inherit;font-size:.84rem}
+.assist-input input:focus{outline:none;border-color:var(--yellow)}
+.assist-input button{background:var(--yellow);border:none;border-radius:50%;width:36px;height:36px;color:#000;flex:none;display:flex;align-items:center;justify-content:center;cursor:pointer}
+
+/* ── OTP ── */
+.otp-input{font-size:1.6rem!important;letter-spacing:.35em!important;text-align:center!important;font-family:'Space Mono',monospace!important;padding:14px 10px!important}
+.otp-err{color:var(--red);font-size:.78rem;margin-top:5px;min-height:18px;text-align:center}
+.sending-btn{opacity:.65;cursor:not-allowed;pointer-events:none}
+
+/* ── ACCOUNT DASHBOARD ── */
+.account-dash{position:fixed;inset:0;z-index:950;display:flex;background:var(--bg);transform:translateX(100%);transition:transform .38s cubic-bezier(.4,0,.2,1);overflow:hidden}
+.account-dash.open{transform:translateX(0)}
+.dash-sidebar{width:260px;flex:none;background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;padding:28px 20px 24px;overflow-y:auto}
+.dash-back{display:flex;align-items:center;gap:6px;background:none;border:none;color:var(--t2);font-family:inherit;font-size:.82rem;cursor:pointer;padding:0;margin-bottom:28px;transition:color .15s}
+.dash-back:hover{color:var(--yellow)}
+.dash-avatar{width:84px;height:84px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;font-weight:800;color:#000;margin:0 auto 10px;position:relative;overflow:hidden;border:3px solid var(--border);cursor:pointer;background:var(--yellow)}
+.dash-avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none}
+.dash-avatar img.show{display:block}
+.dash-avatar-overlay{position:absolute;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;font-size:.65rem;color:#fff;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:0;transition:opacity .2s}
+.dash-avatar:hover .dash-avatar-overlay{opacity:1}
+.dash-uname{text-align:center;font-weight:700;color:var(--text);font-size:.98rem;margin-bottom:3px}
+.dash-uemail{text-align:center;color:var(--t2);font-size:.72rem;margin-bottom:24px;word-break:break-all}
+.dash-nav{display:flex;flex-direction:column;gap:3px;flex:1}
+.dnav{display:flex;align-items:center;gap:10px;background:none;border:none;font-family:inherit;font-size:.88rem;color:var(--t2);cursor:pointer;padding:11px 14px;border-radius:9px;text-align:left;font-weight:500;transition:background .15s,color .15s}
+.dnav:hover{background:rgba(0,0,0,.04);color:var(--text)}
+.dnav.active{background:rgba(201,162,39,.1);color:var(--yellow)}
+.dash-signout{padding-top:18px;border-top:1px solid var(--border);margin-top:16px}
+.dash-signout button{background:none;border:none;color:var(--t2);font-family:inherit;font-size:.8rem;cursor:pointer;padding:0;transition:color .15s}
+.dash-signout button:hover{color:var(--red)}
+.dash-content{flex:1;overflow-y:auto;padding:36px 40px}
+.dash-tab{display:none}
+.dash-tab.active{display:block}
+.dash-title{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.9rem;font-weight:600;letter-spacing:-.01em;color:var(--text);margin:0 0 4px}
+.dash-sub{color:var(--t2);font-size:.88rem;margin:0 0 28px;line-height:1.55}
+.pf-avatar-section{display:flex;align-items:center;gap:20px;margin-bottom:28px}
+.pf-avatar-big{width:90px;height:90px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-size:2.2rem;font-weight:800;color:#000;position:relative;overflow:hidden;cursor:pointer;border:3px solid var(--border);background:var(--yellow)}
+.pf-avatar-big img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none}
+.pf-avatar-big img.show{display:block}
+.pf-avatar-big-overlay{position:absolute;inset:0;background:rgba(0,0,0,.55);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:.6rem;color:#fff;font-weight:700;letter-spacing:.06em;text-transform:uppercase;opacity:0;transition:opacity .2s}
+.pf-avatar-big:hover .pf-avatar-big-overlay{opacity:1}
+.pf-avatar-hint{font-size:.78rem;color:var(--t2);line-height:1.5}
+.dash-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:0}
+.dash-field{margin-bottom:16px}
+.dash-field label{display:block;font-size:.78rem;color:var(--t2);margin-bottom:6px;font-weight:500;letter-spacing:.04em;text-transform:uppercase}
+.dash-field input,.dash-field textarea,.dash-field select{width:100%;background:#FAF8F4;border:1px solid var(--border2);border-radius:9px;padding:11px 14px;color:var(--text);font-family:inherit;font-size:.9rem;box-sizing:border-box;transition:border-color .2s}
+.dash-field input:focus,.dash-field textarea:focus{outline:none;border-color:var(--yellow)}
+.dash-field textarea{resize:vertical;min-height:110px;line-height:1.55}
+.msg-list{display:flex;flex-direction:column;gap:10px}
+.msg-row{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;cursor:pointer;transition:all .2s;box-shadow:0 1px 6px rgba(0,0,0,.04)}
+.msg-row:hover{border-color:var(--yellow);box-shadow:0 4px 16px rgba(201,162,39,.12)}
+.msg-init{width:48px;height:48px;border-radius:10px;flex:none;display:flex;align-items:center;justify-content:center;font-size:.95rem;font-weight:700;color:#fff;overflow:hidden;position:relative}
+.msg-info{flex:1;min-width:0}
+.msg-cname{font-weight:600;color:var(--text);font-size:.9rem}
+.msg-crole{color:var(--t2);font-size:.75rem}
+.msg-arrow{color:var(--yellow);font-size:1.1rem}
+.chat-panel{display:none;flex-direction:column}
+.chat-panel.open{display:flex}
+.chat-hdr{display:flex;align-items:center;gap:14px;padding-bottom:18px;border-bottom:1px solid var(--border);margin-bottom:18px}
+.chat-back-btn{background:none;border:none;color:var(--t2);font-family:inherit;font-size:.8rem;cursor:pointer;padding:0;display:flex;align-items:center;gap:5px}
+.chat-back-btn:hover{color:var(--yellow)}
+.chat-hdr-info{flex:1}
+.chat-hdr-name{font-weight:700;color:var(--text);font-size:.95rem}
+.chat-hdr-role{color:var(--t2);font-size:.75rem}
+.chat-book-link{background:var(--yellow);border:none;border-radius:var(--rp);padding:7px 16px;color:#000;font-weight:700;font-family:inherit;font-size:.75rem;cursor:pointer;white-space:nowrap}
+.chat-tier-banner{background:linear-gradient(135deg,rgba(201,162,39,.07),rgba(201,162,39,.03));border:1px solid rgba(201,162,39,.2);border-radius:12px;padding:14px 16px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.chat-tier-info{flex:1;min-width:0}
+.chat-tier-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--yellow);margin-bottom:3px}
+.chat-tier-desc{font-size:.78rem;color:var(--t2);line-height:1.4}
+.chat-tier-btn{background:var(--yellow);border:none;border-radius:var(--rp);padding:8px 18px;color:#000;font-weight:700;font-family:inherit;font-size:.78rem;cursor:pointer;white-space:nowrap;flex:none}
+.msg-chat-price{font-size:.7rem;color:var(--yellow);font-weight:600;font-family:'Space Mono',monospace}
+.chat-messages{display:flex;flex-direction:column;gap:10px;min-height:220px;max-height:360px;overflow-y:auto;margin-bottom:16px;padding-right:2px}
+.bubble{max-width:76%;padding:10px 15px;border-radius:18px;font-size:.87rem;line-height:1.55}
+.bubble.mine{align-self:flex-end;background:rgba(201,162,39,.12);border:1px solid rgba(201,162,39,.28);color:var(--text);border-bottom-right-radius:5px}
+.bubble.theirs{align-self:flex-start;background:#F4F0EB;border:1px solid var(--border);color:var(--t2);border-bottom-left-radius:5px}
+.bubble-time{font-size:.65rem;color:var(--t2);margin-top:4px;text-align:right}
+.chat-input-row{display:flex;gap:10px}
+.chat-input-row input{flex:1;background:#FAF8F4;border:1px solid var(--border2);border-radius:var(--rp);padding:11px 18px;color:var(--text);font-family:inherit;font-size:.87rem;transition:border-color .2s}
+.chat-input-row input:focus{outline:none;border-color:var(--yellow)}
+.chat-send{background:var(--yellow);border:none;border-radius:var(--rp);padding:11px 20px;color:#000;font-weight:700;font-family:inherit;font-size:.82rem;cursor:pointer}
+.book-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px}
+.book-card{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:18px 14px;text-align:center;transition:all .2s;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.book-card:hover{border-color:var(--yellow);box-shadow:0 6px 20px rgba(201,162,39,.14)}
+.book-card-init{width:64px;height:64px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:700;color:#fff;margin:0 auto 12px;position:relative;overflow:hidden;box-shadow:0 3px 12px rgba(0,0,0,.1)}
+.book-card-name{font-weight:700;color:var(--text);font-size:.9rem;margin-bottom:2px}
+.book-card-role{color:var(--t2);font-size:.73rem;margin-bottom:10px}
+.book-card-from{color:var(--yellow);font-size:.82rem;font-weight:700;margin-bottom:12px;font-family:'Space Mono',monospace}
+.book-now{background:var(--yellow);border:none;border-radius:var(--rp);padding:8px 0;color:#000;font-weight:700;font-family:inherit;font-size:.78rem;cursor:pointer;width:100%}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .coll-grid{grid-template-columns:repeat(2,1fr)}
+  .review-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+  .how-grid{gap:24px}
+}
+@media(max-width:768px){
+  .nav-cats,.nav-sep,.nav-link{display:none}
+  .mob-menu{display:block}
+  .hero-wrap{grid-template-columns:1fr}
+  .hero-mosaic{display:none}
+  .how-grid{grid-template-columns:1fr;gap:32px}
+  .coll-grid{grid-template-columns:1fr 1fr}
+  .talent-inner{grid-template-columns:1fr}
+  .btn-talent{width:100%;justify-content:center}
+}
+@media(max-width:600px){
+  .review-grid{grid-template-columns:1fr}
+  .coll-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .account-dash{flex-direction:column}
+  .dash-sidebar{width:100%;padding:16px;flex:none;border-right:none;border-bottom:1px solid var(--border)}
+  .dash-nav{flex-direction:row;overflow-x:auto;flex:none;gap:6px}
+  .dnav{white-space:nowrap;padding:8px 12px}
+  .dash-signout{display:none}
+  .dash-content{padding:20px 16px}
+  .dash-row{grid-template-columns:1fr}
+}
+
+/* ── CREATOR OVERLAYS ── */
+.cr-overlay{position:fixed;inset:0;z-index:1000;background:rgba(8,5,2,.97);backdrop-filter:blur(16px);display:none;align-items:flex-start;justify-content:center;overflow-y:auto;padding:28px 16px 40px}
+.cr-overlay.show{display:flex}
+.cr-apply-card,.cr-pitch-card{background:#1C1812;border:1px solid rgba(201,162,39,.22);border-radius:24px;width:100%;max-width:700px;padding:44px 40px;margin:auto;position:relative;box-shadow:0 32px 80px rgba(0,0,0,.6)}
+.cr-pitch-card{max-width:780px}
+.cr-close{position:absolute;top:18px;right:18px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.65);width:34px;height:34px;border-radius:50%;font-size:1rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .15s}
+.cr-close:hover{background:rgba(255,255,255,.16);color:#fff}
+.cr-eyebrow{font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--yellow);margin-bottom:10px;font-family:'DM Sans',sans-serif}
+.cr-h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:700;color:#fff;line-height:1.1;margin-bottom:10px}
+.cr-sub{color:rgba(255,255,255,.58);font-size:.92rem;line-height:1.68;margin-bottom:28px}
+.cr-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cr-field{display:flex;flex-direction:column;gap:6px}
+.cr-field.wide{grid-column:1/-1}
+.cr-field label{font-size:.7rem;font-weight:700;color:rgba(255,255,255,.45);letter-spacing:.1em;text-transform:uppercase}
+.cr-field input,.cr-field select,.cr-field textarea{background:rgba(255,255,255,.06);border:1px solid rgba(201,162,39,.18);border-radius:10px;padding:12px 15px;color:#fff;font-family:inherit;font-size:.9rem;transition:border-color .2s;outline:none}
+.cr-field input::placeholder,.cr-field textarea::placeholder{color:rgba(255,255,255,.28)}
+.cr-field input:focus,.cr-field select:focus,.cr-field textarea:focus{border-color:rgba(201,162,39,.55)}
+.cr-field select option{background:#1C1812;color:#fff}
+.cr-field textarea{resize:vertical;min-height:90px;line-height:1.55}
+.cr-submit{width:100%;margin-top:24px;padding:16px;background:linear-gradient(100deg,var(--yellow),var(--yellowd));color:#fff;border:none;border-radius:999px;font-family:inherit;font-size:1rem;font-weight:700;cursor:pointer;transition:all .2s;box-shadow:0 8px 28px rgba(201,162,39,.35);letter-spacing:.02em}
+.cr-submit:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(201,162,39,.5)}
+.cr-notice{background:rgba(201,162,39,.06);border:1px solid rgba(201,162,39,.18);border-radius:11px;padding:13px 15px;margin-top:16px;font-size:.78rem;color:rgba(255,255,255,.48);line-height:1.55}
+.cr-notice strong{color:rgba(255,255,255,.72)}
+.earn-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:24px 0}
+.earn-stat{background:rgba(255,255,255,.04);border:1px solid rgba(201,162,39,.14);border-radius:14px;padding:16px;text-align:center}
+.earn-stat-val{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.65rem;font-weight:700;color:var(--yellow);line-height:1.05}
+.earn-stat-lbl{font-size:.65rem;color:rgba(255,255,255,.4);margin-top:5px;text-transform:uppercase;letter-spacing:.09em}
+.cr-fee-box{background:linear-gradient(135deg,rgba(201,162,39,.08),rgba(201,162,39,.03));border:1px solid rgba(201,162,39,.25);border-radius:14px;padding:22px;margin:24px 0}
+.cr-fee-title{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--yellow);margin-bottom:8px}
+.cr-fee-amount{font-family:'Cormorant Garamond',Georgia,serif;font-size:2.2rem;color:#fff;font-weight:700;margin-bottom:6px}
+.cr-fee-items{display:flex;flex-direction:column;gap:7px;margin-top:12px}
+.cr-fee-item{display:flex;align-items:center;gap:9px;font-size:.82rem;color:rgba(255,255,255,.62)}
+.cr-fee-item::before{content:'✓';color:var(--yellow);font-weight:700;flex:none}
+.cr-testi-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0 24px}
+.cr-testi{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:18px}
+.cr-testi-stars{color:var(--yellow);font-size:.78rem;margin-bottom:8px;letter-spacing:2px}
+.cr-testi-quote{color:rgba(255,255,255,.72);font-size:.84rem;line-height:1.65;margin-bottom:13px;font-style:italic}
+.cr-testi-meta{display:flex;align-items:center;gap:10px}
+.cr-testi-av{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;color:#fff;flex:none}
+.cr-testi-name{font-size:.82rem;font-weight:700;color:#fff}
+.cr-testi-role{font-size:.7rem;color:rgba(255,255,255,.42)}
+.cr-testi-earn{margin-left:auto;font-family:'Space Mono',monospace;font-size:.7rem;color:var(--yellow);background:rgba(201,162,39,.12);border:1px solid rgba(201,162,39,.25);border-radius:999px;padding:3px 9px;white-space:nowrap;flex:none}
+.cr-pitch-cta{width:100%;padding:18px;background:linear-gradient(100deg,var(--yellow),var(--yellowd));color:#fff;border:none;border-radius:999px;font-family:inherit;font-size:1.05rem;font-weight:700;cursor:pointer;transition:all .2s;box-shadow:0 8px 32px rgba(201,162,39,.4);letter-spacing:.02em;display:flex;align-items:center;justify-content:center;gap:10px;margin-top:4px}
+.cr-pitch-cta:hover{transform:translateY(-2px);box-shadow:0 16px 44px rgba(201,162,39,.55)}
+.cr-preapproved{display:inline-flex;align-items:center;gap:7px;background:rgba(22,163,74,.1);border:1px solid rgba(22,163,74,.3);color:#4ade80;font-size:.74rem;font-weight:700;padding:6px 14px;border-radius:999px;margin-bottom:18px;letter-spacing:.04em;font-family:'DM Sans',sans-serif}
+.cr-section-label{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.16em;color:rgba(255,255,255,.32);margin-bottom:14px;font-family:'DM Sans',sans-serif}
+@media(max-width:600px){
+  .cr-apply-card,.cr-pitch-card{padding:28px 20px}
+  .cr-form-grid{grid-template-columns:1fr}
+  .earn-stats{grid-template-columns:repeat(2,1fr)}
+  .cr-testi-grid{grid-template-columns:1fr}
+}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+
+<!-- ═══════════════ NAV ═══════════════ -->
+<header class="nav" id="top">
+  <div class="wrap nav-wrap">
+    <a href="#" class="nav-logo">★ Star <em>Connect Hub</em></a>
+    <nav class="nav-cats" id="navCats">
+      <button class="nav-cat active" data-cat="All" onclick="navCatFilter('All')">All</button>
+      <button class="nav-cat" data-cat="Music" onclick="navCatFilter('Music')">Music</button>
+      <button class="nav-cat" data-cat="Sports" onclick="navCatFilter('Sports')">Sports</button>
+      <button class="nav-cat" data-cat="Comedy" onclick="navCatFilter('Comedy')">Comedy</button>
+      <button class="nav-cat" data-cat="Film & TV" onclick="navCatFilter('Film &amp; TV')">Film &amp; TV</button>
+      <button class="nav-cat" data-cat="Creators" onclick="navCatFilter('Creators')">Creators</button>
+      <button class="nav-cat" data-cat="Reality TV" onclick="navCatFilter('Reality TV')">Reality TV</button>
+      <button class="nav-cat" data-cat="Gaming" onclick="navCatFilter('Gaming')">Gaming</button>
+    </nav>
+    <div class="nav-sep"></div>
+    <button class="nav-link" onclick="scrollToId('how')">How it works</button>
+    <button class="nav-link" onclick="openAuth('creator')">Become a creator</button>
+    <div class="nav-right">
+      <button class="btn-nav-in" onclick="openAuth('signin')" id="signinBtn">Sign in</button>
+      <button class="btn-nav-join" onclick="openAuth('join')" id="joinBtn">Join free</button>
+    </div>
+    <button class="mob-menu" id="menuToggle" onclick="toggleMenu()" aria-label="Menu">☰</button>
+  </div>
+  <div class="mob-nav" id="mobileNav">
+    <button class="mob-nav-btn" onclick="navCatFilter('All');closeMenu()">All Creators</button>
+    <button class="mob-nav-btn" onclick="navCatFilter('Music');closeMenu()">Music</button>
+    <button class="mob-nav-btn" onclick="navCatFilter('Sports');closeMenu()">Sports</button>
+    <button class="mob-nav-btn" onclick="navCatFilter('Comedy');closeMenu()">Comedy</button>
+    <button class="mob-nav-btn" onclick="navCatFilter('Film & TV');closeMenu()">Film &amp; TV</button>
+    <button class="mob-nav-btn" onclick="navCatFilter('Creators');closeMenu()">Creators</button>
+    <button class="mob-nav-btn" onclick="navCatFilter('Reality TV');closeMenu()">Reality TV</button>
+    <button class="mob-nav-btn" onclick="navCatFilter('Gaming');closeMenu()">Gaming</button>
+    <button class="mob-nav-btn" onclick="scrollToId('how');closeMenu()">How it works</button>
+    <button class="mob-nav-btn" onclick="openAuth('creator');closeMenu()">Become a creator</button>
+    <div class="mob-nav-btns">
+      <button class="btn btn-ghost btn-sm" style="flex:1;justify-content:center" onclick="openAuth('signin');closeMenu()">Sign in</button>
+      <button class="btn btn-primary btn-sm" style="flex:1;justify-content:center" onclick="openAuth('join');closeMenu()">Join free</button>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="hero">
+  <div class="wrap hero-wrap">
+    <div class="hero-left">
+      <div class="hero-badge">★ 40+ verified creators · escrow-protected payments</div>
+      <h1 class="hero-h1">Book a <span class="acc">personal moment</span><br>from your favourite star</h1>
+      <p class="hero-sub">Messages, video calls, and exclusive experiences — all from identity-verified creators. Your payment is held safely until every session is delivered.</p>
+      <div class="hero-search">
+        <input id="heroSearch" type="text" placeholder="Search for a creator, athlete, comedian…" oninput="searchCreators(this.value)" onkeydown="if(event.key==='Enter')scrollToId('creators')">
+        <button onclick="scrollToId('creators')">Search</button>
+      </div>
+      <div class="hero-qcats">
+        <button class="hero-qcat" onclick="navCatFilter('Music')">🎵 Music</button>
+        <button class="hero-qcat" onclick="navCatFilter('Sports')">⚽ Sports</button>
+        <button class="hero-qcat" onclick="navCatFilter('Comedy')">😂 Comedy</button>
+        <button class="hero-qcat" onclick="navCatFilter('Film & TV')">🎬 Film &amp; TV</button>
+        <button class="hero-qcat" onclick="navCatFilter('Gaming')">🎮 Gaming</button>
+        <button class="hero-qcat" onclick="navCatFilter('Reality TV')">📺 Reality TV</button>
+      </div>
+    </div>
+    <div class="hero-mosaic" id="heroMosaic"></div>
+  </div>
+</section>
+
+<!-- ═══════════════ TOP 10 ═══════════════ -->
+<section class="top10" id="top10section">
+  <div class="wrap">
+    <div class="sec-hdr">
+      <div>
+        <p class="sec-eye">This week</p>
+        <h2 class="sec-h2">Top creators</h2>
+      </div>
+      <button class="see-all" onclick="navCatFilter('All');scrollToId('creators')">See all →</button>
+    </div>
+    <div class="t10-scroll" id="top10List"></div>
+  </div>
+</section>
+
+<!-- ═══════════════ BROWSE ═══════════════ -->
+<section class="browse" id="creators">
+  <div class="wrap">
+    <div class="browse-hdr">
+      <p class="sec-eye">Browse</p>
+      <h2 class="sec-h2">All creators</h2>
+    </div>
+    <div class="filter-row" id="filters"></div>
+    <div class="creator-grid" id="roster"></div>
+  </div>
+</section>
+
+<!-- ═══════════════ HOW IT WORKS ═══════════════ -->
+<section class="how" id="how">
+  <div class="wrap">
+    <p class="sec-eye" style="text-align:center">Simple &amp; secure</p>
+    <h2 class="sec-h2" style="text-align:center">How Star Connect Hub works</h2>
+    <div class="how-grid">
+      <div class="how-step">
+        <div class="how-num">1</div>
+        <div class="how-icon">🔍</div>
+        <h3 class="how-title">Find your creator</h3>
+        <p class="how-txt">Browse 40+ verified creators across music, sport, comedy, film, gaming, and more. Every profile is government-ID and liveness-checked before going live.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-num">2</div>
+        <div class="how-icon">💳</div>
+        <h3 class="how-title">Book and pay securely</h3>
+        <p class="how-txt">Choose your session type, pay by card, bank, or crypto. Your funds are held safely in escrow and only released when your experience is delivered.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-num">3</div>
+        <div class="how-icon">🎉</div>
+        <h3 class="how-title">Receive your moment</h3>
+        <p class="how-txt">Your personal message, video call, or shout-out lands directly from the creator. Not satisfied? Our buyer guarantee means you're fully covered.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ COLLECTIONS ═══════════════ -->
+<section class="collections">
+  <div class="wrap">
+    <p class="sec-eye">Curated picks</p>
+    <h2 class="sec-h2">Perfect for every occasion</h2>
+    <div class="coll-grid" id="collGrid"></div>
+  </div>
+</section>
+
+<!-- ═══════════════ REVIEWS ═══════════════ -->
+<section class="reviews">
+  <div class="wrap">
+    <p class="sec-eye">From real fans</p>
+    <h2 class="sec-h2">What people are saying</h2>
+    <div class="review-grid">
+      <div class="rv-card">
+        <div class="rv-stars">★★★★★</div>
+        <p class="rv-text">"Booked a birthday message for my sister from her favourite singer. She literally cried. Absolutely worth every penny — the message was so personal."</p>
+        <div class="rv-meta"><div class="rv-av" style="background:linear-gradient(135deg,#FF6B6B,#E14E7B)">SM</div><div><div class="rv-name">Sarah M.</div><div class="rv-occ">Birthday gift</div></div></div>
+      </div>
+      <div class="rv-card">
+        <div class="rv-stars">★★★★★</div>
+        <p class="rv-text">"My whole team got a pre-game pep talk from a pro athlete before our championship. The energy in the dressing room was unreal. We won."</p>
+        <div class="rv-meta"><div class="rv-av" style="background:linear-gradient(135deg,#54A0FF,#0984E3)">JK</div><div><div class="rv-name">James K.</div><div class="rv-occ">Team motivation</div></div></div>
+      </div>
+      <div class="rv-card">
+        <div class="rv-stars">★★★★★</div>
+        <p class="rv-text">"Seamless booking, secure payment, and the video arrived within 24 hours exactly as described. The whole experience felt premium from start to finish."</p>
+        <div class="rv-meta"><div class="rv-av" style="background:linear-gradient(135deg,#A29BFE,#6C5CE7)">PD</div><div><div class="rv-name">Priya D.</div><div class="rv-occ">Fan experience</div></div></div>
+      </div>
+      <div class="rv-card">
+        <div class="rv-stars">★★★★★</div>
+        <p class="rv-text">"Got a personalised roast for my mate's stag do. The comedian absolutely delivered — it was the funniest thing I've ever seen. Genuinely unique gift."</p>
+        <div class="rv-meta"><div class="rv-av" style="background:linear-gradient(135deg,#00B894,#00634C)">TW</div><div><div class="rv-name">Tom W.</div><div class="rv-occ">Stag party gift</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ TALENT CTA ═══════════════ -->
+<section class="talent" id="join-creator">
+  <div class="wrap">
+    <div class="talent-inner">
+      <div>
+        <p class="sec-eye">For creators</p>
+        <h2 class="sec-h2" style="font-size:clamp(1.8rem,3vw,2.8rem);margin-bottom:12px">Get verified and<br>start earning</h2>
+        <p style="color:rgba(255,255,255,.72);font-size:.95rem;line-height:1.75;max-width:50ch">Joining takes minutes. Verification keeps the platform safe for you and your fans. Set your own prices, keep more of what you earn, and connect directly with people who love your work.</p>
+        <div class="talent-steps">
+          <div class="talent-step"><div class="talent-step-num">1</div>Apply &amp; verify ID</div>
+          <div class="talent-step"><div class="talent-step-num">2</div>Set up your profile</div>
+          <div class="talent-step"><div class="talent-step-num">3</div>Accept bookings</div>
+        </div>
+      </div>
+      <button class="btn-talent" onclick="openAuth('creator')">Apply as a creator</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">★ Star <em>Connect Hub</em></div>
+        <p class="footer-about">A verified place for fans and creators to share real moments — safely, transparently, and with protection on every booking.</p>
+        <div class="footer-social">
+          <a href="mailto:starconnecthub@gmail.com" class="soc" title="Email">✉</a>
+          <span class="soc">𝕏</span>
+          <span class="soc">IG</span>
+          <span class="soc">TT</span>
+        </div>
+      </div>
+      <div>
+        <p class="footer-col-h">Explore</p>
+        <div class="footer-links">
+          <a href="#" onclick="navCatFilter('Music')">Music</a>
+          <a href="#" onclick="navCatFilter('Sports')">Sports</a>
+          <a href="#" onclick="navCatFilter('Comedy')">Comedy</a>
+          <a href="#" onclick="navCatFilter('Film & TV')">Film &amp; TV</a>
+          <a href="#" onclick="navCatFilter('Gaming')">Gaming</a>
+          <a href="#" onclick="navCatFilter('Reality TV')">Reality TV</a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-col-h">Company</p>
+        <div class="footer-links">
+          <a href="#">About</a>
+          <a href="#" onclick="scrollToId('how')">How it works</a>
+          <a href="#" onclick="openAuth('creator')">Become a creator</a>
+          <a href="mailto:starconnecthub@gmail.com">Contact us</a>
+          <a href="#">Blog</a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-col-h">Support</p>
+        <div class="footer-links">
+          <a href="mailto:starconnecthub@gmail.com">Help centre</a>
+          <a href="terms-of-service.html#escrow">Refund policy</a>
+          <a href="#">Safety &amp; trust</a>
+          <a href="#">Accessibility</a>
+          <a href="#">Gift cards</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bot">
+      <span>© 2026 Star Connect Hub. All rights reserved.</span>
+      <div style="display:flex;gap:20px;flex-wrap:wrap">
+        <a href="privacy-policy.html">Privacy policy</a>
+        <a href="terms-of-service.html">Terms of service</a>
+        <a href="community-guidelines.html">Community guidelines</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════ ASSISTANT ═══════════════ -->
+<button class="assist-btn" id="assistBtn" onclick="openAssistant()">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  Ask us anything
+</button>
+<div class="assist-panel" id="assistPanel">
+  <div class="assist-head">
+    <div class="ava" aria-hidden="true">★</div>
+    <div><h4>Hub Assistant</h4><small>● online</small></div>
+    <button class="x" onclick="closeAssistant()" aria-label="Close">×</button>
+  </div>
+  <div class="assist-body" id="assistBody"></div>
+  <div class="quick" id="assistQuick"></div>
+  <div class="assist-input">
+    <input id="assistInput" type="text" placeholder="Ask about bookings, safety, payments…" onkeydown="if(event.key==='Enter')sendAssist()"/>
+    <button onclick="sendAssist()" aria-label="Send"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></button>
+  </div>
+</div>
+
+<!-- ═══════════════ MODAL ═══════════════ -->
+<!-- ═══════ CREATOR APPLY OVERLAY ═══════ -->
+<div id="creatorApplyOverlay" class="cr-overlay">
+  <div class="cr-apply-card">
+    <button class="cr-close" onclick="closeCreatorApply()">✕</button>
+    <p class="cr-eyebrow">Creator programme</p>
+    <h1 class="cr-h1">Apply to become a verified creator</h1>
+    <p class="cr-sub">Fill in your details below. We review all applications and creators earn directly in Bitcoin — no limits, no delays.</p>
+    <div class="cr-form-grid">
+      <div class="cr-field">
+        <label>Full name *</label>
+        <input id="crName" type="text" placeholder="As on your government ID" autocomplete="name">
+      </div>
+      <div class="cr-field">
+        <label>Phone number *</label>
+        <input id="crPhone" type="tel" placeholder="+1 (555) 000-0000" autocomplete="tel">
+      </div>
+      <div class="cr-field wide">
+        <label>Email address *</label>
+        <input id="crEmail" type="email" placeholder="you@email.com" autocomplete="email">
+      </div>
+      <div class="cr-field">
+        <label>Instagram / TikTok handle</label>
+        <input id="crSocial" type="text" placeholder="@yourhandle">
+      </div>
+      <div class="cr-field">
+        <label>Your category *</label>
+        <select id="crCategory">
+          <option value="">Select…</option>
+          <option>Music</option>
+          <option>Sports</option>
+          <option>Comedy</option>
+          <option>Film &amp; TV</option>
+          <option>Gaming</option>
+          <option>Reality TV</option>
+          <option>Model &amp; Creator</option>
+          <option>Fitness &amp; Lifestyle</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="cr-field wide">
+        <label>What you're known for *</label>
+        <textarea id="crBio" placeholder="Tell fans what makes you unique — your biggest achievements, audience size, platforms, what you do best…"></textarea>
+      </div>
+    </div>
+    <p class="cr-notice"><strong>Your information is secure.</strong> Details are used only for identity verification and creator onboarding. We never share your data with third parties.</p>
+    <button class="cr-submit" onclick="submitCreatorApp()">Continue to Creator Programme →</button>
+    <p style="text-align:center;margin-top:14px;font-size:.72rem;color:rgba(255,255,255,.28)">By continuing you agree to our <a href="terms-of-service.html#creator-terms" style="color:rgba(201,162,39,.7);text-decoration:underline" target="_blank">Creator Terms of Service</a></p>
+  </div>
+</div>
+
+<!-- ═══════ CREATOR PITCH OVERLAY ═══════ -->
+<div id="creatorPitchOverlay" class="cr-overlay">
+  <div class="cr-pitch-card">
+    <button class="cr-close" onclick="closeCreatorPitch()">✕</button>
+
+    <div class="cr-preapproved">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
+      Application received — you're pre-approved
+    </div>
+
+    <p class="cr-eyebrow">Creator earnings</p>
+    <h1 class="cr-h1">Start earning $5,000–$50,000<br>per month with Star Connect Hub</h1>
+    <p class="cr-sub">Our verified creators earn directly from fans through personal video messages, exclusive calls, and live chat sessions — all paid out in Bitcoin, same day, no chargebacks.</p>
+
+    <div class="earn-stats">
+      <div class="earn-stat"><div class="earn-stat-val">$12,400</div><div class="earn-stat-lbl">Avg. monthly earnings</div></div>
+      <div class="earn-stat"><div class="earn-stat-val">24h</div><div class="earn-stat-lbl">Bitcoin payout speed</div></div>
+      <div class="earn-stat"><div class="earn-stat-val">$280</div><div class="earn-stat-lbl">Avg. booking value</div></div>
+      <div class="earn-stat"><div class="earn-stat-val">40K+</div><div class="earn-stat-lbl">Active paying fans</div></div>
+    </div>
+
+    <p class="cr-section-label">What verified creators are saying</p>
+    <div class="cr-testi-grid">
+      <div class="cr-testi">
+        <div class="cr-testi-stars">★★★★★</div>
+        <p class="cr-testi-quote">"I made back my $1,200 in 48 hours. My first full month I earned $6,400 from fan messages alone. This platform is the real deal — nothing comes close."</p>
+        <div class="cr-testi-meta">
+          <div class="cr-testi-av" style="background:linear-gradient(135deg,#FF6B9D,#C9184A)">JR</div>
+          <div><div class="cr-testi-name">Jasmine R.</div><div class="cr-testi-role">Model &amp; fitness creator</div></div>
+          <div class="cr-testi-earn">$6,400/mo</div>
+        </div>
+      </div>
+      <div class="cr-testi">
+        <div class="cr-testi-stars">★★★★★</div>
+        <p class="cr-testi-quote">"The Bitcoin payouts are instant and fans here actually spend serious money. I cleared $14,200 last month working part-time. Best investment I've made as an artist."</p>
+        <div class="cr-testi-meta">
+          <div class="cr-testi-av" style="background:linear-gradient(135deg,#7B2FBE,#3D0099)">MD</div>
+          <div><div class="cr-testi-name">Marcus D.</div><div class="cr-testi-role">Rapper &amp; content creator</div></div>
+          <div class="cr-testi-earn">$14,200/mo</div>
+        </div>
+      </div>
+      <div class="cr-testi">
+        <div class="cr-testi-stars">★★★★★</div>
+        <p class="cr-testi-quote">"$23,000 in my first 3 months and I work this only part-time between my TV schedule. The fan base here is loyal and keeps coming back. Nothing else compares."</p>
+        <div class="cr-testi-meta">
+          <div class="cr-testi-av" style="background:linear-gradient(135deg,#F6A623,#D4580A)">ST</div>
+          <div><div class="cr-testi-name">Sofia T.</div><div class="cr-testi-role">Reality TV personality</div></div>
+          <div class="cr-testi-earn">$7,600/mo</div>
+        </div>
+      </div>
+      <div class="cr-testi">
+        <div class="cr-testi-stars">★★★★★</div>
+        <p class="cr-testi-quote">"I quit my 9–5 after month two. $8,900 in my first week sounds unreal, but that's what happened. Pay the fee, trust the process — it works."</p>
+        <div class="cr-testi-meta">
+          <div class="cr-testi-av" style="background:linear-gradient(135deg,#00B4D8,#0077B6)">TM</div>
+          <div><div class="cr-testi-name">Tyler M.</div><div class="cr-testi-role">Fitness &amp; lifestyle creator</div></div>
+          <div class="cr-testi-earn">$9,800/mo</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cr-fee-box">
+      <div class="cr-fee-title">One-time creator verification fee</div>
+      <div class="cr-fee-amount">$1,200 <span style="font-size:.95rem;color:rgba(255,255,255,.38);font-family:'DM Sans',sans-serif">USD · paid in Bitcoin</span></div>
+      <p style="font-size:.82rem;color:rgba(255,255,255,.5);line-height:1.55;margin-bottom:4px">This one-time fee covers your complete creator onboarding and keeps the platform exclusive to serious talent. Every cent goes toward your verification and 12-month access:</p>
+      <div class="cr-fee-items">
+        <div class="cr-fee-item">Government-ID identity verification &amp; liveness check</div>
+        <div class="cr-fee-item">Professional creator profile setup &amp; priority listing</div>
+        <div class="cr-fee-item">12 months of full creator dashboard &amp; analytics access</div>
+        <div class="cr-fee-item">Direct Bitcoin payouts — same day, no withdrawal limits</div>
+        <div class="cr-fee-item">Verified badge displayed on your public profile</div>
+        <div class="cr-fee-item">Dedicated 24/7 creator support team</div>
+      </div>
+    </div>
+
+    <button class="cr-pitch-cta" onclick="startCreatorVerification()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11.767 19.089c4.924.868 6.14-6.025 1.216-6.894m-1.216 6.894L5.86 18.047m5.908 1.042-.347 1.97m1.563-8.864c4.924.869 6.14-6.025 1.215-6.893m-1.215 6.893-3.94-.694m5.155-6.2L8.29 4.26m5.908 1.042.348-1.97M7.48 20.364l3.126-17.727"/></svg>
+      Start Verification — Pay $1,200 in Bitcoin
+    </button>
+    <p style="text-align:center;margin-top:13px;font-size:.74rem;color:rgba(255,255,255,.3)">Escrow-protected · Refundable if verification fails · Paid securely in Bitcoin</p>
+  </div>
+</div>
+
+<div class="overlay" id="overlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal" id="modalBox">
+    <button class="close" onclick="closeModal()" aria-label="Close">×</button>
+    <div class="modal-pad" id="modalContent"></div>
+  </div>
+</div>
+
+<!-- ═══════════════ TOAST ═══════════════ -->
+<div id="toast"></div>
+
+<!-- ═══════════════ ACCOUNT DASHBOARD ═══════════════ -->
+<div class="account-dash" id="accountDash">
+  <aside class="dash-sidebar">
+    <button class="dash-back" onclick="closeDash()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Back to site
+    </button>
+    <div class="dash-avatar" onclick="document.getElementById('avatarInput').click()" title="Change photo">
+      <img id="sidebarAvatarImg" alt="Profile photo">
+      <span id="sidebarAvatarInit"></span>
+      <div class="dash-avatar-overlay">Change</div>
+    </div>
+    <div class="dash-uname" id="sidebarName">—</div>
+    <div class="dash-uemail" id="sidebarEmail">—</div>
+    <nav class="dash-nav">
+      <button class="dnav active" id="dnavProfile" onclick="showDashTab('profile')">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>My Profile
+      </button>
+      <button class="dnav" id="dnavMessages" onclick="showDashTab('messages')">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Messages
+      </button>
+      <button class="dnav" id="dnavBookings" onclick="showDashTab('bookings')">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Book a Creator
+      </button>
+    </nav>
+    <div class="dash-signout"><button onclick="signOut()">Sign out</button></div>
+  </aside>
+  <main class="dash-content">
+    <div class="dash-tab active" id="tabProfile">
+      <h2 class="dash-title">My Profile</h2>
+      <p class="dash-sub">Your public-facing info. Saves to your account instantly.</p>
+      <div class="pf-avatar-section">
+        <div class="pf-avatar-big" onclick="document.getElementById('avatarInput').click()">
+          <img id="profileAvatarImg" alt="Profile photo">
+          <span id="profileAvatarInit"></span>
+          <div class="pf-avatar-big-overlay">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+            Upload photo
+          </div>
+        </div>
+        <div class="pf-avatar-hint"><strong style="color:var(--text)">Profile photo</strong><br>Click to upload · JPG, PNG or GIF · max 5 MB</div>
+      </div>
+      <div class="dash-row">
+        <div class="dash-field"><label>Full name</label><input id="pfName" type="text" placeholder="Your name"></div>
+        <div class="dash-field"><label>Email address</label><input id="pfEmail" type="email" placeholder="you@email.com"></div>
+      </div>
+      <div class="dash-field"><label>About me</label><textarea id="pfAbout" placeholder="Tell creators a little about yourself…"></textarea></div>
+      <div class="dash-row">
+        <div class="dash-field"><label>Location (optional)</label><input id="pfLocation" type="text" placeholder="City, Country"></div>
+        <div class="dash-field"><label>Instagram / X handle</label><input id="pfSocial" type="text" placeholder="@yourhandle"></div>
+      </div>
+      <button class="btn btn-primary" onclick="saveProfile()">Save changes</button>
+    </div>
+    <div class="dash-tab" id="tabMessages">
+      <div id="msgListView">
+        <h2 class="dash-title">Messages</h2>
+        <p class="dash-sub">Choose a creator to start a conversation. Messages are relayed to their team.</p>
+        <div class="msg-list" id="msgCreatorList"></div>
+      </div>
+      <div class="chat-panel" id="chatPanel">
+        <div class="chat-hdr">
+          <button class="chat-back-btn" onclick="closeChatPanel()">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>All creators
+          </button>
+          <div id="chatInitBadge" class="msg-init" style="width:38px;height:38px;font-size:.85rem"></div>
+          <div class="chat-hdr-info">
+            <div class="chat-hdr-name" id="chatCreatorName"></div>
+            <div class="chat-hdr-role" id="chatCreatorRole"></div>
+          </div>
+          <button class="chat-book-link" id="chatBookBtn">Book a session</button>
+        </div>
+        <div class="chat-tier-banner" id="chatTierBanner">
+          <div class="chat-tier-info">
+            <div class="chat-tier-label">💬 Paid chat session</div>
+            <div class="chat-tier-desc">Book a 30-min private direct message exchange. Responses guaranteed within 24 hrs. Held in escrow.</div>
+          </div>
+          <button class="chat-tier-btn" id="chatTierBtn">Book chat</button>
+        </div>
+        <div class="chat-messages" id="chatMessages"></div>
+        <div class="chat-input-row">
+          <input id="chatInput" type="text" placeholder="Send a free inquiry or book a paid chat above…" onkeydown="if(event.key==='Enter')sendChatMsg()">
+          <button class="chat-send" onclick="sendChatMsg()">Send</button>
+        </div>
+      </div>
+    </div>
+    <div class="dash-tab" id="tabBookings">
+      <h2 class="dash-title">Book a Creator</h2>
+      <p class="dash-sub">Pick any verified creator and choose your session type. Escrow-protected.</p>
+      <div class="book-grid" id="bookGrid"></div>
+    </div>
+  </main>
+</div>
+<input type="file" id="avatarInput" accept="image/*" style="display:none" onchange="handleAvatarUpload(event)">
+
+<!-- ═══════════════ SCRIPT ═══════════════ -->
+<script>
+/* ── DATA ── */
+/* ── SOCIAL ICONS & DATA ── */
+const _SICONS={
+  ig:{c:'#C13584',n:'Instagram',p:'M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z'},
+  tt:{c:'#2B2B2B',n:'TikTok',p:'M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.03a8.16 8.16 0 004.77 1.52V7.1a4.85 4.85 0 01-1-.41z'},
+  tw:{c:'#1D9BF0',n:'Twitter',p:'M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z'},
+  yt:{c:'#FF0000',n:'YouTube',p:'M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z'}
+};
+const _SOC_DATA={
+  1:[{p:'ig',h:'@blacchyna',f:'16M'},{p:'tt',h:'@blacchyna',f:'5.2M'}],
+  2:[{p:'ig',h:'@bellathorne',f:'25M'},{p:'tt',h:'@bellathorne',f:'5.4M'}],
+  3:[{p:'ig',h:'@miakhalifa',f:'28M'},{p:'tw',h:'@miakhalifa',f:'5.1M'},{p:'tt',h:'@miakhalifa',f:'9.8M'}],
+  4:[{p:'ig',h:'@iamcardib',f:'152M'},{p:'tw',h:'@iamcardib',f:'28M'},{p:'tt',h:'@cardib',f:'84M'}],
+  5:[{p:'yt',h:'@tanamongeau',f:'6M'},{p:'ig',h:'@tanamongeau',f:'5M'},{p:'tt',h:'@tanamongeau',f:'3.2M'}],
+  6:[{p:'ig',h:'@kinggoldchains',f:'21M'},{p:'tw',h:'@tyga',f:'10.8M'}],
+  7:[{p:'ig',h:'@amberrose',f:'22M'},{p:'tw',h:'@amberrose',f:'3.2M'}],
+  8:[{p:'ig',h:'@larsapippen',f:'4.2M'},{p:'tt',h:'@larsapippen',f:'1.2M'}],
+  9:[{p:'ig',h:'@paigevanzant',f:'3.2M'},{p:'tt',h:'@paigevanzant',f:'2.4M'}],
+  10:[{p:'ig',h:'@ericamena',f:'5.1M'},{p:'tt',h:'@ericamena',f:'880K'}],
+  11:[{p:'ig',h:'@danidaniels',f:'4M'},{p:'tw',h:'@danidaniels_',f:'1.1M'}],
+  12:[{p:'ig',h:'@rileyreid',f:'7M'},{p:'tt',h:'@rileyreid',f:'4.8M'},{p:'tw',h:'@rileyreid_',f:'2.1M'}],
+  13:[{p:'ig',h:'@abelladanger',f:'5.2M'},{p:'tw',h:'@abelladanger',f:'2.3M'}],
+  14:[{p:'ig',h:'@maitlandward',f:'2M'},{p:'tw',h:'@maitlandward',f:'620K'}],
+  15:[{p:'ig',h:'@evaelfie',f:'6M'},{p:'tt',h:'@evaelfie',f:'2.6M'}],
+  16:[{p:'ig',h:'@amouranth',f:'6.3M'},{p:'tw',h:'@amouranth',f:'3.1M'},{p:'tt',h:'@amouranth',f:'3.5M'}],
+  17:[{p:'ig',h:'@corinnakopf',f:'7M'},{p:'yt',h:'@corinnakopf',f:'2.1M'},{p:'tw',h:'@corinnakopf',f:'1.3M'}],
+  18:[{p:'ig',h:'@carmenelectra',f:'4.1M'},{p:'tt',h:'@carmenelectra',f:'1.5M'}],
+  19:[{p:'ig',h:'@jemwolfie',f:'3M'}],
+  20:[{p:'ig',h:'@meganbartonhanson',f:'2M'},{p:'tt',h:'@meganbartonhanson',f:'1.1M'}],
+  21:[{p:'ig',h:'@belle.delphine',f:'4.2M'},{p:'tw',h:'@bunnydelphine',f:'2M'}],
+  22:[{p:'ig',h:'@malutrevejo',f:'10M'},{p:'tt',h:'@malutrevejo',f:'8.3M'}],
+  23:[{p:'ig',h:'@sky.bri',f:'3M'},{p:'tt',h:'@skybri',f:'1.8M'}],
+  24:[{p:'ig',h:'@brittanyrenner',f:'4M'},{p:'tw',h:'@bundleofbrittany',f:'820K'}],
+  25:[{p:'ig',h:'@rubyrose',f:'15M'},{p:'tt',h:'@rubyrose',f:'2.1M'}],
+  26:[{p:'ig',h:'@giapaige',f:'2M'}],
+  27:[{p:'ig',h:'@autumnfalls',f:'2M'},{p:'tw',h:'@autumnfalls_',f:'800K'}],
+  28:[{p:'ig',h:'@laurenalexis',f:'3M'},{p:'yt',h:'@laurenalexis',f:'1.1M'}],
+  29:[{p:'ig',h:'@tanatheleax',f:'1.2M'}],
+  30:[{p:'ig',h:'@ellejohnsonx',f:'1M'}],
+  31:[{p:'ig',h:'@brycedontcry',f:'3M'},{p:'tt',h:'@brycedontcry',f:'2.2M'}],
+  32:[{p:'ig',h:'@jennaxlee',f:'1M'}],
+  33:[{p:'ig',h:'@nalaray',f:'2M'},{p:'tt',h:'@nalaray',f:'1.5M'}],
+  34:[{p:'ig',h:'@siennadayofficial',f:'1.5M'},{p:'tt',h:'@siennaday',f:'800K'}],
+  35:[{p:'ig',h:'@scarlettjohansson',f:'12M'},{p:'tw',h:'@scarjo',f:'4.2M'}],
+  36:[{p:'ig',h:'@kendrasunderland',f:'2M'},{p:'tw',h:'@kendraxsunderland',f:'520K'}],
+  37:[{p:'ig',h:'@kendalljenner',f:'295M'},{p:'tw',h:'@KendallJenner',f:'31M'},{p:'tt',h:'@kendalljenner',f:'42M'}],
+  38:[{p:'ig',h:'@justinbieber',f:'292M'},{p:'tw',h:'@justinbieber',f:'113M'},{p:'yt',h:'@justinbieber',f:'73M'}],
+  39:[{p:'ig',h:'@mickjagger',f:'3M'},{p:'tw',h:'@mickjagger',f:'1M'}],
+  40:[{p:'ig',h:'@daniellachavez',f:'14M'},{p:'tt',h:'@daniellachavez',f:'4.2M'}]
+};
+function _si(p,sz){const i=_SICONS[p];return i?`<svg viewBox="0 0 24 24" fill="currentColor" style="width:${sz}px;height:${sz}px;flex:none;vertical-align:middle"><path d="${i.p}"/></svg>`:'';}
+function socPills(c,max=2){const soc=_SOC_DATA[c.id];if(!soc||!soc.length)return '';return `<div class="c-socials">${soc.slice(0,max).map(s=>`<span class="c-soc-pill" style="color:${_SICONS[s.p].c};border-color:${_SICONS[s.p].c}33;background:${_SICONS[s.p].c}10">${_si(s.p,10)} ${s.f}</span>`).join('')}</div>`;}
+function socT10Row(c){const soc=_SOC_DATA[c.id];if(!soc||!soc.length)return '';return `<div style="display:flex;justify-content:center;gap:8px;margin-bottom:5px;font-size:.67rem;font-weight:700">${soc.slice(0,2).map(s=>`<span style="display:inline-flex;align-items:center;gap:2px;color:${_SICONS[s.p].c}">${_si(s.p,9)}${s.f}</span>`).join('')}</div>`;}
+function socHeaderRow(c){const soc=_SOC_DATA[c.id];if(!soc||!soc.length)return '';return `<div style="display:flex;flex-wrap:wrap;gap:5px;margin:6px 0 4px">${soc.map(s=>`<span style="display:inline-flex;align-items:center;gap:3px;padding:3px 9px;border-radius:20px;background:${_SICONS[s.p].c}12;border:1px solid ${_SICONS[s.p].c}30;color:${_SICONS[s.p].c};font-size:.72rem;font-weight:700">${_si(s.p,11)} ${s.f}</span>`).join('')}</div>`;}
+function socModalSection(c){const soc=_SOC_DATA[c.id];if(!soc||!soc.length)return '';return `<div style="margin-bottom:22px"><div style="font-size:.67rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--t2);margin-bottom:10px">Social reach</div><div style="display:flex;flex-direction:column;gap:8px">${soc.map(s=>`<div style="display:flex;align-items:center;gap:12px;padding:11px 14px;background:${_SICONS[s.p].c}08;border:1px solid ${_SICONS[s.p].c}22;border-radius:10px"><div style="width:36px;height:36px;border-radius:9px;background:${_SICONS[s.p].c}18;display:flex;align-items:center;justify-content:center;flex:none;color:${_SICONS[s.p].c}">${_si(s.p,17)}</div><div style="flex:1;min-width:0"><div style="font-size:.84rem;font-weight:700;color:var(--text)">${_SICONS[s.p].n}</div><div style="font-size:.73rem;color:var(--t2)">${s.h}</div></div><div style="text-align:right"><div style="font-size:.98rem;font-weight:800;color:var(--text);font-family:'Space Mono',monospace">${s.f}</div><div style="font-size:.6rem;color:var(--t3);letter-spacing:.05em;text-transform:uppercase">followers</div></div></div>`).join('')}</div></div>`;}
+
+const creators=[
+  {id:1,name:"Blac Chyna",role:"Model & entrepreneur",cat:"Reality TV",grad:"linear-gradient(135deg,#FF69B4,#8B008B)",init:"BC",img:"image/blac-chyna.jpg",fans:"16M",rating:"4.8",price:80,offers:["Personalised fan shout-out","Business promotion video","Birthday video message"],bio:"Angela Renée White — known globally as Blac Chyna — is a model, entrepreneur, and reality TV star. She rose to fame as a sought-after video vixen before launching her own beauty empire, including her 88fin brand. Known for the E! series Rob & Chyna and The Real Blac Chyna, she has built a powerful personal brand across entertainment and business."},
+  {id:2,name:"Bella Thorne",role:"Actress, singer & director",cat:"Film & TV",grad:"linear-gradient(135deg,#FF4500,#FF69B4)",init:"BT",img:"image/Bella-Thorne.jpg",fans:"25M",rating:"4.9",price:120,offers:["Personalised video message","Acting advice session","Birthday shout-out"],bio:"Bella Thorne is an Emmy-nominated actress, New York Times bestselling author, singer, and director. She rose to fame on Disney Channel's Shake It Up and has since starred in dozens of film and music projects. A serial entrepreneur and trailblazing content creator, she made headlines as the first creator to earn $1M on a platform within 24 hours."},
+  {id:3,name:"Mia Khalifa",role:"Sports commentator & media personality",cat:"Creators",grad:"linear-gradient(135deg,#191970,#4169E1)",init:"MK",img:"image/Mia-Khalifa.jpg",fans:"28M",rating:"4.9",price:100,offers:["Sports commentary video","Fan shout-out","Personalised message"],bio:"Mia Khalifa is a sports commentator, podcast host, and one of the most-followed social media personalities in the world with over 28M Instagram followers. A passionate sports advocate and outspoken cultural voice, she has built a major digital brand entirely on her own terms and is widely recognised across mainstream media and entertainment."},
+  {id:4,name:"Cardi B",role:"Grammy-winning rapper & songwriter",cat:"Music",grad:"linear-gradient(135deg,#FFD700,#FF1493)",init:"CB",img:"image/Cardi-B.jpg",fans:"152M",rating:"5.0",price:500,offers:["Personalised rap shout-out","Birthday freestyle","Fan video message"],bio:"Cardi B is a Grammy Award-winning rapper, songwriter, and television personality. She made history as the first solo female rapper to win the Grammy Award for Best Rap Album, with chart-toppers including 'Bodak Yellow,' 'I Like It,' and 'WAP.' One of the best-selling music artists of all time and a defining voice of her generation."},
+  {id:5,name:"Tana Mongeau",role:"YouTuber, rapper & TV personality",cat:"Music",grad:"linear-gradient(135deg,#FF6347,#FF1493)",init:"TM",img:"image/Tana-Mongeau.jpg",fans:"6M",rating:"4.7",price:75,offers:["Fan shout-out video","Personalised rap message","Direct messages"],bio:"Tana Mongeau is a YouTube personality, rapper, and television star with over 6 million subscribers. Known for her unfiltered storytelling style, she starred in MTV's Tana Turns 21 and created TanaCon. A pioneering voice in the no-filter generation of content creators, she has consistently pushed the boundaries of digital entertainment."},
+  {id:6,name:"Tyga",role:"Multi-platinum rapper & entrepreneur",cat:"Music",grad:"linear-gradient(135deg,#FFD700,#FF4500)",init:"TYG",img:"image/Tyga.jpg",fans:"21M",rating:"4.8",price:300,offers:["Custom rap shout-out","Business promo video","Fan video message"],bio:"Tyga is a multi-platinum rapper and entrepreneur known worldwide for chart-toppers including 'Rack City,' 'Taste,' and 'Ayy Macarena.' With 21M Instagram followers and billions of global streams, he remains one of hip-hop's most versatile and commercially successful artists, while building a growing portfolio of entrepreneurial ventures."},
+  {id:7,name:"Amber Rose",role:"Model, activist & TV host",cat:"Reality TV",grad:"linear-gradient(135deg,#C0C0C0,#808080)",init:"AR",img:"image/Amber-Rose.jpg",fans:"22M",rating:"4.9",price:150,offers:["Empowerment video message","Celebrity fan shout-out","Direct messages"],bio:"Amber Rose is a model, actress, entrepreneur, and activist with 22M Instagram followers. She is the creator of the Amber Rose SlutWalk, an annual festival championing sexual freedom and gender equality. She hosted her own talk show, competed on Dancing with the Stars, and is widely regarded as a powerful voice in pop culture and women's advocacy."},
+  {id:8,name:"Larsa Pippen",role:"Reality TV star & lifestyle entrepreneur",cat:"Reality TV",grad:"linear-gradient(135deg,#DDA0DD,#9370DB)",init:"LRP",img:"image/Larsa-Pippen.jpg",fans:"4M",rating:"4.8",price:80,offers:["Fan video message","Lifestyle advice call","Birthday shout-out"],bio:"Larsa Pippen is a model, entrepreneur, and television personality best known for The Real Housewives of Miami. A long-time close friend of the Kardashian family, she is one of reality television's most iconic personalities. She runs her own lifestyle and wellness brand and maintains a highly engaged social media following."},
+  {id:9,name:"Paige VanZant",role:"MMA fighter, boxer & author",cat:"Sports",grad:"linear-gradient(135deg,#FF4500,#DC143C)",init:"PV",img:"image/Paige-VanZant.jpg",fans:"3M",rating:"4.9",price:90,offers:["Training motivation video","Fighter pep talk","Fan video message"],bio:"Paige VanZant is a former UFC fighter, professional bare-knuckle boxer with BKFC, and published author. Known for her explosive fighting style and magnetic personality, she competed on Dancing with the Stars and authored 'Rise: Surviving the Fight of My Life.' One of combat sports' most recognisable and marketable athletes worldwide."},
+  {id:10,name:"Erica Mena",role:"Model & reality TV personality",cat:"Reality TV",grad:"linear-gradient(135deg,#FF69B4,#DC143C)",init:"EM",img:"image/Erica-Mena.jpg",fans:"5M",rating:"4.7",price:60,offers:["Fan shout-out video","Personalised message","Birthday video"],bio:"Erica Mena is a model, actress, and television personality best known for her starring role on Love & Hip Hop: New York on VH1. With over 5M Instagram followers, she has built a powerful personal brand spanning modelling, music, and television across a decade-long career in the entertainment industry."},
+  {id:11,name:"Dani Daniels",role:"Artist, model & content creator",cat:"Creators",grad:"linear-gradient(135deg,#FF6347,#FF69B4)",init:"DD",img:"image/Dani-Daniels.jpg",fans:"4M",rating:"4.9",price:55,offers:["Custom art shout-out","Fan video message","Direct messages"],bio:"Dani Daniels is a multi-talented artist, model, and content creator with a unique dual career. Alongside her thriving digital presence she is a practising fine-art painter whose work has been exhibited and sold internationally. She brings creativity, authenticity, and genuine passion to everything she produces for her dedicated global fanbase."},
+  {id:12,name:"Riley Reid",role:"Content creator & podcast host",cat:"Creators",grad:"linear-gradient(135deg,#FF1493,#FF69B4)",init:"RR",img:"image/Riley-Reid.jpg",fans:"7M",rating:"5.0",price:70,offers:["Personalised video message","Podcast shout-out","Birthday greeting"],bio:"Riley Reid is one of the internet's most recognised content creators and podcast hosts. With a warm, genuine personality and millions of global fans, she has built an authentic digital brand that resonates deeply with her audience. Known for candid, open conversations on relationships, self-confidence, and wellness."},
+  {id:13,name:"Abella Danger",role:"Content creator & social media star",cat:"Creators",grad:"linear-gradient(135deg,#8B0000,#FF4500)",init:"AD",img:"image/Abella-Danger.jpg",fans:"5M",rating:"4.9",price:65,offers:["Fan video message","Birthday shout-out","Personalised greeting"],bio:"Abella Danger is a globally recognised content creator and social media personality with a massively devoted fanbase across multiple platforms. Known for her magnetic energy, infectious personality, and consistent authentic connection with fans, she has built one of the most engaged communities in digital entertainment."},
+  {id:14,name:"Maitland Ward",role:"Actress & content creator",cat:"Film & TV",grad:"linear-gradient(135deg,#FF6347,#8B4513)",init:"MW",img:"image/Maitland-Ward.jpg",fans:"2M",rating:"4.8",price:75,offers:["Scene read-along","Acting career advice","Fan video message"],bio:"Maitland Ward is an actress best known as Rachel McGuire on the iconic coming-of-age series Boy Meets World and for her role on The Bold and the Beautiful. She successfully transitioned into content creation and has won multiple industry awards. A trailblazer who redefined career reinvention in Hollywood entirely on her own terms."},
+  {id:15,name:"Eva Elfie",role:"International model & content creator",cat:"Creators",grad:"linear-gradient(135deg,#FFB6C1,#FF69B4)",init:"EE",img:"image/Eva-Elfie.jpg",fans:"6M",rating:"4.9",price:45,offers:["Fan shout-out video","Personalised message","Birthday greeting"],bio:"Eva Elfie is an international content creator and model with a massive worldwide following across social platforms. Known for her engaging, cheerful personality and consistent fan connection, she has become one of the most recognisable faces in digital entertainment globally, beloved by fans across dozens of countries."},
+  {id:16,name:"Amouranth",role:"Streamer, entrepreneur & ASMR creator",cat:"Gaming",grad:"linear-gradient(135deg,#9400D3,#FF1493)",init:"AMR",img:"image/Amouranth.jpg",fans:"6M",rating:"4.9",price:100,offers:["Live stream shout-out","Business Q&A call","Fan video message"],bio:"Amouranth (Kaitlyn Siragusa) is one of Twitch's most-watched streamers, an entrepreneur, and ASMR creator. Beyond content creation she has built a remarkable business empire including a 7-Eleven franchise, gas stations, and an inflatable pool toy company. A sharp, savvy businesswoman who is redefining what it means to be a creator-entrepreneur in the modern era."},
+  {id:17,name:"Corinna Kopf",role:"YouTuber & content creator",cat:"Creators",grad:"linear-gradient(135deg,#4169E1,#00CED1)",init:"CK",img:"image/Corinna-Kopf.jpg",fans:"7M",rating:"4.8",price:90,offers:["Personalised fan shout-out","Lifestyle message video","Direct messages"],bio:"Corinna Kopf is a YouTuber and content creator known for her collaborations with David Dobrik and the iconic Vlog Squad. With millions of YouTube subscribers and a massive cross-platform social following, she is a major name in the creator economy — known for authenticity, humour, and a genuine connection with her loyal fanbase."},
+  {id:18,name:"Carmen Electra",role:"Actress, model & TV host",cat:"Film & TV",grad:"linear-gradient(135deg,#FF4500,#FFD700)",init:"CE",img:"image/Carmen-Electra.jpg",fans:"4M",rating:"5.0",price:200,offers:["Celebrity video message","Fan birthday shout-out","Personalised greeting"],bio:"Carmen Electra is a global entertainment icon — actress, model, TV host, and performer. Best known for Baywatch, the game show Singled Out, and a string of beloved comedy films, she is a defining figure of 90s and 2000s pop culture. After three decades in the spotlight her star power remains completely undimmed."},
+  {id:19,name:"Jem Wolfie",role:"Fitness model & professional chef",cat:"Creators",grad:"linear-gradient(135deg,#228B22,#32CD32)",init:"JW",fans:"3M",rating:"4.8",price:55,offers:["Fitness motivation video","Cooking advice call","Fan shout-out"],bio:"Jem Wolfie is a fitness model, professional chef, and entrepreneur who built a massive social following by combining two passions: elite fitness and gourmet cooking. Her unique content niche has attracted millions of followers and multiple major brand partnerships, making her one of the most distinctive creators in the health and lifestyle space."},
+  {id:20,name:"Megan Barton Hanson",role:"Model & reality TV personality",cat:"Reality TV",grad:"linear-gradient(135deg,#FF69B4,#FFD700)",init:"MBH",fans:"2M",rating:"4.7",price:60,offers:["Fan shout-out video","Personalised message","Birthday greeting"],bio:"Megan Barton Hanson is a model and television personality best known for Love Island UK Series 4. Since the show she has built a thriving independent digital career and become a prominent media voice in the UK on body positivity, relationships, and mental health. She is one of Love Island's most recognisable and outspoken alumni."},
+  {id:21,name:"Belle Delphine",role:"Internet personality & model",cat:"Creators",grad:"linear-gradient(135deg,#FFB6C1,#9B59B6)",init:"BLD",fans:"4M",rating:"4.8",price:80,offers:["Unique fan video","Personalised message","Birthday greeting"],bio:"Belle Delphine is a British internet personality and model celebrated for her wildly creative marketing and one-of-a-kind internet persona. She has gone globally viral multiple times with unconventional campaigns and has built one of the most distinctive and recognisable personal brands in the history of online entertainment."},
+  {id:22,name:"Malu Trevejo",role:"Singer & social media star",cat:"Music",grad:"linear-gradient(135deg,#FF4500,#FFD700)",init:"MLT",img:"image/Malu-Trevejo.jpg",fans:"10M",rating:"4.9",price:65,offers:["Personalised song message","Fan shout-out","Birthday video"],bio:"Malu Trevejo is a Cuban-American singer, dancer, and social media star who exploded onto the global music scene with 'Luna Llena.' With over 10M Instagram followers and millions of TikTok fans, she is one of the most-followed young artists in the Latin pop world and a major influence on Gen Z culture and music."},
+  {id:23,name:"Sky Bri",role:"Model & content creator",cat:"Creators",grad:"linear-gradient(135deg,#87CEEB,#4169E1)",init:"SKB",fans:"3M",rating:"4.8",price:50,offers:["Fan shout-out video","Personalised message","Birthday greeting"],bio:"Sky Bri is a model and content creator who has rapidly built one of the most engaged fanbases in digital entertainment. Known for her natural, unfiltered approach and genuine real-time fan interactions, she has attracted millions of followers across social platforms in a remarkably short space of time."},
+  {id:24,name:"Brittany Renner",role:"Fitness influencer & author",cat:"Creators",grad:"linear-gradient(135deg,#228B22,#FFD700)",init:"BRN",img:"image/Brittany-Renner.jpg",fans:"4M",rating:"4.9",price:70,offers:["Fitness motivation video","Advice session call","Fan video message"],bio:"Brittany Renner is a fitness influencer, published author, and podcast personality. Her book 'Judge This Cover' became a bestseller and sparked major cultural conversation. She is known for her candid, no-nonsense approach to fitness, relationships, and self-development that has earned her a fiercely loyal global fanbase."},
+  {id:25,name:"Ruby Rose",role:"Actress, model & DJ",cat:"Film & TV",grad:"linear-gradient(135deg,#9400D3,#00CED1)",init:"RRO",fans:"15M",rating:"4.9",price:120,offers:["Celebrity video message","DJ shout-out","Fan birthday greeting"],bio:"Ruby Rose is an Australian actress, model, TV presenter, and DJ with 15M Instagram followers. Known for her breakout role in Orange is the New Black, playing Batwoman in the Arrowverse, and appearing in John Wick: Chapter 2 and Pitch Perfect 3. She was the face of Urban Decay and has DJ'd at venues worldwide. One of Australia's most globally recognised talents."},
+  {id:26,name:"Gia Paige",role:"Model & content creator",cat:"Creators",grad:"linear-gradient(135deg,#FF69B4,#C71585)",init:"GP",fans:"2M",rating:"4.8",price:45,offers:["Fan shout-out video","Personalised message","Birthday greeting"],bio:"Gia Paige is a model and content creator with a warm, approachable personality that has earned her a deeply devoted following. Known for her genuine, authentic fan interactions and consistently high-quality content, she has carved a strong and respected personal brand in digital entertainment."},
+  {id:27,name:"Autumn Falls",role:"Model & content creator",cat:"Creators",grad:"linear-gradient(135deg,#FF8C00,#DC143C)",init:"AFL",fans:"2M",rating:"4.7",price:40,offers:["Fan video message","Birthday shout-out","Personalised greeting"],bio:"Autumn Falls is a model and content creator known for her natural charisma and authentic digital presence. She has built a loyal and engaged community through genuine fan interaction and consistently compelling content across multiple platforms, standing out as a warm and relatable personality in her space."},
+  {id:28,name:"Lauren Alexis",role:"YouTuber & model",cat:"Creators",grad:"linear-gradient(135deg,#FF69B4,#FF6347)",init:"LAX",fans:"3M",rating:"4.8",price:50,offers:["Fan shout-out video","Q&A video call","Birthday greeting"],bio:"Lauren Alexis is a UK-based YouTuber and model with millions of subscribers. Known for her energetic, entertaining videos and bold personality, she has become one of Britain's most recognisable content creators. A prominent face in the UK influencer scene, she is celebrated for her authenticity and direct connection with her fanbase."},
+  {id:29,name:"Tana Lea",role:"Model & content creator",cat:"Creators",grad:"linear-gradient(135deg,#DDA0DD,#FF69B4)",init:"TL",fans:"1M",rating:"4.7",price:45,offers:["Fan shout-out video","Personalised message","Birthday greeting"],bio:"Tana Lea is a model and content creator known for her captivating presence and strong connection with her audience. She has built a devoted community through authentic, consistent content and genuine fan engagement across her growing digital platforms, earning a reputation as one of the most approachable and engaging creators in her field."},
+  {id:30,name:"Elle Johnson",role:"Model & social media influencer",cat:"Creators",grad:"linear-gradient(135deg,#FF6347,#FFD700)",init:"ELJ",fans:"1M",rating:"4.7",price:40,offers:["Fan video message","Personalised shout-out","Birthday greeting"],bio:"Elle Johnson is a model and social media influencer who has attracted a loyal following through her striking lifestyle and fashion content. Known for her elegant aesthetic and warm, engaging personality, she connects authentically with fans across her growing platforms and continues to expand her presence in digital entertainment."},
+  {id:31,name:"Bryce Adams",role:"Fitness creator & model",cat:"Creators",grad:"linear-gradient(135deg,#32CD32,#006400)",init:"BAD",fans:"3M",rating:"4.9",price:55,offers:["Fitness motivation video","Workout advice call","Fan video message"],bio:"Bryce Adams is a fitness content creator and model known for her athletic dedication, discipline, and commitment to health and wellness. She has built one of the most engaged fitness communities online, inspiring millions with workout content, nutrition tips, and a powerful body-positive message that resonates with fans worldwide."},
+  {id:32,name:"Jenna Lee",role:"Model & content creator",cat:"Creators",grad:"linear-gradient(135deg,#FF69B4,#DDA0DD)",init:"JNL",fans:"1M",rating:"4.7",price:40,offers:["Fan shout-out video","Personalised message","Birthday greeting"],bio:"Jenna Lee is a model and content creator who has built a loyal community through her charming personality and high-quality digital content. She is widely known for genuine, memorable interactions with her fanbase and a consistent, warm presence across platforms — making every fan feel seen and appreciated."},
+  {id:33,name:"Nala Ray",role:"Fitness influencer & model",cat:"Creators",grad:"linear-gradient(135deg,#FF4500,#FF69B4)",init:"NR",fans:"2M",rating:"4.8",price:55,offers:["Fitness motivation video","Lifestyle advice session","Fan shout-out"],bio:"Nala Ray is a fitness influencer and model who has inspired millions with her health and wellness content. Known for her discipline, vibrant energy, and authentic approach to fitness and lifestyle, she has built a powerful and widely respected brand combining beauty, physical strength, and genuine inspiration for fans across the globe."},
+  {id:34,name:"Sienna Day",role:"Model & content creator",cat:"Creators",grad:"linear-gradient(135deg,#FFB6C1,#C71585)",init:"SD",fans:"1.5M",rating:"4.8",price:40,offers:["Fan shout-out video","Personalised message","Birthday greeting"],bio:"Sienna Day is a British model and content creator who has built a large, loyal fanbase through her glamorous lifestyle content and bold, authentic personality. Known for her striking looks and genuine connection with fans, she is one of the UK's most-followed independent creators and a rising name in digital entertainment."},
+  {id:35,name:"Scarlett Johansson",role:"Oscar-nominated actress & producer",cat:"Film & TV",grad:"linear-gradient(135deg,#B8860B,#708090)",init:"SJ",img:"image/Scarlett-Johansson.jpg",fans:"12M",rating:"5.0",price:500,offers:["Celebrity fan video message","Acting career Q&A","Birthday personalised greeting"],bio:"Scarlett Johansson is one of Hollywood's most celebrated and highest-grossing actresses of all time. Known for her iconic roles as Black Widow in the Marvel Cinematic Universe, her Oscar-nominated performances in Marriage Story and Jojo Rabbit, and acclaimed turns in Lost in Translation and Her. A powerhouse producer and global film star with worldwide box-office grosses exceeding $14 billion."},
+  {id:36,name:"Kendra Sunderland",role:"Model & content creator",cat:"Creators",grad:"linear-gradient(135deg,#DAA520,#FF6347)",init:"KSU",img:"image/Kendra-Sunderland.jpg",fans:"2M",rating:"4.8",price:50,offers:["Fan shout-out video","Personalised message","Birthday greeting"],bio:"Kendra Sunderland is a model and content creator who went globally viral in 2015 and has since built a thriving and enduring digital career. She has leveraged her fame into a highly successful content business with millions of followers and an intensely engaged worldwide fanbase that has remained loyal for nearly a decade."},
+  {id:37,name:"Kendall Jenner",role:"Supermodel & entrepreneur",cat:"Reality TV",grad:"linear-gradient(135deg,#E8D5C4,#8B7355)",init:"KJ",img:"image/Kendall-Jenner.jpg",fans:"295M",rating:"5.0",price:500,offers:["Celebrity fan video message","Fashion & modelling Q&A","Birthday personalised greeting"],bio:"Kendall Jenner is one of the world's highest-paid supermodels and a global cultural icon. Rising to fame on Keeping Up with the Kardashians, she has walked for virtually every major fashion house — Chanel, Versace, Givenchy, Louis Vuitton, and more — and has graced the covers of Vogue, Harper's Bazaar, and countless international editions. With 295M Instagram followers she is one of the most-followed people on the planet and the face of her 818 Tequila brand."},
+  {id:38,name:"Justin Bieber",role:"Grammy-winning pop superstar",cat:"Music",grad:"linear-gradient(135deg,#4169E1,#00BFFF)",init:"JB",img:"image/justin-bieber.jpg",fans:"292M",rating:"5.0",price:500,offers:["Celebrity fan video message","Personalised song mention","Birthday video greeting"],bio:"Justin Bieber is one of the best-selling music artists of all time with over 150 million records sold worldwide. Discovered at age 13 by Scooter Braun, he has released platinum albums including My World 2.0, Believe, Purpose, and Justice, and holds multiple Guinness World Records. A Grammy Award winner with a social media reach of over 500 million across all platforms — one of the most globally recognised names in the history of popular music."},
+  {id:39,name:"Mick Jagger",role:"Rolling Stones frontman & rock legend",cat:"Music",grad:"linear-gradient(135deg,#B22222,#1C1C1C)",init:"MJ",img:"image/Mick-Jagger.jpg",fans:"3M",rating:"5.0",price:500,offers:["Legendary fan video message","Rock history Q&A session","Birthday rock star greeting"],bio:"Sir Mick Jagger is the iconic frontman of The Rolling Stones — one of the greatest rock bands in history. With a career spanning over six decades, he has sold more than 250 million records worldwide, performed in some of the largest concert tours ever staged, and earned a knighthood for his contribution to music. Inducted into the Rock and Roll Hall of Fame, he is widely considered one of the greatest live performers of all time and an enduring symbol of rock and roll itself."},
+  {id:40,name:"Daniella Chavez",role:"Model, TV personality & entrepreneur",cat:"Reality TV",grad:"linear-gradient(135deg,#DC143C,#FFD700)",init:"DCH",img:"image/Daniella-Chavez.jpg",fans:"14M",rating:"4.9",price:60,offers:["Celebrity fan message","Personalised shout-out","Birthday video"],bio:"Daniella Chavez is a Chilean model, television personality, and entrepreneur widely regarded as one of Chile's most famous social media personalities. With 14M Instagram followers, she has become a major Latin American influencer, savvy businesswoman, and a global ambassador for beauty and lifestyle brands across multiple continents."}
+];
+
+const categories=["All","Music","Sports","Comedy","Film & TV","Creators","Reality TV","Gaming"];
+let activeCat="All";
+let searchQuery="";
+let currentUser=null;
+
+/* ── EMAILJS ── */
+const EJ_PUBLIC_KEY='peSvxjcyyHhUBcC4b';
+const EJ_SERVICE_ID='service_wmkmjhj';
+const EJ_VERIFY_TID='template_m2pt4d8';
+const EJ_WELCOME_TID='template_268ocb9';
+(function(){try{emailjs.init({publicKey:EJ_PUBLIC_KEY});}catch(e){}})();
+
+/* ── UTILS ── */
+function escapeHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
+
+/* ── VERIFIED BADGE ── */
+const VTICK='<svg class="vtick" viewBox="0 0 24 24" aria-label="Verified"><circle cx="12" cy="12" r="12" fill="#3897f0"/><path d="M6.5 12.5l3.8 3.8 7.2-7.6" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>';
+
+/* ── AVATAR HELPER ── */
+function creatorAvImg(c,extraStyle){
+  if(!c.img)return '';
+  const s=extraStyle||'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:inherit';
+  return `<img src="${escapeHtml(c.img)}" alt="${escapeHtml(c.name)}" style="${s}" onerror="this.style.display='none'">`;
+}
+
+/* ── HERO MOSAIC ── */
+function renderHeroMosaic(){
+  const picks=[...creators].sort((a,b)=>parseFloat(b.rating)-parseFloat(a.rating)).slice(0,6);
+  document.getElementById('heroMosaic').innerHTML=picks.map(c=>`
+    <div class="h-card" onclick="openCreator(${c.id})">
+      <div class="h-av" style="background:${c.grad}">${c.img?'':escapeHtml(c.init)}${creatorAvImg(c)}</div>
+      <div class="h-name">${escapeHtml(c.name)}${VTICK}</div>
+      <div class="h-price">From $${c.price}</div>
+    </div>
+  `).join('');
+}
+
+/* ── TOP 10 ── */
+function fansNum(s){return parseFloat(s.replace('M','000000').replace('K','000'));}
+function renderTop10(){
+  const sorted=[...creators].sort((a,b)=>fansNum(b.fans)-fansNum(a.fans)).slice(0,10);
+  document.getElementById('top10List').innerHTML=sorted.map((c,i)=>`
+    <div class="t10-card" onclick="openCreator(${c.id})">
+      <span class="rank${i<3?' gold':''}">${i+1}</span>
+      <div class="t10-av" style="background:${c.grad}">${c.img?'':escapeHtml(c.init)}${creatorAvImg(c)}</div>
+      <div class="t10-name">${escapeHtml(c.name)}${VTICK}</div>
+      <div class="t10-role">${escapeHtml(c.role)}</div>
+      ${socT10Row(c)}
+      <div class="t10-stars">★ ${c.rating}</div>
+      <div class="t10-price">From $${c.price}</div>
+      <button class="t10-book" onclick="event.stopPropagation();goToPayment(${c.id},0)">Book</button>
+    </div>
+  `).join('');
+}
+
+/* ── FILTERS ── */
+function renderFilters(){
+  document.getElementById('filters').innerHTML=categories.map(c=>`
+    <button class="chip${c===activeCat?' active':''}" data-cat="${escapeHtml(c)}" onclick="setCat(this.dataset.cat)">${escapeHtml(c)}</button>
+  `).join('');
+}
+
+/* ── CREATOR GRID ── */
+function renderCreators(){
+  let list=creators.filter(c=>activeCat==='All'||c.cat===activeCat);
+  if(searchQuery)list=list.filter(c=>c.name.toLowerCase().includes(searchQuery)||c.role.toLowerCase().includes(searchQuery)||c.cat.toLowerCase().includes(searchQuery));
+  const g=document.getElementById('roster');
+  if(!list.length){g.innerHTML=`<p class="no-results">No creators found for "${escapeHtml(searchQuery)}". Try a different search or category.</p>`;return;}
+  g.innerHTML=list.map(c=>`
+    <div class="c-card" onclick="openCreator(${c.id})">
+      <div class="c-top">
+        <div class="c-av" style="background:${c.grad}">
+          ${c.img?'':('<span>'+escapeHtml(c.init)+'</span>')}${creatorAvImg(c)}
+          <div class="c-vbadge" title="Verified">✓</div>
+        </div>
+        <div class="c-name">${escapeHtml(c.name)}${VTICK}</div>
+        <div class="c-role">${escapeHtml(c.role)}</div>
+        ${socPills(c)}
+        <div class="c-rating">★ ${c.rating}</div>
+      </div>
+      <div class="c-bot">
+        <span class="c-price">From $${c.price}</span>
+        <button class="c-book" onclick="event.stopPropagation();goToPayment(${c.id},0)">Book</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function setCat(cat){
+  activeCat=cat;searchQuery='';
+  const si=document.getElementById('heroSearch');if(si)si.value='';
+  renderFilters();renderCreators();
+  document.querySelectorAll('.nav-cat').forEach(b=>b.classList.toggle('active',b.dataset.cat===cat));
+}
+function navCatFilter(cat){setCat(cat);scrollToId('creators');}
+function searchCreators(q){
+  searchQuery=q.toLowerCase().trim();
+  renderCreators();
+  if(q)setTimeout(()=>scrollToId('creators'),80);
+}
+
+/* ── COLLECTIONS ── */
+const collections=[
+  {name:"Birthday Wishes",sub:"Make someone's day",bg:"linear-gradient(150deg,#3B0A1F 0%,#7A1F45 55%,#B8426C 100%)",ids:[1,3,8,11]},
+  {name:"Sports Legends",sub:"Elite athletes, real talk",bg:"linear-gradient(150deg,#040D1C 0%,#0B2548 55%,#1255A0 100%)",ids:[2,7,10,24]},
+  {name:"Music Moments",sub:"Your favourite artists",bg:"linear-gradient(150deg,#130820 0%,#2E1060 55%,#6B28B0 100%)",ids:[1,9,12,13]},
+  {name:"Comedy Gold",sub:"Laughs guaranteed",bg:"linear-gradient(150deg,#1A0C00 0%,#4A2000 55%,#A05010 100%)",ids:[3,14,28,37]}
+];
+function renderCollections(){
+  document.getElementById('collGrid').innerHTML=collections.map(col=>{
+    const avs=col.ids.map(id=>{const c=creators.find(x=>x.id===id);return c?`<div class="coll-mini-av" style="background:${c.grad}">${c.img?creatorAvImg(c):c.init}</div>`:''}).join('');
+    return `<div class="coll-card" onclick="navCatFilter('${col.sub.includes('Music')?'Music':col.sub.includes('Sport')?'Sports':col.sub.includes('Comedy')?'Comedy':'All'}');scrollToId('creators')" style="background:${col.bg}">
+      <div class="coll-inner">
+        <div class="coll-avatars">${avs}</div>
+        <div class="coll-accent"></div>
+        <div class="coll-info">
+          <div class="coll-sub">${escapeHtml(col.sub)}</div>
+          <div class="coll-name">${escapeHtml(col.name)}</div>
+          <div class="coll-count">${col.ids.length}+ verified creators</div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+/* ── CREATOR MODAL ── */
+const _reviewCounts=[181,94,203,67,312,58,145,89,276,421,133,87,519,204,77,166,343,55,112,388,73,156,91,284,63,238,177,102,445,38,129,88,321,196,74,161,253,44,117,298];
+const _videoLens=['00:27','00:32','00:41','00:24','00:35','00:29','00:38','00:22','00:44','00:31'];
+const _lastDaysAgo=[12,5,18,3,24,8,15,2,30,10,7,20,4,11,26,6,16,9,22,13];
+const _videosLeft=[3,5,8,2,6,4,7,1,9,3,5,8,4,6,2,7,3,9,5,4];
+const _reasons=[
+  {e:'🎂',l:'Say happy birthday'},{e:'💍',l:'Marriage proposal'},
+  {e:'🎓',l:'Graduation'},{e:'🤗',l:'Send a pep talk'},
+  {e:'🔥',l:'Roast someone'},{e:'💜',l:'Get advice'},
+  {e:'🙋',l:'Ask a question'},{e:'💭',l:'Other'}
+];
+function openCreator(id){
+  const c=creators.find(x=>x.id===id);if(!c)return;
+  const idx=(c.id-1);
+  const reviewCount=_reviewCounts[idx%_reviewCounts.length];
+  const videoLen=_videoLens[idx%_videoLens.length];
+  const daysAgo=_lastDaysAgo[idx%_lastDaysAgo.length];
+  const ld=new Date(2026,5,22-daysAgo);
+  const lastVideo=`${String(ld.getMonth()+1).padStart(2,'0')}/${String(ld.getDate()).padStart(2,'0')}/${ld.getFullYear()}`;
+  const videosLeft=_videosLeft[idx%_videosLeft.length];
+  const bizPrice=(c.price*9).toLocaleString();
+  const BIO_LIMIT=160;
+  const bioShort=c.bio.length>BIO_LIMIT?c.bio.slice(0,BIO_LIMIT)+'…':c.bio;
+  const hasMore=c.bio.length>BIO_LIMIT;
+  openModal(`
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:18px">
+      <div style="width:100px;height:100px;border-radius:14px;background:${c.grad};display:flex;align-items:center;justify-content:center;font-size:1.8rem;font-weight:800;color:#fff;flex:none;position:relative;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.14)">
+        ${c.img?'':escapeHtml(c.init)}${creatorAvImg(c)}
+        <div style="position:absolute;bottom:6px;right:6px;width:22px;height:22px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:900;color:#fff;border:2px solid #fff;z-index:2">✓</div>
+      </div>
+      <div>
+        <h3 style="font-size:1.25rem;font-weight:800;margin:0 0 3px;display:flex;align-items:center;gap:6px">${escapeHtml(c.name)}${VTICK}</h3>
+        <p style="color:var(--t2);font-size:.83rem;margin:0 0 5px">${escapeHtml(c.role)}</p>
+        ${socHeaderRow(c)}
+        <div style="font-size:.78rem;margin-top:2px">★ <span style="color:var(--yellow)">${c.rating}</span> <span style="color:var(--t2)">(${reviewCount} reviews) · ${c.fans} fans</span></div>
+      </div>
+    </div>
+
+    <div style="background:rgba(245,211,0,.08);border:1px solid rgba(245,211,0,.22);border-radius:10px;padding:10px 16px;margin-bottom:18px;display:flex;align-items:center;gap:8px">
+      <span>⚡</span><span style="color:var(--yellow);font-size:.84rem;font-weight:700">Only ${videosLeft} videos left at this price</span>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
+      <div style="background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:10px;padding:14px 16px">
+        <div style="font-size:.67rem;color:var(--t2);text-transform:uppercase;letter-spacing:.09em;margin-bottom:5px">Price</div>
+        <div style="font-size:1.5rem;font-weight:800;font-family:'Space Mono',monospace">$${c.price}+</div>
+      </div>
+      <div style="background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:10px;padding:14px 16px">
+        <div style="font-size:.67rem;color:var(--t2);text-transform:uppercase;letter-spacing:.09em;margin-bottom:5px">Available for</div>
+        <div style="font-size:.9rem;font-weight:700;color:var(--green)">⚡ 24hr delivery</div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:16px">
+      <div style="font-size:.67rem;color:var(--t2);text-transform:uppercase;letter-spacing:.09em;margin-bottom:5px">Reviews</div>
+      <div style="font-size:.92rem;font-weight:700;color:var(--yellow)">★ ${c.rating} <span style="color:var(--t2);font-weight:400">(${reviewCount})</span></div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:22px">
+      <button class="btn btn-primary" style="width:100%;justify-content:center;font-size:.92rem;padding:14px 20px" onclick="goToPayment(${c.id},0)">Book a personal video · $${c.price}+</button>
+      <button class="btn btn-ghost" style="width:100%;justify-content:center;font-size:.87rem;padding:12px 20px" onclick="goToPayment(${c.id},2)">Book a business video · $${bizPrice}+</button>
+      <button onclick="goToPayment(${c.id},'chat')" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:13px 18px;background:rgba(255,255,255,.03);border:1px solid rgba(245,211,0,.25);border-radius:var(--rp);cursor:pointer;font-family:inherit;transition:border-color .15s" onmouseover="this.style.borderColor='rgba(245,211,0,.6)'" onmouseout="this.style.borderColor='rgba(245,211,0,.25)'">
+        <div style="display:flex;align-items:center;gap:10px">
+          <span style="font-size:1.1rem">💬</span>
+          <div style="text-align:left">
+            <div style="font-size:.88rem;font-weight:700;color:var(--text)">Book a chat session</div>
+            <div style="font-size:.72rem;color:var(--t2);margin-top:2px">30-min direct message exchange · fully private</div>
+          </div>
+        </div>
+        <div style="font-family:'Space Mono',monospace;font-size:.85rem;font-weight:700;color:var(--yellow);flex:none">$${Math.max(8,Math.round(c.price*0.5))}+</div>
+      </button>
+    </div>
+
+    <div style="font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--t2);margin-bottom:12px">Reasons to get a video</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:22px">
+      ${_reasons.map(r=>`<div style="background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:10px;padding:10px 6px;text-align:center;cursor:pointer;transition:border-color .15s" onmouseover="this.style.borderColor='rgba(245,211,0,.45)'" onmouseout="this.style.borderColor='rgba(255,255,255,.08)'"><div style="font-size:1.2rem;margin-bottom:5px">${r.e}</div><div style="font-size:.65rem;color:var(--t2);line-height:1.35">${escapeHtml(r.l)}</div></div>`).join('')}
+    </div>
+
+    ${socModalSection(c)}
+    <div style="margin-bottom:16px">
+      <div id="cBioShort" style="color:var(--t2);font-size:.87rem;line-height:1.7">${escapeHtml(bioShort)}${hasMore?' <button onclick="document.getElementById(\'cBioShort\').style.display=\'none\';document.getElementById(\'cBioFull\').style.display=\'block\'" style="background:none;border:none;color:var(--yellow);font-size:.87rem;font-weight:600;cursor:pointer;font-family:inherit;padding:0">Read more</button>':''}</div>
+      ${hasMore?`<div id="cBioFull" style="color:var(--t2);font-size:.87rem;line-height:1.7;display:none">${escapeHtml(c.bio)} <button onclick="document.getElementById('cBioFull').style.display='none';document.getElementById('cBioShort').style.display='block'" style="background:none;border:none;color:var(--yellow);font-size:.87rem;font-weight:600;cursor:pointer;font-family:inherit;padding:0">Read less</button></div>`:''}
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:20px;margin-bottom:20px">
+      <div style="font-size:.82rem;color:var(--t2)">✷ Average video length: <strong style="color:var(--text)">${videoLen}</strong></div>
+      <div style="font-size:.82rem;color:var(--t2)">✷ Last completed video: <strong style="color:var(--text)">${lastVideo}</strong></div>
+    </div>
+
+    <div style="background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:12px;padding:18px 18px 14px;margin-bottom:14px">
+      <div style="font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--t2);margin-bottom:14px">What to expect</div>
+      <div style="display:flex;flex-direction:column;gap:11px">
+        ${['Write a short set of instructions','Get your video','Share the magic'].map((s,i)=>`<div style="display:flex;align-items:center;gap:12px"><div style="width:27px;height:27px;border-radius:50%;background:rgba(245,211,0,.1);border:1px solid rgba(245,211,0,.25);color:var(--yellow);font-size:.72rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none">${i+1}</div><span style="font-size:.87rem;color:var(--t2)">${escapeHtml(s)}</span></div>`).join('')}
+      </div>
+    </div>
+
+    <div style="display:flex;align-items:flex-start;gap:10px;padding:12px 16px;background:rgba(34,197,94,.06);border:1px solid rgba(34,197,94,.2);border-radius:10px;margin-bottom:14px">
+      <span style="font-size:1.1rem;flex:none;line-height:1.2">🛡️</span>
+      <div>
+        <div style="font-size:.84rem;font-weight:700;color:var(--green);margin-bottom:3px">Money back guarantee</div>
+        <div style="font-size:.76rem;color:var(--t2);line-height:1.5">If your video isn't delivered within the promised timeframe, you'll receive a full refund — no questions asked.</div>
+      </div>
+    </div>
+
+    <a href="mailto:starconnecthub@gmail.com" class="btn btn-ghost" style="width:100%;justify-content:center;text-decoration:none;font-size:.84rem">Ask the team a question first (free)</a>
+    <p class="tos-notice" style="margin-top:12px">By booking you agree to our <a href="terms-of-service.html">Terms of Service</a> and <a href="terms-of-service.html#escrow">Refund Policy</a>. Payment held in escrow until delivered.</p>
+  `,true);
+}
+
+/* ── PAYMENT ── */
+function chatPrice(c){return Math.max(8,Math.round(c.price*0.5));}
+function goToPayment(id,offerIdx){
+  const c=creators.find(x=>x.id===id);if(!c)return;
+  let offer,price;
+  if(offerIdx==='chat'){
+    offer='30-min direct chat session';
+    price=chatPrice(c);
+  }else{
+    const idx=offerIdx||0;
+    offer=c.offers[idx]||c.offers[0];
+    price=c.price+idx*12;
+  }
+  const p=new URLSearchParams({id:c.id,name:c.name,role:c.role,offer,price,init:c.init,grad:c.grad});
+  window.location.href='payment.html?'+p.toString();
+}
+
+/* ── MODAL ── */
+const overlay=document.getElementById('overlay');
+const modalBox=document.getElementById('modalBox');
+const modalContent=document.getElementById('modalContent');
+function closeModal(){overlay.classList.remove('open');modalBox.classList.remove('wide');}
+function openModal(html,wide){modalContent.innerHTML=html;overlay.classList.add('open');if(wide)modalBox.classList.add('wide');}
+
+/* ── AUTH ── */
+const tosNotice=`<p class="tos-notice">By joining you agree to our <a href="terms-of-service.html">Terms of Service</a> and <a href="privacy-policy.html">Privacy Policy</a>.</p>`;
+function openAuth(mode){
+  if(mode==='creator'){openCreatorApply();return;}
+  let html;
+  if(false){
+  }else if(mode==='join'){
+    html=`<span class="eyebrow">Create account</span>
+      <h3 style="font-size:1.4rem;font-weight:800;margin:10px 0 6px">Join Star Connect Hub</h3>
+      <p style="color:var(--t2);font-size:.87rem;margin:0 0 20px">Free to join. Browse and message creator teams at no cost.</p>
+      <div class="field"><label>Full name</label><input id="auName" placeholder="Your name" autocomplete="name"></div>
+      <div class="field"><label>Email address</label><input id="auEmail" type="email" placeholder="you@email.com" autocomplete="email"><div class="err-msg" id="auEmailErr"></div></div>
+      <div class="field"><label>Password</label><input id="auPass" type="password" placeholder="At least 8 characters" autocomplete="new-password"><div class="err-msg" id="auPassErr"></div></div>
+      <button class="btn btn-primary" id="sendCodeBtn" style="width:100%;justify-content:center" onclick="registerUser()">Create free account</button>
+      <div class="switch-line">Already have an account? <button onclick="openAuth('signin')">Sign in</button></div>${tosNotice}`;
+  }else{
+    html=`<span class="eyebrow">Welcome back</span>
+      <h3 style="font-size:1.4rem;font-weight:800;margin:10px 0 6px">Sign in</h3>
+      <p style="color:var(--t2);font-size:.87rem;margin:0 0 20px">Good to see you again.</p>
+      <div class="field"><label>Email</label><input id="auEmail" type="email" placeholder="you@email.com" autocomplete="email"></div>
+      <div class="field"><label>Password</label><input type="password" placeholder="••••••••" autocomplete="current-password"></div>
+      <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="doSignIn()">Sign in</button>
+      <div class="switch-line">New here? <button onclick="openAuth('join')">Join free</button></div>${tosNotice}`;
+  }
+  openModal(html);
+}
+
+function doSignIn(){
+  const email=document.getElementById('auEmail')?.value.trim();
+  if(!email||!email.includes('@')){toast('Enter a valid email address.');return;}
+  currentUser=email.split('@')[0];
+  localStorage.setItem('schUser',currentUser);
+  setNavLoggedIn(currentUser);
+  closeModal();toast('Signed in ✓');
+}
+
+function registerUser(){
+  const nameEl=document.getElementById('auName');
+  const emailEl=document.getElementById('auEmail');
+  const passEl=document.getElementById('auPass');
+  const name=(nameEl?.value||'').trim();
+  const email=(emailEl?.value||'').trim();
+  const pass=(passEl?.value||'');
+  ['auEmailErr','auPassErr'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent='';});
+  let ok=true;
+  if(!name){toast('Please enter your name.');ok=false;}
+  if(!email||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){const el=document.getElementById('auEmailErr');if(el)el.textContent='Enter a valid email address.';ok=false;}
+  if(passEl&&pass.length<8){const el=document.getElementById('auPassErr');if(el)el.textContent='Password must be at least 8 characters.';ok=false;}
+  if(!ok)return;
+  const btn=document.getElementById('sendCodeBtn');
+  if(btn){btn.classList.add('sending-btn');btn.textContent='Creating account…';}
+  emailjs.send(EJ_SERVICE_ID,EJ_WELCOME_TID,{to_name:name,to_email:email,reply_to:'starconnecthub@gmail.com'}).catch(()=>{});
+  currentUser=name;
+  localStorage.setItem('schUser',name);
+  localStorage.setItem('schEmail',email);
+  setNavLoggedIn(name);
+  closeModal();
+  toast('Welcome to Star Connect Hub, '+name+'! 🎉');
+  setTimeout(()=>scrollToId('creators'),400);
+}
+
+/* ── NAV HELPERS ── */
+function setNavLoggedIn(name){
+  const jb=document.getElementById('joinBtn');
+  const sb=document.getElementById('signinBtn');
+  if(jb){jb.textContent='My account';jb.onclick=openDash;}
+  if(sb)sb.style.display='none';
+}
+function setNavLoggedOut(){
+  const jb=document.getElementById('joinBtn');
+  const sb=document.getElementById('signinBtn');
+  if(jb){jb.textContent='Join free';jb.onclick=()=>openAuth('join');}
+  if(sb)sb.style.display='';
+}
+
+/* ── TOAST ── */
+let toastTimer;
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2800);}
+
+/* ── SMOOTH SCROLL ── */
+function scrollToId(id){document.getElementById(id)?.scrollIntoView({behavior:'smooth'});}
+
+/* ── MENU ── */
+function closeMenu(){
+  const n=document.getElementById('mobileNav');const b=document.getElementById('menuToggle');
+  if(n)n.classList.remove('show');
+  if(b)b.setAttribute('aria-expanded','false');
+}
+function toggleMenu(){
+  const n=document.getElementById('mobileNav');const b=document.getElementById('menuToggle');
+  const open=n.classList.toggle('show');
+  if(b)b.setAttribute('aria-expanded',open?'true':'false');
+}
+
+/* ── ASSISTANT ── */
+const assistKB=[
+  {k:["how","work","start","begin","use","what is","about"],a:"Star Connect Hub connects fans with verified creators. Browse the roster, pick a creator, and book a message, video call, or shout-out. Your payment is held in escrow and only released once your session is delivered."},
+  {k:["pay","cost","price","fee","escrow","refund","money"],a:"All prices are shown on each creator's card. Payments are held in escrow — if your session isn't delivered, you get a full refund. We accept card, bank transfer, and crypto."},
+  {k:["verif","real","fake","scam","safe","trust","legit"],a:"Every creator passes a government-ID and liveness check before going live. Verified profiles show a badge. Payments are escrow-protected so you're covered if a session isn't delivered."},
+  {k:["support","help","contact","problem","dispute","wrong","issue"],a:"For anything that goes wrong, email starconnecthub@gmail.com or open a dispute from your bookings. Eligible bookings are refunded from escrow."},
+  {k:["creator","become","join","apply","earn","payout"],a:"Tap 'Become a creator', complete identity verification, set up your profile and pricing, and start accepting bookings.",act:"creator"},
+  {k:["account","login","sign in","register","sign up"],a:"Joining is free. Tap 'Join free' at the top. You only pay when you book a session.",act:"join"}
+];
+let assistOpen=false;
+function openAssistant(){
+  assistOpen=true;
+  document.getElementById('assistPanel').classList.add('open');
+  if(!document.getElementById('assistBody').children.length){
+    botSay("Hi! I'm the Hub Assistant. I can help with how Star Connect Hub works, payments, safety, or how to become a creator. What would you like to know?");
+    renderQuicks([{label:"How does it work?",q:"how does it work"},{label:"Is it safe?",q:"is it safe"},{label:"Booking & payment",q:"how does payment work"},{label:"Become a creator",q:"how to become a creator"}]);
+  }
+}
+function closeAssistant(){assistOpen=false;document.getElementById('assistPanel').classList.remove('open');}
+function botSay(text){
+  const b=document.getElementById('assistBody');
+  const d=document.createElement('div');d.className='bot-msg';d.textContent=text;b.appendChild(d);b.scrollTop=b.scrollHeight;
+}
+function userSay(text){
+  const b=document.getElementById('assistBody');
+  const d=document.createElement('div');d.className='user-msg';d.textContent=text;b.appendChild(d);b.scrollTop=b.scrollHeight;
+}
+function renderQuicks(qs){
+  const q=document.getElementById('assistQuick');q.innerHTML='';
+  qs.forEach(item=>{const b=document.createElement('button');b.className='quick-btn';b.textContent=item.label;b.onclick=()=>{document.getElementById('assistInput').value=item.q;sendAssist();};q.appendChild(b);});
+}
+function sendAssist(){
+  const inp=document.getElementById('assistInput');const txt=(inp.value||'').trim().toLowerCase();if(!txt)return;
+  userSay(inp.value.trim());inp.value='';document.getElementById('assistQuick').innerHTML='';
+  setTimeout(()=>{
+    const m=assistKB.find(e=>e.k.some(kw=>txt.includes(kw)));
+    if(m){
+      botSay(m.a);
+      if(m.act==='creator')setTimeout(()=>openAuth('creator'),600);
+      if(m.act==='join')setTimeout(()=>openAuth('join'),600);
+    }else{
+      botSay("I can help with how Star Connect Hub works, payments and refunds, verification and safety, booking a creator, or becoming a creator. Try one of those, or email starconnecthub@gmail.com for anything else.");
+    }
+  },380);
+}
+
+/* ── ACCOUNT DASHBOARD ── */
+let _activeDashTab='profile';
+let _chatCreatorId=null;
+
+function openDash(){
+  loadDashProfile();renderMsgList();renderBookGrid();
+  document.getElementById('accountDash').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeDash(){
+  document.getElementById('accountDash').classList.remove('open');
+  document.body.style.overflow='';
+}
+function showDashTab(tab){
+  _activeDashTab=tab;
+  ['profile','messages','bookings'].forEach(t=>{
+    const tid='tab'+t.charAt(0).toUpperCase()+t.slice(1);
+    const nid='dnav'+t.charAt(0).toUpperCase()+t.slice(1);
+    document.getElementById(tid)?.classList.toggle('active',t===tab);
+    document.getElementById(nid)?.classList.toggle('active',t===tab);
+  });
+}
+
+function loadDashProfile(){
+  const name=localStorage.getItem('schUser')||'';
+  const email=localStorage.getItem('schEmail')||'';
+  const about=localStorage.getItem('schAbout')||'';
+  const loc=localStorage.getItem('schLocation')||'';
+  const social=localStorage.getItem('schSocial')||'';
+  const avatar=localStorage.getItem('schAvatar')||'';
+  document.getElementById('sidebarName').textContent=name||'My Account';
+  document.getElementById('sidebarEmail').textContent=email||'';
+  setAvatarDisplay('sidebarAvatarImg','sidebarAvatarInit',avatar,name);
+  document.getElementById('pfName').value=name;
+  document.getElementById('pfEmail').value=email;
+  document.getElementById('pfAbout').value=about;
+  document.getElementById('pfLocation').value=loc;
+  document.getElementById('pfSocial').value=social;
+  setAvatarDisplay('profileAvatarImg','profileAvatarInit',avatar,name);
+}
+
+function setAvatarDisplay(imgId,initId,avatar,name){
+  const img=document.getElementById(imgId);const init=document.getElementById(initId);
+  if(avatar&&img){img.src=avatar;img.classList.add('show');if(init)init.style.display='none';}
+  else{if(img)img.classList.remove('show');if(init){init.style.display='';init.textContent=(name||'?').charAt(0).toUpperCase();}}
+}
+
+function saveProfile(){
+  const name=(document.getElementById('pfName')?.value||'').trim();
+  const email=(document.getElementById('pfEmail')?.value||'').trim();
+  const about=document.getElementById('pfAbout')?.value||'';
+  const loc=document.getElementById('pfLocation')?.value||'';
+  const social=document.getElementById('pfSocial')?.value||'';
+  if(name){localStorage.setItem('schUser',name);currentUser=name;}
+  if(email)localStorage.setItem('schEmail',email);
+  localStorage.setItem('schAbout',about);localStorage.setItem('schLocation',loc);localStorage.setItem('schSocial',social);
+  loadDashProfile();setNavLoggedIn(name);toast('Profile saved ✓');
+}
+
+function handleAvatarUpload(e){
+  const file=e.target.files[0];if(!file)return;
+  if(file.size>5*1024*1024){toast('Image must be under 5 MB');return;}
+  const reader=new FileReader();
+  reader.onload=ev=>{
+    const data=ev.target.result;localStorage.setItem('schAvatar',data);
+    const name=localStorage.getItem('schUser')||'';
+    setAvatarDisplay('sidebarAvatarImg','sidebarAvatarInit',data,name);
+    setAvatarDisplay('profileAvatarImg','profileAvatarInit',data,name);
+    toast('Photo updated ✓');
+  };
+  reader.readAsDataURL(file);e.target.value='';
+}
+
+function renderMsgList(){
+  const list=document.getElementById('msgCreatorList');if(!list)return;
+  list.innerHTML=creators.map(c=>`
+    <div class="msg-row" onclick="openChatPanel(${c.id})">
+      <div class="msg-init" style="background:${c.grad};width:48px;height:48px;border-radius:10px;flex:none;display:flex;align-items:center;justify-content:center;font-size:.95rem;font-weight:700;color:#fff;position:relative;overflow:hidden">${c.img?'':escapeHtml(c.init)}${creatorAvImg(c)}</div>
+      <div class="msg-info">
+        <div class="msg-cname">${escapeHtml(c.name)}${VTICK}</div>
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+          <div class="msg-crole">${escapeHtml(c.role)}</div>
+          <div class="msg-chat-price">💬 Chat $${chatPrice(c)}+</div>
+        </div>
+      </div>
+      <span class="msg-arrow">›</span>
+    </div>
+  `).join('');
+}
+
+function openChatPanel(creatorId){
+  const c=creators.find(x=>x.id===creatorId);if(!c)return;
+  _chatCreatorId=creatorId;
+  document.getElementById('msgListView').style.display='none';
+  document.getElementById('chatPanel').classList.add('open');
+  document.getElementById('chatCreatorName').innerHTML=escapeHtml(c.name)+VTICK;
+  document.getElementById('chatCreatorRole').textContent=c.role;
+  const badge=document.getElementById('chatInitBadge');
+  badge.style.background=c.grad;
+  badge.style.position='relative';badge.style.overflow='hidden';
+  badge.style.borderRadius='10px';
+  if(c.img){badge.textContent='';badge.innerHTML=`<img src="${escapeHtml(c.img)}" alt="${escapeHtml(c.name)}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:10px" onerror="this.style.display='none'">`;}
+  else{badge.textContent=c.init;}
+  document.getElementById('chatBookBtn').onclick=()=>goToPayment(c.id,0);
+  const tierBtn=document.getElementById('chatTierBtn');
+  if(tierBtn){
+    tierBtn.textContent='Book chat · $'+chatPrice(c)+'+';
+    tierBtn.onclick=()=>goToPayment(c.id,'chat');
+  }
+  renderChatMessages(c);
+}
+function closeChatPanel(){
+  _chatCreatorId=null;
+  document.getElementById('chatPanel').classList.remove('open');
+  document.getElementById('msgListView').style.display='';
+}
+function renderChatMessages(c){
+  const key='schMsgs_'+c.id;let msgs=[];
+  try{msgs=JSON.parse(localStorage.getItem(key)||'[]');}catch(e){}
+  if(!msgs.length)msgs=[{from:'theirs',text:'Hi there! 👋 This is the '+c.name+' team. Leave your message below and we\'ll get back to you. You can also book a session directly using the button above.',time:formatTime(Date.now()-60000)}];
+  const box=document.getElementById('chatMessages');
+  box.innerHTML=msgs.map(m=>`<div><div class="bubble ${m.from==='mine'?'mine':'theirs'}">${escapeHtml(m.text)}</div><div class="bubble-time">${m.time||''}</div></div>`).join('');
+  box.scrollTop=box.scrollHeight;
+}
+function sendChatMsg(){
+  const input=document.getElementById('chatInput');const text=(input?.value||'').trim();
+  if(!text||!_chatCreatorId)return;input.value='';
+  const c=creators.find(x=>x.id===_chatCreatorId);if(!c)return;
+  const key='schMsgs_'+c.id;let msgs=[];
+  try{msgs=JSON.parse(localStorage.getItem(key)||'[]');}catch(e){}
+  if(!msgs.length)msgs=[{from:'theirs',text:'Hi there! 👋 This is the '+c.name+' team. Leave your message below and we\'ll get back to you.',time:formatTime(Date.now()-60000)}];
+  msgs.push({from:'mine',text,time:formatTime(Date.now())});
+  localStorage.setItem(key,JSON.stringify(msgs));renderChatMessages(c);
+  const user=localStorage.getItem('schUser')||'A fan';
+  const subject=encodeURIComponent('Fan message for '+c.name+' via Star Connect Hub');
+  const body=encodeURIComponent('From: '+user+'\nFor: '+c.name+'\n\n'+text);
+  window.open('mailto:starconnecthub@gmail.com?subject='+subject+'&body='+body,'_blank');
+  const delay=4000+Math.floor(Math.random()*3000);
+  setTimeout(()=>{
+    const replies=["Thanks for reaching out! We'll pass your message along shortly.","Got it! The team will respond within 24-48 hours.","Message received — we appreciate you connecting with us!","Thanks! We'll make sure "+c.name+"'s team sees this."];
+    const reply=replies[Math.floor(Math.random()*replies.length)];
+    let m2=[];try{m2=JSON.parse(localStorage.getItem(key)||'[]');}catch(e){}
+    m2.push({from:'theirs',text:reply,time:formatTime(Date.now())});
+    localStorage.setItem(key,JSON.stringify(m2));
+    if(_chatCreatorId===c.id)renderChatMessages(c);
+  },delay);
+}
+function formatTime(ts){return new Date(ts).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});}
+
+function renderBookGrid(){
+  const g=document.getElementById('bookGrid');if(!g)return;
+  g.innerHTML=creators.map(c=>`
+    <div class="book-card">
+      <div class="book-card-init" style="background:${c.grad}">${c.img?'':escapeHtml(c.init)}${creatorAvImg(c)}</div>
+      <div class="book-card-name">${escapeHtml(c.name)}${VTICK}</div>
+      <div class="book-card-role">${escapeHtml(c.role)}</div>
+      <div class="book-card-from">From $${c.price}</div>
+      <button class="book-now" onclick="closeDash();goToPayment(${c.id},0)">Book now</button>
+    </div>
+  `).join('');
+}
+
+function signOut(){
+  currentUser=null;
+  ['schUser','schEmail','schAvatar','schAbout','schLocation','schSocial'].forEach(k=>localStorage.removeItem(k));
+  setNavLoggedOut();closeDash();toast('Signed out ✓');
+}
+
+/* ── CREATOR APPLY FLOW ── */
+function openCreatorApply(){
+  document.getElementById('creatorApplyOverlay').classList.add('show');
+  document.body.style.overflow='hidden';
+}
+function closeCreatorApply(){
+  document.getElementById('creatorApplyOverlay').classList.remove('show');
+  document.body.style.overflow='';
+}
+function openCreatorPitch(){
+  document.getElementById('creatorApplyOverlay').classList.remove('show');
+  document.getElementById('creatorPitchOverlay').classList.add('show');
+}
+function closeCreatorPitch(){
+  document.getElementById('creatorPitchOverlay').classList.remove('show');
+  document.body.style.overflow='';
+}
+function submitCreatorApp(){
+  const name=(document.getElementById('crName')?.value||'').trim();
+  const phone=(document.getElementById('crPhone')?.value||'').trim();
+  const email=(document.getElementById('crEmail')?.value||'').trim();
+  const category=document.getElementById('crCategory')?.value||'';
+  const social=(document.getElementById('crSocial')?.value||'').trim();
+  const bio=(document.getElementById('crBio')?.value||'').trim();
+  if(!name){toast('Please enter your full name.');return;}
+  if(!phone){toast('Please enter your phone number.');return;}
+  if(!email||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){toast('Please enter a valid email.');return;}
+  if(!category){toast('Please select your category.');return;}
+  if(!bio){toast('Please tell us what you\'re known for.');return;}
+  localStorage.setItem('schCreatorApp',JSON.stringify({name,phone,email,social,category,bio}));
+  openCreatorPitch();
+}
+function startCreatorVerification(){
+  const app=JSON.parse(localStorage.getItem('schCreatorApp')||'{}');
+  const p=new URLSearchParams({type:'creator',name:app.name||'Creator Applicant',role:app.category||'Creator',email:app.email||'',phone:app.phone||'',social:app.social||''});
+  window.location.href='payment.html?'+p.toString();
+}
+
+/* ── INIT ── */
+renderHeroMosaic();
+renderTop10();
+renderFilters();
+renderCreators();
+renderCollections();
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();closeDash();closeCreatorApply();closeCreatorPitch();}});
+(function restoreSession(){
+  const u=localStorage.getItem('schUser');
+  if(u){currentUser=u;setNavLoggedIn(u);}
+})();
+</script>
+</body>
+</html>

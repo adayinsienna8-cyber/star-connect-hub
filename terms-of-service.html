@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Terms of Service — Star Connect Hub</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23BF9B30'/><text x='16' y='23' font-size='20' text-anchor='middle' fill='%23fff'>&#9733;</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FDFAF5;--surface:#fff;--card:#F7F3EC;--gold:#BF9B30;--text:#1C1917;--t2:#78716C;--t3:#A8A29E;--border:rgba(0,0,0,.08);--r:12px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif}
+
+.pnav{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,.05)}
+.pnav-inner{max-width:860px;margin:0 auto;padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.pnav-logo{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.1rem;font-weight:700;color:var(--gold);text-decoration:none;letter-spacing:.02em}
+.pnav-logo em{color:var(--text);font-style:normal}
+.pnav-back{font-size:.82rem;color:var(--t2);display:flex;align-items:center;gap:5px;transition:color .15s}
+.pnav-back:hover{color:var(--text);text-decoration:none}
+
+.policy-hero{background:linear-gradient(135deg,#FDFAF5,#F7F3EC);border-bottom:1px solid var(--border);padding:52px 24px 44px}
+.policy-hero-inner{max-width:860px;margin:0 auto}
+.policy-tag{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;font-family:'DM Sans',sans-serif}
+.policy-hero h1{font-size:clamp(2rem,4vw,3rem);font-weight:600;color:var(--text);margin-bottom:10px;line-height:1.1}
+.policy-hero p{color:var(--t2);font-size:.92rem;max-width:56ch;line-height:1.7}
+.policy-meta{margin-top:18px;font-size:.76rem;color:var(--t3);font-family:'Space Mono',monospace}
+
+.policy-body{max-width:860px;margin:0 auto;padding:48px 24px 80px;display:grid;grid-template-columns:200px 1fr;gap:48px;align-items:start}
+@media(max-width:680px){.policy-body{grid-template-columns:1fr}.toc{display:none}}
+
+.toc{position:sticky;top:76px}
+.toc-title{font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--t3);margin-bottom:14px;font-family:'DM Sans',sans-serif}
+.toc a{display:block;font-size:.8rem;color:var(--t2);padding:5px 0;border-left:2px solid var(--border);padding-left:12px;transition:all .15s;text-decoration:none;line-height:1.4}
+.toc a:hover{color:var(--gold);border-left-color:var(--gold)}
+
+.policy-section{margin-bottom:40px;scroll-margin-top:80px}
+.policy-section h2{font-size:1.55rem;font-weight:600;color:var(--text);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.policy-section h3{font-size:1.1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.policy-section p{font-size:.9rem;color:var(--t2);margin-bottom:12px;line-height:1.75}
+.policy-section ul,.policy-section ol{padding-left:20px;margin-bottom:12px}
+.policy-section li{font-size:.9rem;color:var(--t2);margin-bottom:6px;line-height:1.7}
+.policy-section strong{color:var(--text);font-weight:600}
+.info-box{background:var(--card);border:1px solid rgba(191,155,48,.2);border-radius:var(--r);padding:16px 18px;margin:16px 0;font-size:.86rem;color:var(--t2);line-height:1.65}
+.info-box strong{color:var(--gold)}
+.warn-box{background:#FFF8F0;border:1px solid rgba(191,155,48,.35);border-radius:var(--r);padding:16px 18px;margin:16px 0;font-size:.86rem;color:#78522A;line-height:1.65}
+.num-list{counter-reset:item;padding-left:0;list-style:none}
+.num-list li{counter-increment:item;padding-left:28px;position:relative;margin-bottom:8px}
+.num-list li::before{content:counter(item)".";position:absolute;left:0;color:var(--gold);font-weight:700;font-family:'Space Mono',monospace;font-size:.8rem}
+
+.policy-footer{background:#1A1512;padding:28px 24px;text-align:center}
+.policy-footer-links{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-bottom:12px}
+.policy-footer-links a{color:rgba(255,255,255,.55);font-size:.82rem;transition:color .15s;text-decoration:none}
+.policy-footer-links a:hover{color:var(--gold)}
+.policy-footer-links a.active{color:var(--gold)}
+.policy-footer p{color:rgba(255,255,255,.28);font-size:.74rem}
+</style>
+</head>
+<body>
+
+<header class="pnav">
+  <div class="pnav-inner">
+    <a href="star-connect-hub.html" class="pnav-logo">★ Star <em>Connect Hub</em></a>
+    <a href="star-connect-hub.html" class="pnav-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+      Back to site
+    </a>
+  </div>
+</header>
+
+<div class="policy-hero">
+  <div class="policy-hero-inner">
+    <span class="policy-tag">Legal</span>
+    <h1>Terms of Service</h1>
+    <p>These terms govern your use of Star Connect Hub. Please read them carefully — by using our platform you are agreeing to be bound by these terms.</p>
+    <div class="policy-meta">Last updated: June 23, 2026 &nbsp;·&nbsp; Effective: June 23, 2026</div>
+  </div>
+</div>
+
+<div class="policy-body">
+
+  <nav class="toc">
+    <div class="toc-title">On this page</div>
+    <a href="#acceptance">Acceptance</a>
+    <a href="#eligibility">Eligibility</a>
+    <a href="#accounts">Accounts</a>
+    <a href="#fan-terms">Fan Terms</a>
+    <a href="#creator-terms">Creator Terms</a>
+    <a href="#payments">Payments</a>
+    <a href="#escrow">Escrow &amp; Refunds</a>
+    <a href="#prohibited">Prohibited Conduct</a>
+    <a href="#ip">Intellectual Property</a>
+    <a href="#disclaimers">Disclaimers</a>
+    <a href="#liability">Liability</a>
+    <a href="#termination">Termination</a>
+    <a href="#governing">Governing Law</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div>
+
+    <div class="policy-section" id="acceptance">
+      <h2>1. Acceptance of Terms</h2>
+      <p>These Terms of Service ("Terms") are a legally binding agreement between you and Star Connect Hub ("Company", "we", "us", or "our"). By accessing or using Star Connect Hub (the "Platform"), you agree to be bound by these Terms and our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+      <p>If you are using the Platform on behalf of a business or organisation, you represent that you have the authority to bind that entity to these Terms.</p>
+      <p>We reserve the right to modify these Terms at any time. We will notify users of material changes by updating the "Last updated" date. Continued use of the Platform after changes constitutes your acceptance of the revised Terms.</p>
+    </div>
+
+    <div class="policy-section" id="eligibility">
+      <h2>2. Eligibility</h2>
+      <ul>
+        <li>You must be at least <strong>18 years of age</strong> to use Star Connect Hub.</li>
+        <li>You must have the legal capacity to enter into a binding contract in your jurisdiction.</li>
+        <li>You must not be barred from using the Platform under any applicable law.</li>
+        <li>Creator accounts additionally require that you are a legal resident of your country and have the right to earn income as a self-employed individual or business entity.</li>
+      </ul>
+      <div class="warn-box">Star Connect Hub is strictly an 18+ platform. Misrepresentation of age is a serious violation and will result in immediate, permanent account termination.</div>
+    </div>
+
+    <div class="policy-section" id="accounts">
+      <h2>3. Accounts</h2>
+      <h3>Registration</h3>
+      <p>You must provide accurate, complete, and current information when creating an account. You are responsible for keeping your account information up to date.</p>
+      <h3>Security</h3>
+      <p>You are responsible for maintaining the confidentiality of your account credentials and for all activity that occurs under your account. Notify us immediately at <a href="mailto:starconnecthub@gmail.com">starconnecthub@gmail.com</a> if you suspect unauthorised access.</p>
+      <h3>One account per person</h3>
+      <p>Each individual or entity may maintain only one account. Creating multiple accounts to circumvent suspensions, bans, or verification requirements is strictly prohibited.</p>
+    </div>
+
+    <div class="policy-section" id="fan-terms">
+      <h2>4. Fan / Buyer Terms</h2>
+      <p>As a fan or buyer on the Platform, you agree to:</p>
+      <ul class="num-list">
+        <li>Use creator sessions and content solely for personal, non-commercial purposes unless expressly permitted in writing by the creator.</li>
+        <li>Treat creators and their teams with respect in all communications.</li>
+        <li>Not record, redistribute, resell, or publicly share personalised sessions without the creator's express written consent.</li>
+        <li>Provide accurate booking information so creators can fulfil your request.</li>
+        <li>Not make fraudulent payment claims or chargebacks in bad faith.</li>
+        <li>Not attempt to contact creators through off-platform channels found via the Platform for the purpose of bypassing our fee structure.</li>
+      </ul>
+    </div>
+
+    <div class="policy-section" id="creator-terms">
+      <h2>5. Creator Terms</h2>
+      <p>Creators are verified individuals who offer personalised experiences to fans through the Platform. To become a Creator, you must:</p>
+      <ul>
+        <li>Complete the Creator Application and provide truthful information about your identity, profession, and social reach.</li>
+        <li>Pay the Creator Verification fee of <strong>$1,200 USD equivalent in Bitcoin</strong> to activate your Creator account.</li>
+        <li>Maintain the verified identity you submitted during onboarding; impersonation of others is strictly prohibited.</li>
+      </ul>
+      <h3>Creator obligations</h3>
+      <ul>
+        <li>Fulfil booking requests within the agreed timeframe (typically 7 days unless otherwise specified).</li>
+        <li>Deliver content that meets the fan's request to a reasonable standard.</li>
+        <li>Maintain a response rate above 80% on fan messages.</li>
+        <li>Not offer services that violate our <a href="community-guidelines.html">Community Guidelines</a> or applicable law.</li>
+        <li>Provide a valid Bitcoin wallet address for payouts.</li>
+        <li>Keep your profile, pricing, and availability up to date.</li>
+      </ul>
+      <h3>Creator earnings</h3>
+      <p>Creators receive <strong>80% of each booking</strong> after the Platform fee of 20% is applied. Earnings are released to your Bitcoin wallet within 7 business days after successful session delivery and confirmation.</p>
+      <div class="info-box"><strong>Creator Verification Fee:</strong> The $1,200 Bitcoin payment grants 12 months of platform access, identity verification, and a verified badge. This fee is non-refundable once the verification process is complete and your dashboard is activated, except in the limited circumstances described in Section 7.</div>
+    </div>
+
+    <div class="policy-section" id="payments">
+      <h2>6. Payments</h2>
+      <h3>Bitcoin-only</h3>
+      <p>All payments on Star Connect Hub are processed exclusively in Bitcoin (BTC). By making a payment, you acknowledge that:</p>
+      <ul>
+        <li>Bitcoin is a volatile asset and the USD value of your payment may fluctuate.</li>
+        <li>Bitcoin transactions are irreversible once confirmed on the blockchain.</li>
+        <li>You are responsible for sending the correct amount to the correct wallet address.</li>
+        <li>Platform fees are calculated at the time of booking in USD, converted to BTC at the prevailing rate.</li>
+      </ul>
+      <h3>Platform fee</h3>
+      <p>Fan bookings are subject to a platform fee that is displayed transparently at checkout before payment. This fee covers payment processing, escrow management, and platform operations.</p>
+      <h3>Tax responsibility</h3>
+      <p>Creators are solely responsible for declaring and paying any income taxes, self-employment taxes, or other applicable levies on their earnings. Star Connect Hub does not provide tax advice.</p>
+    </div>
+
+    <div class="policy-section" id="escrow">
+      <h2>7. Escrow, Refunds &amp; Disputes</h2>
+      <h3>Escrow</h3>
+      <p>Fan payments are held in a Platform escrow wallet until the booked session is delivered and 48 hours have passed without a dispute being raised. Funds are then automatically released to the creator.</p>
+      <h3>Refunds — Fans</h3>
+      <ul>
+        <li><strong>Full refund:</strong> If a creator fails to deliver within the agreed timeframe, or if the delivered content substantially fails to match the booking request.</li>
+        <li><strong>Partial refund:</strong> At the Platform's discretion if the content partially meets the request.</li>
+        <li><strong>No refund:</strong> If you simply change your mind after the creator has delivered the session.</li>
+      </ul>
+      <h3>Refunds — Creators (Verification Fee)</h3>
+      <ul>
+        <li>The $1,200 Creator Verification fee is <strong>refundable</strong> only if your application is rejected by our verification team after review.</li>
+        <li>Once your creator dashboard is activated, the fee is <strong>non-refundable</strong>.</li>
+        <li>Refunds, where applicable, are processed in Bitcoin to the wallet address used for payment within 14 business days.</li>
+      </ul>
+      <h3>Dispute resolution</h3>
+      <p>To raise a dispute, contact us at <a href="mailto:starconnecthub@gmail.com">starconnecthub@gmail.com</a> within 48 hours of session delivery. We will review the dispute and issue a final decision within 5 business days. Our decision is final and binding.</p>
+    </div>
+
+    <div class="policy-section" id="prohibited">
+      <h2>8. Prohibited Conduct</h2>
+      <p>The following conduct is strictly prohibited on Star Connect Hub:</p>
+      <ul>
+        <li>Impersonating any person, celebrity, entity, or Star Connect Hub staff</li>
+        <li>Uploading or sharing content that is illegal, defamatory, harassing, or sexually explicit without legal basis</li>
+        <li>Creating accounts or using the Platform if you are under 18</li>
+        <li>Attempting to circumvent the Platform's fee structure by soliciting off-platform transactions</li>
+        <li>Engaging in fraudulent payments, chargebacks, or money laundering</li>
+        <li>Using bots, scrapers, or automated tools to access the Platform</li>
+        <li>Sharing another user's personal information without consent</li>
+        <li>Violating any applicable local, national, or international law or regulation</li>
+        <li>Attempting to hack, disrupt, or gain unauthorised access to the Platform or other users' accounts</li>
+        <li>Using the Platform to facilitate or promote illegal activities</li>
+      </ul>
+      <p>Violations may result in immediate account suspension or permanent termination, forfeiture of pending earnings, and/or referral to law enforcement.</p>
+    </div>
+
+    <div class="policy-section" id="ip">
+      <h2>9. Intellectual Property</h2>
+      <h3>Platform IP</h3>
+      <p>The Star Connect Hub brand, logo, design, software, and all content created by us are our intellectual property. You may not copy, reproduce, or create derivative works without our express written permission.</p>
+      <h3>Creator content</h3>
+      <p>Creators retain ownership of the personalised content they create. By delivering content through the Platform, creators grant the receiving fan a limited, non-commercial, non-transferable licence to use and enjoy that content privately.</p>
+      <h3>Your content</h3>
+      <p>By submitting content to the Platform (such as profile information, messages, or booking requests), you grant Star Connect Hub a non-exclusive, royalty-free licence to use that content solely to operate and improve the Platform.</p>
+    </div>
+
+    <div class="policy-section" id="disclaimers">
+      <h2>10. Disclaimers</h2>
+      <p>The Platform is provided on an "as is" and "as available" basis without warranties of any kind, whether express or implied.</p>
+      <p>We do not warrant that the Platform will be uninterrupted, error-free, or free of viruses. We do not guarantee the quality, accuracy, or suitability of any creator or content listed on the Platform.</p>
+      <p>Star Connect Hub is a marketplace facilitating connections — we are not a party to the engagement between fans and creators and are not responsible for the conduct of any user.</p>
+    </div>
+
+    <div class="policy-section" id="liability">
+      <h2>11. Limitation of Liability</h2>
+      <p>To the fullest extent permitted by law, Star Connect Hub shall not be liable for:</p>
+      <ul>
+        <li>Any indirect, incidental, special, consequential, or punitive damages</li>
+        <li>Loss of profits, revenue, data, or goodwill</li>
+        <li>The conduct of creators or fans on or off the Platform</li>
+        <li>Losses arising from Bitcoin price volatility or irreversible transactions</li>
+        <li>Service interruptions, security breaches, or unauthorised access to your account</li>
+      </ul>
+      <p>Our total liability to you for any claim arising out of or relating to these Terms or your use of the Platform shall not exceed the greater of (a) $100 USD or (b) the total amount you have paid to Star Connect Hub in the three months preceding the event giving rise to the claim.</p>
+    </div>
+
+    <div class="policy-section" id="termination">
+      <h2>12. Termination</h2>
+      <p>You may close your account at any time by contacting us at <a href="mailto:starconnecthub@gmail.com">starconnecthub@gmail.com</a>.</p>
+      <p>We may suspend or terminate your account immediately, without notice, if you violate these Terms or our <a href="community-guidelines.html">Community Guidelines</a>. Upon termination:</p>
+      <ul>
+        <li>Your right to use the Platform ceases immediately.</li>
+        <li>Any pending Creator earnings may be forfeited if the termination is due to a violation.</li>
+        <li>Sections relating to IP, Disclaimers, Liability, and Governing Law survive termination.</li>
+      </ul>
+    </div>
+
+    <div class="policy-section" id="governing">
+      <h2>13. Governing Law</h2>
+      <p>These Terms are governed by and construed in accordance with applicable laws. Any dispute arising under these Terms shall first be attempted to be resolved through good-faith negotiation. If unresolved, disputes shall be submitted to binding arbitration before proceeding to litigation.</p>
+    </div>
+
+    <div class="policy-section" id="contact">
+      <h2>14. Contact</h2>
+      <p>For any questions regarding these Terms, please contact us:</p>
+      <div class="info-box">
+        <strong>Star Connect Hub — Legal</strong><br>
+        Email: <a href="mailto:starconnecthub@gmail.com">starconnecthub@gmail.com</a><br>
+        Response time: Within 5 business days
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer class="policy-footer">
+  <div class="policy-footer-links">
+    <a href="privacy-policy.html">Privacy Policy</a>
+    <a href="terms-of-service.html" class="active">Terms of Service</a>
+    <a href="community-guidelines.html">Community Guidelines</a>
+    <a href="star-connect-hub.html">Back to Star Connect Hub</a>
+  </div>
+  <p>© 2026 Star Connect Hub. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

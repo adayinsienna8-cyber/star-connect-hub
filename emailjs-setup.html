@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<!--
+  ╔══════════════════════════════════════════════════════════════════════════╗
+  ║  STAR CONNECT HUB — EmailJS Setup Guide                                 ║
+  ║  Open this file in a browser or read it in any text editor.             ║
+  ╚══════════════════════════════════════════════════════════════════════════╝
+
+  QUICK STEPS
+  ──────────────────────────────────────────────────────────────────────────
+  1. Go to https://www.emailjs.com  →  Sign Up (free, 200 emails/month)
+  2. Dashboard → Email Services → Add New Service → choose Gmail
+     → connect starconnecthub@gmail.com → Save → copy the Service ID
+  3. Dashboard → Email Templates → Create New Template (×2)
+     → paste the HTML below into each template's HTML editor
+     → Save → copy the Template ID for each
+  4. Dashboard → Account → General → copy your Public Key
+  5. Open star-connect-hub.html, find the 4 constants near the top of <script>
+     and replace the placeholder strings:
+
+       const EJ_PUBLIC_KEY  = 'paste_your_public_key_here';
+       const EJ_SERVICE_ID  = 'paste_your_service_id_here';
+       const EJ_VERIFY_TID  = 'paste_verification_template_id_here';
+       const EJ_WELCOME_TID = 'paste_welcome_template_id_here';
+
+  ──────────────────────────────────────────────────────────────────────────
+  TEMPLATE 1 — Verification Code
+  Name it: "SCH Verification Code"
+  Subject line (in EmailJS): Your Star Connect Hub verification code: {{otp_code}}
+  To email (in EmailJS): {{to_email}}
+  ──────────────────────────────────────────────────────────────────────────
+-->
+
+<!-- ════════ TEMPLATE 1 HTML — paste into EmailJS template editor ════════ -->
+<template id="verify">
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#0E0814;font-family:'Helvetica Neue',Arial,sans-serif">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#0E0814;padding:40px 16px">
+    <tr><td align="center">
+      <table width="580" cellpadding="0" cellspacing="0" style="max-width:580px;background:#170E22;border-radius:16px;overflow:hidden;border:1px solid rgba(232,196,150,.18)">
+
+        <!-- header -->
+        <tr><td style="background:linear-gradient(135deg,#E14E7B,#7B4FE0);padding:32px 40px;text-align:center">
+          <div style="font-size:28px;margin-bottom:6px">⭐</div>
+          <h1 style="margin:0;color:#ffffff;font-size:22px;font-weight:700;letter-spacing:-.3px">Star Connect Hub</h1>
+          <p style="margin:6px 0 0;color:rgba(255,255,255,.75);font-size:13px">Verified creators · Real connection</p>
+        </td></tr>
+
+        <!-- body -->
+        <tr><td style="padding:40px 40px 32px">
+          <p style="margin:0 0 6px;color:#E2B877;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase">Email Verification</p>
+          <h2 style="margin:0 0 16px;color:#F0D6AE;font-size:22px;font-weight:600">Hi {{to_name}}, here's your code</h2>
+          <p style="margin:0 0 28px;color:#a899be;font-size:15px;line-height:1.65">To complete your Star Connect Hub account, enter the 6-digit verification code below. It expires in <strong style="color:#E2B877">10 minutes</strong>.</p>
+
+          <!-- OTP box -->
+          <table width="100%" cellpadding="0" cellspacing="0"><tr><td align="center" style="padding:0 0 28px">
+            <div style="display:inline-block;background:linear-gradient(135deg,rgba(226,184,119,.15),rgba(225,78,123,.1));border:2px solid rgba(226,184,119,.4);border-radius:12px;padding:22px 48px">
+              <p style="margin:0 0 4px;color:#a899be;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase">Verification Code</p>
+              <p style="margin:0;color:#F0D6AE;font-size:38px;font-weight:700;letter-spacing:.35em;font-family:'Courier New',monospace">{{otp_code}}</p>
+            </div>
+          </td></tr></table>
+
+          <p style="margin:0 0 10px;color:#a899be;font-size:14px;line-height:1.6">If you didn't request this code, you can safely ignore this email — someone may have typed your address by mistake.</p>
+          <p style="margin:0;color:#a899be;font-size:14px;line-height:1.6">Need help? Reply to this email or contact <a href="mailto:starconnecthub@gmail.com" style="color:#E2B877;text-decoration:none">starconnecthub@gmail.com</a>.</p>
+        </td></tr>
+
+        <!-- footer -->
+        <tr><td style="padding:20px 40px 32px;border-top:1px solid rgba(232,196,150,.12)">
+          <p style="margin:0;color:#5a4d6e;font-size:12px;text-align:center;line-height:1.6">© 2026 Star Connect Hub · <a href="https://starconnecthub.com" style="color:#5a4d6e;text-decoration:none">starconnecthub.com</a><br>This is a transactional email related to your account security.</p>
+        </td></tr>
+
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>
+</template>
+
+
+<!--
+  ──────────────────────────────────────────────────────────────────────────
+  TEMPLATE 2 — Welcome Email
+  Name it: "SCH Welcome"
+  Subject line (in EmailJS): Welcome to Star Connect Hub, {{to_name}} 🌟
+  To email (in EmailJS): {{to_email}}
+  ──────────────────────────────────────────────────────────────────────────
+-->
+
+<!-- ════════ TEMPLATE 2 HTML — paste into EmailJS template editor ════════ -->
+<template id="welcome">
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#0E0814;font-family:'Helvetica Neue',Arial,sans-serif">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#0E0814;padding:40px 16px">
+    <tr><td align="center">
+      <table width="580" cellpadding="0" cellspacing="0" style="max-width:580px;background:#170E22;border-radius:16px;overflow:hidden;border:1px solid rgba(232,196,150,.18)">
+
+        <!-- hero header -->
+        <tr><td style="background:linear-gradient(135deg,#E14E7B,#7B4FE0);padding:40px 40px 36px;text-align:center">
+          <div style="font-size:42px;margin-bottom:10px">🌟</div>
+          <h1 style="margin:0 0 8px;color:#ffffff;font-size:26px;font-weight:700;letter-spacing:-.4px">Welcome to Star Connect Hub</h1>
+          <p style="margin:0;color:rgba(255,255,255,.8);font-size:14px">Where verified creators meet the fans who love them</p>
+        </td></tr>
+
+        <!-- body -->
+        <tr><td style="padding:40px 40px 32px">
+          <p style="margin:0 0 6px;color:#E2B877;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase">You're in</p>
+          <h2 style="margin:0 0 16px;color:#F0D6AE;font-size:22px;font-weight:600">Hi {{to_name}}, your account is live! 🎉</h2>
+          <p style="margin:0 0 24px;color:#a899be;font-size:15px;line-height:1.7">You're now part of the only platform where <strong style="color:#F0D6AE">every creator is identity-verified</strong> before going live — and every booking is protected by escrow. Here's what you can do right now:</p>
+
+          <!-- feature pills -->
+          <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:28px">
+            <tr>
+              <td style="padding:0 8px 12px 0" width="50%">
+                <div style="background:rgba(226,184,119,.08);border:1px solid rgba(226,184,119,.2);border-radius:10px;padding:16px">
+                  <p style="margin:0 0 4px;font-size:18px">🎤</p>
+                  <p style="margin:0 0 4px;color:#F0D6AE;font-size:13px;font-weight:600">Browse 20+ creators</p>
+                  <p style="margin:0;color:#a899be;font-size:12px;line-height:1.5">Musicians, athletes, actors, comedians — all verified.</p>
+                </div>
+              </td>
+              <td style="padding:0 0 12px 8px" width="50%">
+                <div style="background:rgba(226,184,119,.08);border:1px solid rgba(226,184,119,.2);border-radius:10px;padding:16px">
+                  <p style="margin:0 0 4px;font-size:18px">🔒</p>
+                  <p style="margin:0 0 4px;color:#F0D6AE;font-size:13px;font-weight:600">Escrow protection</p>
+                  <p style="margin:0;color:#a899be;font-size:12px;line-height:1.5">Your payment is held safely until your session is delivered.</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:0 8px 0 0" width="50%">
+                <div style="background:rgba(226,184,119,.08);border:1px solid rgba(226,184,119,.2);border-radius:10px;padding:16px">
+                  <p style="margin:0 0 4px;font-size:18px">💬</p>
+                  <p style="margin:0 0 4px;color:#F0D6AE;font-size:13px;font-weight:600">Free team chat</p>
+                  <p style="margin:0;color:#a899be;font-size:12px;line-height:1.5">Ask us anything before you book — no cost, no pressure.</p>
+                </div>
+              </td>
+              <td style="padding:0 0 0 8px" width="50%">
+                <div style="background:rgba(226,184,119,.08);border:1px solid rgba(226,184,119,.2);border-radius:10px;padding:16px">
+                  <p style="margin:0 0 4px;font-size:18px">⭐</p>
+                  <p style="margin:0 0 4px;color:#F0D6AE;font-size:13px;font-weight:600">Verified reviews</p>
+                  <p style="margin:0;color:#a899be;font-size:12px;line-height:1.5">Every review comes from a real, completed booking.</p>
+                </div>
+              </td>
+            </tr>
+          </table>
+
+          <!-- CTA button -->
+          <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:28px"><tr><td align="center">
+            <a href="https://starconnecthub.com" style="display:inline-block;background:linear-gradient(135deg,#E2B877,#E14E7B);color:#0E0814;font-size:15px;font-weight:700;text-decoration:none;padding:15px 40px;border-radius:40px;letter-spacing:.02em">Browse Creators →</a>
+          </td></tr></table>
+
+          <p style="margin:0;color:#a899be;font-size:14px;line-height:1.65">Questions? Our team is always here — just reply to this email or reach us at <a href="mailto:starconnecthub@gmail.com" style="color:#E2B877;text-decoration:none">starconnecthub@gmail.com</a>. We read every message.</p>
+        </td></tr>
+
+        <!-- divider quote -->
+        <tr><td style="padding:0 40px 28px">
+          <div style="border-left:3px solid #E14E7B;padding:12px 16px;background:rgba(225,78,123,.06);border-radius:0 8px 8px 0">
+            <p style="margin:0;color:#F0D6AE;font-size:14px;font-style:italic;line-height:1.6">"Real connection, actually verified." — That's not just a tagline. It's the entire reason we built this.</p>
+            <p style="margin:8px 0 0;color:#5a4d6e;font-size:12px">— The Star Connect Hub Team</p>
+          </div>
+        </td></tr>
+
+        <!-- footer -->
+        <tr><td style="padding:20px 40px 32px;border-top:1px solid rgba(232,196,150,.12)">
+          <p style="margin:0;color:#5a4d6e;font-size:12px;text-align:center;line-height:1.7">© 2026 Star Connect Hub · <a href="https://starconnecthub.com" style="color:#5a4d6e;text-decoration:none">starconnecthub.com</a><br>You're receiving this because you just created an account. <a href="#" style="color:#5a4d6e">Unsubscribe</a></p>
+        </td></tr>
+
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>
+</template>

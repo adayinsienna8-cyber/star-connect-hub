@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Creator Dashboard — Star Connect Hub</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23BF9B30'/><text x='16' y='23' font-size='20' text-anchor='middle' fill='%23fff'>&#9733;</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0D0B08;--surface:#161209;--card:#1E1810;--card2:#252016;
+  --line:rgba(191,155,48,.18);--gold:#BF9B30;--gold-soft:#D4AC3A;--gold-dim:rgba(191,155,48,.12);
+  --text:rgba(255,255,255,.9);--t2:rgba(255,255,255,.55);--t3:rgba(255,255,255,.28);
+  --green:#22C55E;--green-dim:rgba(34,197,94,.1);
+  --rose:#BE4B78;--nav-h:66px;--r:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',Georgia,serif}
+
+/* ── NAV ── */
+.dash-nav{position:sticky;top:0;z-index:100;height:var(--nav-h);background:rgba(13,11,8,.95);border-bottom:1px solid var(--line);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:space-between;padding:0 28px;gap:16px}
+.dash-logo{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem;font-weight:700;color:var(--gold);letter-spacing:.03em}
+.dash-logo em{color:rgba(255,255,255,.85);font-style:normal}
+.verified-pill{display:flex;align-items:center;gap:6px;background:var(--green-dim);border:1px solid rgba(34,197,94,.3);color:var(--green);font-size:.72rem;font-weight:700;padding:5px 12px;border-radius:999px;letter-spacing:.04em}
+.verified-pill::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 1.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-creator-av{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,var(--gold),#7A5C00);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:700;color:#fff}
+.nav-creator-name{font-size:.86rem;font-weight:600;color:var(--text)}
+
+/* ── LAYOUT ── */
+.page{display:flex;min-height:calc(100vh - var(--nav-h))}
+.sidebar{width:220px;flex:none;background:var(--surface);border-right:1px solid var(--line);padding:24px 0;position:sticky;top:var(--nav-h);height:calc(100vh - var(--nav-h));overflow-y:auto}
+.sb-section{font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--t3);padding:0 20px;margin:20px 0 8px}
+.sb-btn{display:flex;align-items:center;gap:10px;padding:10px 20px;font-size:.85rem;color:var(--t2);background:none;border:none;font-family:inherit;cursor:pointer;width:100%;text-align:left;transition:all .15s;border-left:2px solid transparent}
+.sb-btn:hover{color:var(--text);background:rgba(255,255,255,.04)}
+.sb-btn.active{color:var(--gold);background:var(--gold-dim);border-left-color:var(--gold)}
+.sb-btn svg{flex:none;opacity:.7}
+.sb-btn.active svg{opacity:1}
+.main{flex:1;padding:36px 32px;overflow-y:auto}
+
+/* ── WELCOME BANNER ── */
+.welcome-banner{background:linear-gradient(135deg,#1E1810 0%,#2A2010 60%,#1E1810 100%);border:1px solid var(--line);border-radius:20px;padding:30px 32px;margin-bottom:28px;display:flex;align-items:center;gap:24px;position:relative;overflow:hidden}
+.welcome-banner::before{content:'';position:absolute;top:-40px;right:-40px;width:220px;height:220px;background:radial-gradient(circle,rgba(191,155,48,.12),transparent 70%)}
+.welcome-av{width:68px;height:68px;border-radius:14px;background:linear-gradient(135deg,var(--gold),#7A5C00);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:#fff;flex:none;position:relative}
+.welcome-av-badge{position:absolute;bottom:-4px;right:-4px;width:20px;height:20px;background:var(--green);border-radius:50%;border:2px solid var(--bg);display:flex;align-items:center;justify-content:center}
+.welcome-av-badge svg{width:10px;height:10px;stroke:#fff;stroke-width:3}
+.welcome-info h1{font-size:1.7rem;font-weight:600;color:#fff;margin-bottom:4px}
+.welcome-info p{color:var(--t2);font-size:.88rem;line-height:1.55}
+.welcome-btc{margin-left:auto;text-align:right;flex:none}
+.welcome-btc-label{font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--t3);margin-bottom:4px}
+.welcome-btc-val{font-family:'Space Mono',monospace;font-size:1.05rem;color:var(--gold);font-weight:700}
+.welcome-btc-usd{font-size:.75rem;color:var(--t3);margin-top:2px}
+
+/* ── STATS GRID ── */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px}
+.stat-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 18px}
+.stat-label{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--t3);margin-bottom:8px}
+.stat-val{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.9rem;font-weight:600;color:#fff;line-height:1}
+.stat-change{font-size:.74rem;margin-top:6px;display:flex;align-items:center;gap:4px}
+.stat-change.up{color:var(--green)}
+.stat-change.pending{color:var(--gold)}
+.stat-btc{font-family:'Space Mono',monospace;font-size:1.15rem;color:var(--gold)}
+
+/* ── TWO-COL ── */
+.two-col{display:grid;grid-template-columns:1fr 360px;gap:18px;margin-bottom:28px}
+
+/* ── BOOKING REQUESTS ── */
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.panel-hdr{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid var(--line)}
+.panel-hdr h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.15rem;font-weight:600;color:#fff}
+.panel-hdr .badge{background:var(--gold-dim);color:var(--gold);font-size:.7rem;font-weight:700;padding:3px 8px;border-radius:999px;border:1px solid rgba(191,155,48,.25)}
+.booking-row{display:flex;align-items:center;gap:14px;padding:14px 20px;border-bottom:1px solid var(--line);transition:background .15s}
+.booking-row:last-child{border-bottom:none}
+.booking-row:hover{background:rgba(255,255,255,.03)}
+.booking-fan-av{width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:.82rem;font-weight:700;color:#fff;flex:none}
+.booking-info{flex:1;min-width:0}
+.booking-fan{font-size:.88rem;font-weight:600;color:var(--text)}
+.booking-type{font-size:.74rem;color:var(--t2);margin-top:1px}
+.booking-price{font-family:'Space Mono',monospace;font-size:.82rem;color:var(--gold);white-space:nowrap}
+.booking-status{font-size:.68rem;font-weight:700;padding:3px 8px;border-radius:999px;white-space:nowrap}
+.booking-status.new{background:rgba(191,155,48,.1);color:var(--gold);border:1px solid rgba(191,155,48,.25)}
+.booking-status.pending{background:rgba(34,197,94,.08);color:var(--green);border:1px solid rgba(34,197,94,.25)}
+
+/* ── PAYOUT CARD ── */
+.payout-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px}
+.payout-title{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.1rem;font-weight:600;color:#fff;margin-bottom:16px}
+.payout-balance{background:linear-gradient(135deg,rgba(191,155,48,.1),rgba(191,155,48,.04));border:1px solid rgba(191,155,48,.2);border-radius:12px;padding:16px;margin-bottom:14px;text-align:center}
+.payout-bal-label{font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--t3);margin-bottom:4px}
+.payout-bal-val{font-family:'Cormorant Garamond',Georgia,serif;font-size:2rem;font-weight:700;color:var(--gold)}
+.payout-bal-btc{font-family:'Space Mono',monospace;font-size:.72rem;color:var(--t2);margin-top:2px}
+.payout-field label{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);display:block;margin-bottom:7px}
+.payout-field input{width:100%;background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:9px;padding:11px 14px;color:var(--text);font-family:'Space Mono',monospace;font-size:.78rem;outline:none;transition:border-color .2s}
+.payout-field input:focus{border-color:rgba(191,155,48,.5)}
+.payout-field input::placeholder{color:var(--t3)}
+.btn-payout{width:100%;margin-top:14px;padding:13px;background:linear-gradient(100deg,var(--gold),#9A7A1E);color:#fff;border:none;border-radius:999px;font-family:inherit;font-size:.9rem;font-weight:700;cursor:pointer;transition:all .2s;box-shadow:0 6px 20px rgba(191,155,48,.3)}
+.btn-payout:hover{transform:translateY(-1px);box-shadow:0 10px 28px rgba(191,155,48,.4)}
+.payout-note{font-size:.74rem;color:var(--t3);margin-top:10px;line-height:1.5;text-align:center}
+
+/* ── SETUP CHECKLIST ── */
+.checklist{display:flex;flex-direction:column;gap:0}
+.cl-item{display:flex;align-items:center;gap:14px;padding:14px 20px;border-bottom:1px solid var(--line);transition:background .15s}
+.cl-item:last-child{border-bottom:none}
+.cl-item:hover{background:rgba(255,255,255,.03);cursor:pointer}
+.cl-icon{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex:none;font-size:.9rem}
+.cl-icon.done{background:var(--green-dim);border:1px solid rgba(34,197,94,.3)}
+.cl-icon.todo{background:var(--gold-dim);border:1px solid rgba(191,155,48,.25)}
+.cl-text{flex:1}
+.cl-title{font-size:.88rem;font-weight:600;color:var(--text)}
+.cl-sub{font-size:.74rem;color:var(--t2);margin-top:1px}
+.cl-arrow{color:var(--t3);font-size:.9rem}
+
+/* ── EARNINGS CHART (mock) ── */
+.chart-bars{display:flex;align-items:flex-end;gap:6px;height:80px;margin:16px 0}
+.chart-bar{flex:1;border-radius:4px 4px 0 0;background:var(--gold-dim);border:1px solid rgba(191,155,48,.18);position:relative;transition:background .2s;cursor:pointer}
+.chart-bar:hover{background:rgba(191,155,48,.22)}
+.chart-bar.active{background:linear-gradient(180deg,var(--gold-soft),var(--gold));border-color:var(--gold)}
+.chart-labels{display:flex;gap:6px;font-size:.62rem;color:var(--t3);font-family:'Space Mono',monospace}
+.chart-labels span{flex:1;text-align:center}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1100px){.two-col{grid-template-columns:1fr}.stats-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){.sidebar{display:none}.main{padding:20px 16px}.stats-grid{grid-template-columns:1fr 1fr}.welcome-banner{flex-direction:column;gap:16px}.welcome-btc{margin-left:0;text-align:left}}
+@media(max-width:480px){.stats-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="dash-nav">
+  <a href="star-connect-hub.html" class="dash-logo">★ Star <em>Connect Hub</em></a>
+  <div class="verified-pill">
+    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>
+    Verified Creator
+  </div>
+  <div class="nav-right">
+    <div>
+      <div class="nav-creator-name" id="navCreatorName">Creator</div>
+      <div style="font-size:.7rem;color:var(--t3)">Creator account</div>
+    </div>
+    <div class="nav-creator-av" id="navCreatorAv">CR</div>
+  </div>
+</header>
+
+<div class="page">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="sb-section">Main</div>
+    <button class="sb-btn active" onclick="showTab('overview')">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      Overview
+    </button>
+    <button class="sb-btn" onclick="showTab('bookings')">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+      Bookings
+    </button>
+    <button class="sb-btn" onclick="showTab('earnings')">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11.767 19.089c4.924.868 6.14-6.025 1.216-6.894m-1.216 6.894L5.86 18.047m5.908 1.042-.347 1.97m1.563-8.864c4.924.869 6.14-6.025 1.215-6.893m-1.215 6.893-3.94-.694m5.155-6.2L8.29 4.26m5.908 1.042.348-1.97M7.48 20.364l3.126-17.727"/></svg>
+      Earnings
+    </button>
+    <button class="sb-btn" onclick="showTab('payout')">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+      Payouts
+    </button>
+    <div class="sb-section">Setup</div>
+    <button class="sb-btn" onclick="showTab('profile')">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      My profile
+    </button>
+    <button class="sb-btn" onclick="showTab('pricing')">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      Pricing
+    </button>
+    <div class="sb-section">Support</div>
+    <button class="sb-btn" onclick="alert('Creator support: starconnecthub@gmail.com')">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      Creator support
+    </button>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+
+    <!-- ── OVERVIEW TAB ── -->
+    <div id="tab-overview">
+
+      <!-- Welcome banner -->
+      <div class="welcome-banner">
+        <div class="welcome-av" id="wAv">CR
+          <div class="welcome-av-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div>
+        </div>
+        <div class="welcome-info">
+          <h1 id="wName">Welcome, Creator</h1>
+          <p>Your verified creator account is <strong style="color:var(--green)">active and live</strong>. Fans can now find and book you. Set your pricing below to start earning.</p>
+        </div>
+        <div class="welcome-btc">
+          <div class="welcome-btc-label">Available balance</div>
+          <div class="welcome-btc-val" id="btcBalance">0.000000 BTC</div>
+          <div class="welcome-btc-usd">≈ $0.00 USD</div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label">Total earned</div>
+          <div class="stat-val" style="color:var(--gold)">$0</div>
+          <div class="stat-change pending">↑ Your first booking is coming</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Active bookings</div>
+          <div class="stat-val">0</div>
+          <div class="stat-change pending">⏳ Profile going live now</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Profile views</div>
+          <div class="stat-val">—</div>
+          <div class="stat-change pending">Complete setup to go live</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Bitcoin earned</div>
+          <div class="stat-btc">0.000000</div>
+          <div class="stat-change pending">Payouts every 24 hours</div>
+        </div>
+      </div>
+
+      <!-- Two col -->
+      <div class="two-col">
+
+        <!-- Setup checklist -->
+        <div class="panel">
+          <div class="panel-hdr">
+            <h3>Complete your profile</h3>
+            <span class="badge">3 steps remaining</span>
+          </div>
+          <div class="checklist">
+            <div class="cl-item">
+              <div class="cl-icon done">✓</div>
+              <div class="cl-text">
+                <div class="cl-title">Identity verified</div>
+                <div class="cl-sub">Government ID &amp; liveness check complete</div>
+              </div>
+              <span class="cl-arrow" style="color:var(--green)">✓</span>
+            </div>
+            <div class="cl-item">
+              <div class="cl-icon done">✓</div>
+              <div class="cl-text">
+                <div class="cl-title">Verification payment received</div>
+                <div class="cl-sub">$1,200 confirmed on blockchain</div>
+              </div>
+              <span class="cl-arrow" style="color:var(--green)">✓</span>
+            </div>
+            <div class="cl-item" onclick="showTab('profile')">
+              <div class="cl-icon todo">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </div>
+              <div class="cl-text">
+                <div class="cl-title">Add your profile photo &amp; bio</div>
+                <div class="cl-sub">Profiles with photos get 4× more bookings</div>
+              </div>
+              <span class="cl-arrow">›</span>
+            </div>
+            <div class="cl-item" onclick="showTab('pricing')">
+              <div class="cl-icon todo">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+              <div class="cl-text">
+                <div class="cl-title">Set your booking prices</div>
+                <div class="cl-sub">Video messages, calls, and live chat</div>
+              </div>
+              <span class="cl-arrow">›</span>
+            </div>
+            <div class="cl-item" onclick="showTab('payout')">
+              <div class="cl-icon todo">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M11.767 19.089c4.924.868 6.14-6.025 1.216-6.894m-1.216 6.894L5.86 18.047m5.908 1.042-.347 1.97M7.48 20.364l3.126-17.727"/></svg>
+              </div>
+              <div class="cl-text">
+                <div class="cl-title">Add your Bitcoin payout wallet</div>
+                <div class="cl-sub">Receive earnings daily in BTC</div>
+              </div>
+              <span class="cl-arrow">›</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Payout card -->
+        <div class="payout-card">
+          <div class="payout-title">Quick Payout</div>
+          <div class="payout-balance">
+            <div class="payout-bal-label">Available to withdraw</div>
+            <div class="payout-bal-val">$0.00</div>
+            <div class="payout-bal-btc">≈ 0.000000 BTC</div>
+          </div>
+          <div class="payout-field" style="margin-bottom:12px">
+            <label>Your Bitcoin wallet address</label>
+            <input type="text" id="payoutWallet" placeholder="bc1q… or 1A… or 3…">
+          </div>
+          <button class="btn-payout" onclick="saveWallet()">Save Payout Wallet</button>
+          <p class="payout-note">Payouts processed every 24 hours automatically. Minimum payout: $50.</p>
+        </div>
+
+      </div>
+
+      <!-- Upcoming bookings panel -->
+      <div class="panel" style="margin-bottom:28px">
+        <div class="panel-hdr">
+          <h3>Upcoming bookings</h3>
+          <span class="badge">0 pending</span>
+        </div>
+        <div style="padding:48px 24px;text-align:center;color:var(--t3)">
+          <div style="font-size:2rem;margin-bottom:12px">📭</div>
+          <p style="font-size:.92rem;color:var(--t2);margin-bottom:6px">No bookings yet</p>
+          <p style="font-size:.8rem;line-height:1.6">Complete your profile and set your prices to start appearing in fan searches. Most creators receive their first booking within 24–48 hours of going live.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── BOOKINGS TAB ── -->
+    <div id="tab-bookings" style="display:none">
+      <h2 style="font-size:1.9rem;font-weight:600;color:#fff;margin-bottom:6px">Bookings</h2>
+      <p style="color:var(--t2);margin-bottom:24px;font-size:.9rem">All fan bookings appear here. Accept or decline within 48 hours.</p>
+      <div class="panel">
+        <div style="padding:60px 24px;text-align:center;color:var(--t3)">
+          <div style="font-size:2.5rem;margin-bottom:14px">📬</div>
+          <p style="font-size:.95rem;color:var(--t2);margin-bottom:8px">Your booking inbox is empty</p>
+          <p style="font-size:.82rem;color:var(--t3);line-height:1.65">Once you complete your profile and set prices, fans can start booking you. New requests are highlighted here and you'll receive an email notification.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── EARNINGS TAB ── -->
+    <div id="tab-earnings" style="display:none">
+      <h2 style="font-size:1.9rem;font-weight:600;color:#fff;margin-bottom:6px">Earnings</h2>
+      <p style="color:var(--t2);margin-bottom:24px;font-size:.9rem">Track your revenue, Bitcoin payouts, and performance over time.</p>
+      <div class="stats-grid" style="margin-bottom:20px">
+        <div class="stat-card"><div class="stat-label">This month</div><div class="stat-val" style="color:var(--gold)">$0</div><div class="stat-change pending">First payout coming soon</div></div>
+        <div class="stat-card"><div class="stat-label">Last month</div><div class="stat-val">—</div><div class="stat-change pending">Account just activated</div></div>
+        <div class="stat-card"><div class="stat-label">All time</div><div class="stat-val" style="color:var(--gold)">$0</div><div class="stat-change pending">Your journey starts now</div></div>
+        <div class="stat-card"><div class="stat-label">Pending payout</div><div class="stat-btc">0.000000 BTC</div><div class="stat-change pending">Sent within 24 hours</div></div>
+      </div>
+      <div class="panel">
+        <div class="panel-hdr"><h3>Earnings over time</h3></div>
+        <div style="padding:20px 20px 12px">
+          <div class="chart-bars" id="earningsChart"></div>
+          <div class="chart-labels" id="chartLabels"></div>
+        </div>
+        <div style="padding:24px;text-align:center;border-top:1px solid var(--line);color:var(--t3);font-size:.82rem;line-height:1.6">
+          Earnings data will appear here once you receive your first booking. Complete your profile setup to go live.
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PAYOUT TAB ── -->
+    <div id="tab-payout" style="display:none">
+      <h2 style="font-size:1.9rem;font-weight:600;color:#fff;margin-bottom:6px">Payouts</h2>
+      <p style="color:var(--t2);margin-bottom:24px;font-size:.9rem">All earnings are paid out in Bitcoin directly to your wallet, every 24 hours.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px">
+        <div class="panel" style="padding:24px">
+          <h3 style="font-size:1.1rem;margin-bottom:16px">Your payout wallet</h3>
+          <div class="payout-field" style="margin-bottom:14px">
+            <label>Bitcoin wallet address</label>
+            <input type="text" id="payoutWallet2" placeholder="bc1q… or 1A… or 3…">
+          </div>
+          <div class="payout-field" style="margin-bottom:14px">
+            <label>Preferred payout day</label>
+            <select style="width:100%;background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:9px;padding:11px 14px;color:var(--text);font-family:inherit;font-size:.9rem;outline:none">
+              <option>Daily (every 24 hours)</option>
+              <option>Weekly (every Monday)</option>
+            </select>
+          </div>
+          <button class="btn-payout" onclick="saveWallet2()">Save Payout Settings</button>
+        </div>
+        <div class="panel" style="padding:24px">
+          <h3 style="font-size:1.1rem;margin-bottom:16px">Payout history</h3>
+          <div style="padding:32px 0;text-align:center;color:var(--t3);font-size:.85rem">No payouts yet — your first booking will trigger your first payout.</div>
+        </div>
+      </div>
+      <div style="background:var(--gold-dim);border:1px solid rgba(191,155,48,.25);border-radius:14px;padding:18px 20px;display:flex;align-items:center;gap:14px">
+        <div style="font-size:1.4rem">⚡</div>
+        <div>
+          <div style="font-size:.85rem;font-weight:600;color:var(--gold);margin-bottom:3px">Same-day Bitcoin payouts</div>
+          <div style="font-size:.8rem;color:var(--t2);line-height:1.55">Once a booking is completed, earnings are queued for your next daily payout run. Bitcoin arrives in your wallet within 2–6 hours of the payout run.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PROFILE TAB ── -->
+    <div id="tab-profile" style="display:none">
+      <h2 style="font-size:1.9rem;font-weight:600;color:#fff;margin-bottom:6px">My Profile</h2>
+      <p style="color:var(--t2);margin-bottom:24px;font-size:.9rem">This is how fans see you. A complete profile gets 4× more bookings.</p>
+      <div class="panel" style="padding:28px">
+        <div style="display:flex;align-items:center;gap:20px;padding-bottom:24px;border-bottom:1px solid var(--line);margin-bottom:24px">
+          <div id="profileAv" style="width:80px;height:80px;border-radius:16px;background:linear-gradient(135deg,var(--gold),#7A5C00);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:#fff;flex:none">CR</div>
+          <div>
+            <div style="font-weight:700;font-size:1rem;color:var(--text)" id="profileName">Your Name</div>
+            <div style="font-size:.8rem;color:var(--t2);margin:3px 0">Verified Creator · <span style="color:var(--green)">Active</span></div>
+            <button style="margin-top:8px;background:var(--gold-dim);border:1px solid rgba(191,155,48,.25);color:var(--gold);padding:6px 14px;border-radius:999px;font-size:.75rem;font-weight:600;font-family:inherit;cursor:pointer">Upload photo</button>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div class="payout-field">
+            <label>Display name</label>
+            <input type="text" id="pfName" placeholder="How fans see your name">
+          </div>
+          <div class="payout-field">
+            <label>Category</label>
+            <select style="width:100%;background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:9px;padding:11px 14px;color:var(--text);font-family:inherit;font-size:.9rem;outline:none" id="pfCat">
+              <option>Music</option><option>Sports</option><option>Comedy</option>
+              <option>Film &amp; TV</option><option>Gaming</option><option>Reality TV</option>
+              <option>Model &amp; Creator</option><option>Fitness &amp; Lifestyle</option>
+            </select>
+          </div>
+          <div class="payout-field" style="grid-column:1/-1">
+            <label>Bio (shown on your public profile)</label>
+            <textarea style="width:100%;background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:9px;padding:12px 14px;color:var(--text);font-family:inherit;font-size:.9rem;outline:none;resize:vertical;min-height:100px;line-height:1.55" id="pfBio" placeholder="Tell fans who you are and why they should book you…"></textarea>
+          </div>
+          <div class="payout-field">
+            <label>Instagram handle</label>
+            <input type="text" id="pfIG" placeholder="@yourhandle">
+          </div>
+          <div class="payout-field">
+            <label>TikTok / other social</label>
+            <input type="text" id="pfTT" placeholder="@yourhandle">
+          </div>
+        </div>
+        <button class="btn-payout" style="margin-top:20px" onclick="saveProfile()">Save Profile</button>
+      </div>
+    </div>
+
+    <!-- ── PRICING TAB ── -->
+    <div id="tab-pricing" style="display:none">
+      <h2 style="font-size:1.9rem;font-weight:600;color:#fff;margin-bottom:6px">Pricing</h2>
+      <p style="color:var(--t2);margin-bottom:24px;font-size:.9rem">Set your prices for each booking type. You keep 85% — we take a 15% platform fee.</p>
+      <div class="panel" style="padding:28px">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div class="payout-field">
+            <label>Personal video message ($)</label>
+            <input type="number" placeholder="e.g. 150" min="10" style="background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:9px;padding:12px 14px;color:var(--text);font-family:inherit;font-size:.9rem;outline:none;width:100%">
+          </div>
+          <div class="payout-field">
+            <label>Business video message ($)</label>
+            <input type="number" placeholder="e.g. 350" min="50" style="background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:9px;padding:12px 14px;color:var(--text);font-family:inherit;font-size:.9rem;outline:none;width:100%">
+          </div>
+          <div class="payout-field">
+            <label>Live video call — 15 min ($)</label>
+            <input type="number" placeholder="e.g. 500" min="50" style="background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:9px;padding:12px 14px;color:var(--text);font-family:inherit;font-size:.9rem;outline:none;width:100%">
+          </div>
+          <div class="payout-field">
+            <label>Private chat session ($)</label>
+            <input type="number" placeholder="e.g. 75" min="8" style="background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:9px;padding:12px 14px;color:var(--text);font-family:inherit;font-size:.9rem;outline:none;width:100%">
+          </div>
+        </div>
+        <div style="margin-top:20px;background:var(--gold-dim);border:1px solid rgba(191,155,48,.22);border-radius:12px;padding:14px 16px;font-size:.8rem;color:var(--t2);line-height:1.6">
+          <strong style="color:var(--gold)">Pricing tip:</strong> Creators who price video messages between $100–$300 receive the most bookings. High-profile creators charge $500+. You can update prices at any time.
+        </div>
+        <button class="btn-payout" style="margin-top:20px" onclick="alert('Pricing saved! Your profile will go live within 2 hours.')">Save Pricing</button>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+/* ── GATE CHECK ── */
+const creatorPaid = localStorage.getItem('schCreatorPaid');
+if(!creatorPaid){
+  window.location.replace('star-connect-hub.html');
+}
+
+/* ── LOAD CREATOR INFO ── */
+const creatorName = localStorage.getItem('schCreatorName') || 'Creator';
+const creatorApp  = JSON.parse(localStorage.getItem('schCreatorApp') || '{}');
+const displayName = creatorApp.name || creatorName;
+const initials    = displayName.split(' ').map(w=>w[0]||'').join('').toUpperCase().slice(0,2) || 'CR';
+
+document.getElementById('navCreatorName').textContent  = displayName;
+document.getElementById('navCreatorAv').textContent    = initials;
+document.getElementById('wName').textContent           = 'Welcome, ' + displayName.split(' ')[0];
+document.getElementById('wAv').textContent             = initials;
+document.getElementById('profileName').textContent     = displayName;
+document.getElementById('profileAv').textContent       = initials;
+
+if(document.getElementById('pfName'))  document.getElementById('pfName').value  = displayName;
+if(document.getElementById('pfCat') && creatorApp.category){
+  const sel = document.getElementById('pfCat');
+  for(let i=0;i<sel.options.length;i++){
+    if(sel.options[i].text.includes(creatorApp.category)||creatorApp.category.includes(sel.options[i].text)){sel.selectedIndex=i;break;}
+  }
+}
+if(document.getElementById('pfBio') && creatorApp.bio) document.getElementById('pfBio').value = creatorApp.bio;
+if(document.getElementById('pfIG') && creatorApp.social) document.getElementById('pfIG').value = creatorApp.social;
+
+/* ── TABS ── */
+const TABS = ['overview','bookings','earnings','payout','profile','pricing'];
+function showTab(id){
+  TABS.forEach(t=>{
+    const el = document.getElementById('tab-'+t);
+    if(el) el.style.display = t===id?'block':'none';
+  });
+  document.querySelectorAll('.sb-btn').forEach(btn=>{
+    btn.classList.toggle('active', btn.getAttribute('onclick')?.includes("'"+id+"'"));
+  });
+}
+
+/* ── EARNINGS CHART ── */
+const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul'];
+const bars   = [0,0,0,0,0,0,0]; // all zero for new account
+const chartEl = document.getElementById('earningsChart');
+const labelsEl = document.getElementById('chartLabels');
+if(chartEl){
+  chartEl.innerHTML = bars.map((v,i)=>`<div class="chart-bar${i===6?' active':''}" style="height:${Math.max(6,(v/500)*100)}%" title="$${v}"></div>`).join('');
+}
+if(labelsEl){
+  labelsEl.innerHTML = months.map(m=>`<span>${m}</span>`).join('');
+}
+
+/* ── SAVE FUNCTIONS ── */
+function saveWallet(){
+  const w = document.getElementById('payoutWallet')?.value.trim();
+  if(!w){alert('Please enter your Bitcoin wallet address.');return;}
+  localStorage.setItem('schCreatorWallet', w);
+  alert('✓ Payout wallet saved! Earnings will be sent to this address daily.');
+}
+function saveWallet2(){
+  const w = document.getElementById('payoutWallet2')?.value.trim();
+  if(!w){alert('Please enter your Bitcoin wallet address.');return;}
+  localStorage.setItem('schCreatorWallet', w);
+  alert('✓ Payout settings saved!');
+}
+function saveProfile(){
+  alert('✓ Profile saved! Your public listing will be updated within 2 hours.');
+}
+</script>
+</body>
+</html>

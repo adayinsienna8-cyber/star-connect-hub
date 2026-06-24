@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Community Guidelines — Star Connect Hub</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23BF9B30'/><text x='16' y='23' font-size='20' text-anchor='middle' fill='%23fff'>&#9733;</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FDFAF5;--surface:#fff;--card:#F7F3EC;--gold:#BF9B30;--text:#1C1917;--t2:#78716C;--t3:#A8A29E;--border:rgba(0,0,0,.08);--r:12px;--green:#16A34A}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--gold);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif}
+
+.pnav{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,.05)}
+.pnav-inner{max-width:860px;margin:0 auto;padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.pnav-logo{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.1rem;font-weight:700;color:var(--gold);text-decoration:none;letter-spacing:.02em}
+.pnav-logo em{color:var(--text);font-style:normal}
+.pnav-back{font-size:.82rem;color:var(--t2);display:flex;align-items:center;gap:5px;transition:color .15s}
+.pnav-back:hover{color:var(--text);text-decoration:none}
+
+.policy-hero{background:linear-gradient(135deg,#FDFAF5,#F7F3EC);border-bottom:1px solid var(--border);padding:52px 24px 44px}
+.policy-hero-inner{max-width:860px;margin:0 auto}
+.policy-tag{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;font-family:'DM Sans',sans-serif}
+.policy-hero h1{font-size:clamp(2rem,4vw,3rem);font-weight:600;color:var(--text);margin-bottom:10px;line-height:1.1}
+.policy-hero p{color:var(--t2);font-size:.92rem;max-width:56ch;line-height:1.7}
+.policy-meta{margin-top:18px;font-size:.76rem;color:var(--t3);font-family:'Space Mono',monospace}
+
+.policy-body{max-width:860px;margin:0 auto;padding:48px 24px 80px;display:grid;grid-template-columns:200px 1fr;gap:48px;align-items:start}
+@media(max-width:680px){.policy-body{grid-template-columns:1fr}.toc{display:none}}
+
+.toc{position:sticky;top:76px}
+.toc-title{font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--t3);margin-bottom:14px;font-family:'DM Sans',sans-serif}
+.toc a{display:block;font-size:.8rem;color:var(--t2);padding:5px 0;border-left:2px solid var(--border);padding-left:12px;transition:all .15s;text-decoration:none;line-height:1.4}
+.toc a:hover{color:var(--gold);border-left-color:var(--gold)}
+
+.policy-section{margin-bottom:40px;scroll-margin-top:80px}
+.policy-section h2{font-size:1.55rem;font-weight:600;color:var(--text);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.policy-section h3{font-size:1.1rem;font-weight:600;color:var(--text);margin:20px 0 8px}
+.policy-section p{font-size:.9rem;color:var(--t2);margin-bottom:12px;line-height:1.75}
+.policy-section ul,.policy-section ol{padding-left:20px;margin-bottom:12px}
+.policy-section li{font-size:.9rem;color:var(--t2);margin-bottom:6px;line-height:1.7}
+.policy-section strong{color:var(--text);font-weight:600}
+.info-box{background:var(--card);border:1px solid rgba(191,155,48,.2);border-radius:var(--r);padding:16px 18px;margin:16px 0;font-size:.86rem;color:var(--t2);line-height:1.65}
+.info-box strong{color:var(--gold)}
+.green-box{background:#F0FDF4;border:1px solid rgba(22,163,74,.2);border-radius:var(--r);padding:16px 18px;margin:16px 0;font-size:.86rem;color:#15803D;line-height:1.65}
+.green-box strong{color:var(--green)}
+.red-box{background:#FFF1F2;border:1px solid rgba(220,38,38,.15);border-radius:var(--r);padding:16px 18px;margin:16px 0;font-size:.86rem;color:#B91C1C;line-height:1.65}
+
+/* RULE CARDS */
+.rule-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;margin:16px 0}
+.rule-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:16px}
+.rule-card-icon{font-size:1.4rem;margin-bottom:8px}
+.rule-card h4{font-family:'Cormorant Garamond',Georgia,serif;font-size:1rem;font-weight:600;color:var(--text);margin-bottom:5px}
+.rule-card p{font-size:.8rem;color:var(--t2);margin:0;line-height:1.55}
+
+/* ENFORCEMENT LADDER */
+.enforcement-step{display:flex;gap:14px;align-items:flex-start;margin-bottom:14px}
+.step-badge{flex-shrink:0;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:.72rem;font-weight:700}
+.step-badge.warn{background:#FEF9C3;color:#854D0E}
+.step-badge.suspend{background:#FEE2E2;color:#B91C1C}
+.step-badge.ban{background:#1C1917;color:var(--gold)}
+.step-content h4{font-size:.9rem;font-weight:600;color:var(--text);margin-bottom:2px}
+.step-content p{font-size:.82rem;color:var(--t2);margin:0;line-height:1.5}
+
+.policy-footer{background:#1A1512;padding:28px 24px;text-align:center}
+.policy-footer-links{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-bottom:12px}
+.policy-footer-links a{color:rgba(255,255,255,.55);font-size:.82rem;transition:color .15s;text-decoration:none}
+.policy-footer-links a:hover{color:var(--gold)}
+.policy-footer-links a.active{color:var(--gold)}
+.policy-footer p{color:rgba(255,255,255,.28);font-size:.74rem}
+</style>
+</head>
+<body>
+
+<header class="pnav">
+  <div class="pnav-inner">
+    <a href="star-connect-hub.html" class="pnav-logo">★ Star <em>Connect Hub</em></a>
+    <a href="star-connect-hub.html" class="pnav-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+      Back to site
+    </a>
+  </div>
+</header>
+
+<div class="policy-hero">
+  <div class="policy-hero-inner">
+    <span class="policy-tag">Community</span>
+    <h1>Community Guidelines</h1>
+    <p>Star Connect Hub thrives when everyone treats each other with dignity and respect. These guidelines help us maintain a premium, safe, and joyful platform for fans and creators alike.</p>
+    <div class="policy-meta">Last updated: June 23, 2026 &nbsp;·&nbsp; Effective: June 23, 2026</div>
+  </div>
+</div>
+
+<div class="policy-body">
+
+  <nav class="toc">
+    <div class="toc-title">On this page</div>
+    <a href="#values">Our values</a>
+    <a href="#fan-conduct">Fan conduct</a>
+    <a href="#creator-standards">Creator standards</a>
+    <a href="#content">Content rules</a>
+    <a href="#prohibited">What's not allowed</a>
+    <a href="#authenticity">Authenticity</a>
+    <a href="#privacy">Privacy &amp; safety</a>
+    <a href="#reporting">Reporting</a>
+    <a href="#enforcement">Enforcement</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div>
+
+    <div class="policy-section" id="values">
+      <h2>Our Values</h2>
+      <p>Star Connect Hub is a premium marketplace where fans connect with their favourite creators for personalised, meaningful moments. Our community is built on three core values:</p>
+      <div class="rule-grid">
+        <div class="rule-card">
+          <div class="rule-card-icon">✦</div>
+          <h4>Respect</h4>
+          <p>Every interaction — fan to creator, creator to fan — should be respectful, warm, and professional.</p>
+        </div>
+        <div class="rule-card">
+          <div class="rule-card-icon">✦</div>
+          <h4>Authenticity</h4>
+          <p>We verify every creator. Fans deserve to know they're connecting with the real person.</p>
+        </div>
+        <div class="rule-card">
+          <div class="rule-card-icon">✦</div>
+          <h4>Safety</h4>
+          <p>A safe platform for everyone, free from harassment, exploitation, and harm.</p>
+        </div>
+      </div>
+      <div class="green-box"><strong>Remember:</strong> Our community guidelines exist to protect you. When in doubt, ask yourself — "Would I be comfortable if Star Connect Hub could see exactly what I'm doing?" If yes, proceed. If not, reconsider.</div>
+    </div>
+
+    <div class="policy-section" id="fan-conduct">
+      <h2>Fan Conduct</h2>
+      <p>As a fan booking experiences on Star Connect Hub, we ask you to:</p>
+      <h3>Do</h3>
+      <ul>
+        <li><strong>Be clear and kind</strong> in your booking requests — creators put real effort into every personalised session.</li>
+        <li><strong>Respect creator schedules</strong> — allow the advertised delivery time before raising a concern.</li>
+        <li><strong>Leave honest, fair feedback</strong> — your ratings help others make informed decisions.</li>
+        <li><strong>Contact support</strong> if something isn't right — we're here to help resolve issues fairly.</li>
+      </ul>
+      <h3>Don't</h3>
+      <ul>
+        <li>Send inappropriate, sexual, or threatening messages to creators or their teams.</li>
+        <li>Request content that violates our Content Rules (see below).</li>
+        <li>Attempt to solicit the creator's personal contact details or arrange off-platform transactions.</li>
+        <li>Share personalised content publicly without the creator's written consent.</li>
+        <li>Submit false or misleading booking information to manipulate content delivery.</li>
+        <li>Open fraudulent disputes or initiate bad-faith chargebacks.</li>
+      </ul>
+    </div>
+
+    <div class="policy-section" id="creator-standards">
+      <h2>Creator Standards</h2>
+      <p>Verified creators represent the Star Connect Hub brand. We hold our creators to a high standard to ensure every fan interaction is exceptional.</p>
+      <h3>Professionalism</h3>
+      <ul>
+        <li>Deliver personalised sessions within your stated timeframe. Consistent late deliveries may result in account review.</li>
+        <li>Communicate promptly — respond to fan messages within 48 hours.</li>
+        <li>If you cannot fulfil a booking due to personal circumstances, contact our team immediately to facilitate a refund.</li>
+      </ul>
+      <h3>Authenticity</h3>
+      <ul>
+        <li>Your profile must represent you honestly — accurate name, photos, and stated social reach.</li>
+        <li>You may not outsource the production of personalised content to another person without fan consent.</li>
+        <li>Do not create fake reviews, ratings, or testimonials.</li>
+      </ul>
+      <h3>Pricing</h3>
+      <ul>
+        <li>Your listed prices must be accurate and inclusive of any fees you intend to charge through the Platform.</li>
+        <li>You may update your pricing at any time; changes apply to new bookings only, not existing ones.</li>
+      </ul>
+      <div class="info-box"><strong>Verified Creator badge:</strong> Your gold verification badge is a mark of trust. Maintaining it requires upholding these standards. We periodically review creator accounts — sustained violations can result in badge removal.</div>
+    </div>
+
+    <div class="policy-section" id="content">
+      <h2>Content Rules</h2>
+      <p>All content created or shared through Star Connect Hub must meet the following standards:</p>
+      <h3>Allowed content</h3>
+      <ul>
+        <li>Personalised video messages, shoutouts, and greetings</li>
+        <li>Q&amp;A sessions, advice, and motivational content</li>
+        <li>Behind-the-scenes content and exclusive updates</li>
+        <li>Music performances, readings, and creative content</li>
+        <li>Business coaching, mentorship, and professional guidance from qualified creators</li>
+        <li>Content that promotes positivity, inspiration, and genuine fan connection</li>
+      </ul>
+      <h3>Content that requires care</h3>
+      <ul>
+        <li><strong>Political or sensitive topics:</strong> Creators may address these but should do so responsibly and without inciting hatred.</li>
+        <li><strong>Health or medical advice:</strong> Always accompanied by a disclaimer recommending professional consultation.</li>
+        <li><strong>Fan-submitted personal information:</strong> Handle with discretion and do not reference it beyond the requested content.</li>
+      </ul>
+    </div>
+
+    <div class="policy-section" id="prohibited">
+      <h2>What's Not Allowed</h2>
+      <p>The following content and behaviour is strictly prohibited and will result in immediate action:</p>
+      <div class="red-box">
+        <strong>Zero-tolerance violations</strong> — these result in immediate, permanent account termination without appeal:
+        <ul style="margin-top:8px;padding-left:16px">
+          <li>Content that sexually exploits minors in any way</li>
+          <li>Content that incites violence against specific individuals or groups</li>
+          <li>Selling or facilitating illegal substances, weapons, or services</li>
+          <li>Impersonation of another real person's identity</li>
+        </ul>
+      </div>
+      <h3>Harassment &amp; bullying</h3>
+      <ul>
+        <li>Targeted harassment, threats, or abuse directed at any user</li>
+        <li>Coordinated attacks or pile-ons against a creator or fan</li>
+        <li>Repeated unwanted contact after being asked to stop</li>
+        <li>Doxxing — sharing someone's private information without consent</li>
+      </ul>
+      <h3>Spam &amp; manipulation</h3>
+      <ul>
+        <li>Sending unsolicited promotional messages to other users</li>
+        <li>Fake reviews, incentivised ratings, or review manipulation</li>
+        <li>Creating duplicate accounts after suspension</li>
+        <li>Using bots or automation to interact with the Platform</li>
+      </ul>
+      <h3>Misleading content</h3>
+      <ul>
+        <li>False claims about your identity, credentials, or professional status</li>
+        <li>Booking content under false pretences to obtain specific statements</li>
+        <li>Spreading demonstrably false information that could harm others</li>
+      </ul>
+      <h3>Financial misconduct</h3>
+      <ul>
+        <li>Money laundering or using the Platform for illicit financial transactions</li>
+        <li>Fraudulent payment claims or bad-faith chargebacks</li>
+        <li>Off-platform solicitation to bypass our escrow and fee system</li>
+      </ul>
+    </div>
+
+    <div class="policy-section" id="authenticity">
+      <h2>Authenticity &amp; Verification</h2>
+      <p>Trust is the foundation of our platform. Every creator on Star Connect Hub has undergone identity verification. Here's what that means for you:</p>
+      <ul>
+        <li><strong>Verified Badge (✓):</strong> This blue badge on a creator's profile means we have verified their real-world identity matches their listed professional credentials.</li>
+        <li><strong>No impersonators:</strong> If you believe a profile is impersonating someone, report it immediately. We take these reports seriously and act within 24 hours.</li>
+        <li><strong>Authentic interactions only:</strong> All platform interactions must be genuine. We do not permit scripted or AI-generated personalised responses presented as authentic.</li>
+      </ul>
+    </div>
+
+    <div class="policy-section" id="privacy">
+      <h2>Privacy &amp; Safety</h2>
+      <ul>
+        <li><strong>Protect personal data:</strong> Do not request, share, or collect other users' personal information beyond what is necessary for your booking.</li>
+        <li><strong>No covert recording:</strong> Do not record live sessions without consent.</li>
+        <li><strong>Respect boundaries:</strong> If a creator or fan indicates they are uncomfortable with a request, respect that boundary immediately.</li>
+        <li><strong>Safeguard your account:</strong> Never share your login credentials. Star Connect Hub staff will never ask for your password.</li>
+        <li><strong>Report suspicious activity:</strong> If you notice unusual activity on your account or receive suspicious messages, contact us immediately.</li>
+      </ul>
+    </div>
+
+    <div class="policy-section" id="reporting">
+      <h2>Reporting Violations</h2>
+      <p>If you witness a violation of these guidelines, please report it. Your reports help keep the community safe.</p>
+      <h3>How to report</h3>
+      <ul>
+        <li>Email: <a href="mailto:starconnecthub@gmail.com">starconnecthub@gmail.com</a> with the subject line "Report: [type of issue]"</li>
+        <li>Include: the username or profile link, a description of the violation, and any supporting screenshots.</li>
+      </ul>
+      <h3>What happens after you report</h3>
+      <ul>
+        <li>We acknowledge all reports within 24 hours.</li>
+        <li>Our trust and safety team reviews each report within 3 business days.</li>
+        <li>We keep reports confidential — the reported person will not know who filed the report.</li>
+        <li>We share the outcome with you once the review is complete.</li>
+      </ul>
+      <div class="green-box"><strong>False reports:</strong> Filing a report in bad faith — to harm a creator or fan without legitimate cause — is itself a violation of these guidelines and may result in your account being suspended.</div>
+    </div>
+
+    <div class="policy-section" id="enforcement">
+      <h2>Enforcement</h2>
+      <p>We apply a progressive enforcement model for most violations. However, severe violations (see "Zero-tolerance" above) result in immediate permanent termination.</p>
+      <div class="enforcement-step">
+        <div class="step-badge warn">1</div>
+        <div class="step-content">
+          <h4>Warning</h4>
+          <p>A formal notice explaining the violation and the expected change in behaviour. The account remains active.</p>
+        </div>
+      </div>
+      <div class="enforcement-step">
+        <div class="step-badge suspend">2</div>
+        <div class="step-content">
+          <h4>Temporary Suspension</h4>
+          <p>Account access restricted for 7 to 30 days. Pending bookings are honoured or refunded. Earnings are held pending review.</p>
+        </div>
+      </div>
+      <div class="enforcement-step">
+        <div class="step-badge ban">3</div>
+        <div class="step-content">
+          <h4>Permanent Termination</h4>
+          <p>Irreversible account closure. Forfeiture of pending earnings where the violation caused harm to another user. Referral to law enforcement where required.</p>
+        </div>
+      </div>
+      <h3>Appeals</h3>
+      <p>If you believe your account was actioned in error, you may appeal within 14 days by emailing <a href="mailto:starconnecthub@gmail.com">starconnecthub@gmail.com</a> with subject "Appeal: [your username]". Our team will review your appeal within 7 business days. Zero-tolerance violations are not eligible for appeal.</p>
+    </div>
+
+    <div class="policy-section" id="contact">
+      <h2>Contact &amp; Support</h2>
+      <p>Have questions about these guidelines or need help navigating a situation?</p>
+      <div class="info-box">
+        <strong>Star Connect Hub — Trust &amp; Safety</strong><br>
+        Email: <a href="mailto:starconnecthub@gmail.com">starconnecthub@gmail.com</a><br>
+        Response time: Within 24–48 hours for safety concerns
+      </div>
+      <p>Thank you for being part of the Star Connect Hub community. Together we keep this platform a space where extraordinary connections happen.</p>
+    </div>
+
+  </div>
+</div>
+
+<footer class="policy-footer">
+  <div class="policy-footer-links">
+    <a href="privacy-policy.html">Privacy Policy</a>
+    <a href="terms-of-service.html">Terms of Service</a>
+    <a href="community-guidelines.html" class="active">Community Guidelines</a>
+    <a href="star-connect-hub.html">Back to Star Connect Hub</a>
+  </div>
+  <p>© 2026 Star Connect Hub. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
